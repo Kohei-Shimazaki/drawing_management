@@ -48,6 +48,7 @@ https://docs.google.com/spreadsheets/d/e/2PACX-1vSVeED-vB260a4aXEFcnhkQBUennwcA-
 * rails_admin
 * banken
 * randsack
+* simple_calendar
 * roo
 * carrierwave
 * mini_magick
