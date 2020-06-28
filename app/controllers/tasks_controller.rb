@@ -5,6 +5,12 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    if @task.save
+      flash[:notice] = "タスク登録しました！" #辞書機能待ち
+      redirect_to new_task_path
+    else
+      render :new
+    end
   end
 
   private
