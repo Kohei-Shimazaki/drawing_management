@@ -1,0 +1,14 @@
+ja:
+  flash:
+    task:
+      create: タスクを登録しました!
+      update: タスクを更新しました!
+  active_record:
+    models:
+      task: タスク
+    attributes:
+      task:
+        title: タイトル
+        content: 内容
+        status: 状態
+        deadline: 期限

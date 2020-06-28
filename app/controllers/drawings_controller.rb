@@ -8,7 +8,7 @@ class DrawingsController < ApplicationController
   def create
     @drawing = Drawing.new(drawing_params)
     if @drawing.save
-      flash[:notice] = "図面を登録しました！" #辞書
+      flash[:notice] = "" #辞書
       redirect_to drawings_path
     else
       render :new

@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
   end
-  
+
   def new
     @task = Task.new
   end
@@ -12,8 +12,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      flash[:notice] = "タスク登録しました！" #辞書機能待ち
-      redirect_to new_task_path
+      flash[:notice] = I18n.t("flash.task.create")
+      redirect_to tasks_path
     else
       render :new
     end
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:notice] = "タスクを更新しました！" #辞書機能待ち
+      flash[:notice] = I18n.t("flash.task.update")
       redirect_to tasks_path
     else
       render :edit
