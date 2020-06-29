@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      flash[:notice] = I18n.t("flash.task.create")
+      flash[:notice] = I18n.t("task.flash.create")
       redirect_to tasks_path
     else
       render :new
@@ -27,11 +27,17 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:notice] = I18n.t("flash.task.update")
+      flash[:notice] = I18n.t("task.flash.update")
       redirect_to tasks_path
     else
       render :edit
     end
+  end
+
+  def destroy
+    @task.destroy
+    flash[:notice] = I18n.t("task.flash.destroy")
+    redirect_to tasks_path
   end
 
   private
