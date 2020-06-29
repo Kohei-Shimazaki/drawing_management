@@ -7,6 +7,8 @@ class RevisionsController < ApplicationController
 
   def new
     @revision = Revision.new
+    @revision.drawing_id = params[:drawing_id]
+    @revision.revision_number = params[:revision_number]
   end
 
   def create
@@ -46,6 +48,7 @@ class RevisionsController < ApplicationController
         :revision_number,
         :content,
         :comment,
+        :drawing_id,
       )
     end
 
