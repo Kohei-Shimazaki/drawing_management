@@ -3,6 +3,7 @@ ja:
     models:
       task: タスク
       drawing: 図面
+      revision: レビジョン
     attributes:
       task:
         title: タイトル

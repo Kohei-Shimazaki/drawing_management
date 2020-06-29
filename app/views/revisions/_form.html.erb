@@ -1,0 +1,22 @@
+<% if @revision.errors.any? %>
+  <ul>
+    <% @revision.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with(model: @revision, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :revision_number, t("activerecord.attributes.revision.revision_number") %>
+    <%= form.number_field :revision_number %>
+  </div>
+  <div class="field">
+    <%= form.label :content, t("activerecord.attributes.revision.content") %>
+    <%= form.file_field :content %>
+  </div>
+  <div class="field">
+    <%= form.label :comment, t("activerecord.attributes.revision.comment") %>
+    <%= form.text_area :comment %>
+  </div>
+  <%= form.submit t("submit") %>
+<% end %>

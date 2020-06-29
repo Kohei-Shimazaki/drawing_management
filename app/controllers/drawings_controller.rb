@@ -12,7 +12,7 @@ class DrawingsController < ApplicationController
   def create
     @drawing = Drawing.new(drawing_params)
     if @drawing.save
-      flash[:notice] = "" #辞書
+      flash[:notice] = "#{I18n.t("activerecord.models.drawing")}#{I18n.t("flash.create")}"
       redirect_to drawings_path
     else
       render :new
