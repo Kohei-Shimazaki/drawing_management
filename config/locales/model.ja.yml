@@ -19,3 +19,7 @@ ja:
         title: 図名
         drawing_number: 図番
         explanation: 説明
+      revision:
+        revision_number: レビジョン番号
+        content: 図面ファイル
+        comment: コメント
