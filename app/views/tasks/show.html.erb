@@ -1,13 +1,13 @@
-<h2><%= t("task.title.show") %></h2>
+<h2><%= t("activerecord.models.task") %><%= t("crud.show") %></h2>
 <div class="field">
-  Title:<%= @task.title %>
+  <%= t("activerecord.attributes.task.title") %>:<%= @task.title %>
 </div>
 <div class="field">
-  Status:<%= @task.status %>
+  <%= t("activerecord.attributes.task.status") %>:<%= t("activerecord.attributes.task.enum.#{@task.status}") %>
 </div>
 <div class="field">
-  Deadline:<%= @task.deadline %>
+  <%= t("activerecord.attributes.task.deadline") %>:<%= @task.deadline %>
 </div>
 <div class="field">
-  Content:<%= @task.content %>
+  <%= t("activerecord.attributes.task.content") %>:<%= @task.content %>
 </div>

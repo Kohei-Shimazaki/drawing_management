@@ -2,9 +2,20 @@ ja:
   activerecord:
     models:
       task: タスク
+      draing: 図面
     attributes:
       task:
         title: タイトル
         content: 内容
         status: 状態
         deadline: 期限
+        enum:
+          waiting: 未着手
+          working: 着手
+          completed: 完了
+          pending: 保留
+          discontinued: 中止
+      drawing:
+        title: 図名
+        drawing_number: 図番
+        explanation: 説明
