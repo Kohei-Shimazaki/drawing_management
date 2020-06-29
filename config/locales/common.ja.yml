@@ -9,4 +9,6 @@ ja:
     show: 詳細
     edit: 編集
     destroy: 削除
+  confirm:
+    destroy: 本当に削除してよろしいですか?
   submit: 登録

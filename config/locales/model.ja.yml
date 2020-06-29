@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       task: タスク
-      draing: 図面
+      drawing: 図面
     attributes:
       task:
         title: タイトル
