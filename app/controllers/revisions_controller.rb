@@ -55,7 +55,7 @@ class RevisionsController < ApplicationController
     end
 
     def set_revision
-      @revision = revision.find(params[:id])
+      @revision = Revision.find(params[:id])
     end
 
 end
