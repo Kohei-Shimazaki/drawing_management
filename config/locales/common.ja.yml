@@ -1,0 +1,14 @@
+ja:
+  flash:
+    create: を登録しました!
+    update: を更新しました!
+    destroy: を削除しました!
+  crud:
+    index: 一覧
+    new: 新規
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+  confirm:
+    destroy: 本当に削除してよろしいですか?
+  submit: 登録

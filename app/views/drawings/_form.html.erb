@@ -1,0 +1,22 @@
+<% if @drawing.errors.any? %>
+  <ul>
+    <% @drawing.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with(model: @drawing, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title, t("activerecord.attributes.drawing.title") %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= form.label :drawing_number, t("activerecord.attributes.drawing.drawing_number") %>
+    <%= form.number_field :drawing_number %>
+  </div>
+  <div class="field">
+    <%= form.label :explanation, t("activerecord.attributes.drawing.explanation") %>
+    <%= form.text_area :explanation %>
+  </div>
+  <%= form.submit t("submit") %>
+<% end %>
