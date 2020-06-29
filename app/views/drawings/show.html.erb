@@ -8,6 +8,11 @@
 <div class="field">
   <%= t("activerecord.attributes.drawing.explanation") %>:<%= @drawing.explanation %>
 </div>
+<table>
+  <tbody>
+    <%= render partial: 'revisions/table_body', collection: @drawing.revisions, as: "revision" %>
+  </tbody>
+</table>
 
 <div class="field">
   <%= link_to t("crud.new"), new_revision_path(revision_number: @drawing.revisions.count, drawing_id: @drawing.id) %>

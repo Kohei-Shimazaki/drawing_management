@@ -18,5 +18,9 @@
     <%= form.label :comment, t("activerecord.attributes.revision.comment") %>
     <%= form.text_area :comment %>
   </div>
+  <div class="field">
+    <%= form.hidden_field :revision_number, value: @revision.revision_number %>
+    <%= form.hidden_field :drawing_id, value: @revision.drawing_id %>
+  </div>
   <%= form.submit t("submit") %>
 <% end %>
