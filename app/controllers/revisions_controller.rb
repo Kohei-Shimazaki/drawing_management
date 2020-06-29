@@ -1,4 +1,10 @@
 class RevisionsController < ApplicationController
+  before_action :set_revision, only: %i(edit update show destroy)
+
+  def index
+    @revisions = Revision.all
+  end
+
   def new
     @revision = Revision.new
   end
@@ -13,6 +19,27 @@ class RevisionsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @revision.update(revision_params)
+      flash[:notice] = "#{I18n.t("activerecord.models.revision")}#{I18n.t("flash.update")}"
+      redirect_to revisions_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @revision.destroy
+    flash[:notice] = "#{I18n.t("activerecord.models.revision")}#{I18n.t("flash.destroy")}"
+    redirect_to revisions_path
+  end
+
   private
     def revision_params
       params.require(:revision).permit(
@@ -21,4 +48,9 @@ class RevisionsController < ApplicationController
         :comment,
       )
     end
+
+    def set_revision
+      @revision = revision.find(params[:id])
+    end
+
 end

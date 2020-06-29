@@ -1,0 +1,23 @@
+<h2><%= t("activerecord.models.revision") %><%= t("crud.index") %></h2>
+<table>
+  <thead>
+    <tr>
+      <th><%= t("activerecord.attributes.revision.revision_number") %></th>
+      <th><%= t("activerecord.attributes.revision.content") %></th>
+      <th><%= t("activerecord.attributes.revision.comment") %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @revisions.each do |revision| %>
+      <tr>
+        <td><%= revision.revision_number %></td>
+        <td><%= link_to "図面", revision.content %></td>
+        <td><%= revision.comment %></td>
+        <td><%= link_to t("crud.show"), revision_path(revision.id) %></td>
+        <td><%= link_to t("crud.edit"), edit_revision_path(revision.id) %></td>
+        <td><%= link_to t("crud.destroy"), revision_path(revision.id), method: :delete, data: {confirm: I18n.t("confirm.destroy") }  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
