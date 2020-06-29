@@ -12,4 +12,13 @@ class RevisionsController < ApplicationController
       render :new
     end
   end
+
+  private
+    def revision_params
+      params.require(:revision).permit(
+        :revision_number,
+        :content,
+        :comment,
+      )
+    end
 end
