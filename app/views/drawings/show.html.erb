@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= render partial: 'revisions/table_body', collection: @drawing.revisions, as: "revision" %>
+    <%= render partial: 'revisions/table_body', collection: sort_by_revision_number(@drawing.revisions), as: "revision" %>
   </tbody>
 </table>
 
