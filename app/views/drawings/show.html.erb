@@ -8,3 +8,20 @@
 <div class="field">
   <%= t("activerecord.attributes.drawing.explanation") %>:<%= @drawing.explanation %>
 </div>
+<table>
+  <thead>
+    <tr>
+      <th><%= t("activerecord.attributes.revision.revision_number") %></th>
+      <th><%= t("activerecord.attributes.revision.content") %></th>
+      <th><%= t("activerecord.attributes.revision.comment") %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'revisions/table_body', collection: sort_by_revision_number(@drawing.revisions), as: "revision" %>
+  </tbody>
+</table>
+
+<div class="field">
+  <%= link_to t("crud.new"), new_revision_path(revision_number: @drawing.revisions.count, drawing_id: @drawing.id) %>
+</div>
