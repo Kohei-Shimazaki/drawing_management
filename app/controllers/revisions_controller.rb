@@ -13,7 +13,6 @@ class RevisionsController < ApplicationController
 
   def create
     @revision = Revision.new(revision_params)
-    binding.pry
     if @revision.save
       flash[:notice] = "#{I18n.t("activerecord.models.revision")}#{I18n.t("flash.create")}"
       redirect_to new_revision_path
