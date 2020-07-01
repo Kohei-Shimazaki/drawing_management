@@ -4,6 +4,8 @@ ja:
       task: タスク
       drawing: 図面
       revision: レビジョン
+      question: 質問
+      comment: コメント
     attributes:
       task:
         title: タイトル
@@ -24,3 +26,10 @@ ja:
         revision_number: レビジョン番号
         content: 図面ファイル
         comment: コメント
+      question:
+        title: 質問タイトル
+        content: 内容
+        attachment: 添付
+      comment:
+        content: 内容
+        attachment: 添付
