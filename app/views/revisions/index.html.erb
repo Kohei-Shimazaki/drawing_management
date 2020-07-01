@@ -1,13 +1,6 @@
 <h2><%= t("activerecord.models.revision") %><%= t("crud.index") %></h2>
 <table>
-  <thead>
-    <tr>
-      <th><%= t("activerecord.attributes.revision.revision_number") %></th>
-      <th><%= t("activerecord.attributes.revision.content") %></th>
-      <th><%= t("activerecord.attributes.revision.comment") %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%= render "table_head" %>
   <tbody>
     <%= render partial: "table_body", collection: @revisions, as: "revision" %>
   </tbody>

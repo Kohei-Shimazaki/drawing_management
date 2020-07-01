@@ -22,5 +22,8 @@
     <%= form.label :content, t("activerecord.attributes.task.content") %>
     <%= form.text_area :content %>
   </div>
+  <div class="field">
+    <%= form.hidden_field :drawing_id, value: @task.drawing_id %>
+  </div>
   <%= form.submit t("submit") %>
 <% end %>

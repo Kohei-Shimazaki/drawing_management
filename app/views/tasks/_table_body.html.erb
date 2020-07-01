@@ -1,0 +1,9 @@
+<tr>
+  <td><%= task.title %></td>
+  <td><%= t("activerecord.attributes.task.enum.#{task.status}") %></td>
+  <td><%= task.deadline %></td>
+  <td><%= task.content %></td>
+  <td><%= link_to t("crud.show"), task_path(task.id) %></td>
+  <td><%= link_to t("crud.edit"), edit_task_path(task.id) %></td>
+  <td><%= link_to t("crud.destroy"), task_path(task.id), method: :delete, data: {confirm: I18n.t("confirm.destroy") }  %></td>
+</tr>

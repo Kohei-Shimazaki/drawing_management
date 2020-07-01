@@ -1,9 +1,9 @@
 <h2><%= t("activerecord.models.revision") %><%= t("crud.show") %></h2>
 <div class="field">
-  <%= t("activerecord.attributes.revision.revision_number") %>:<%= @revision.title %>
+  <%= t("activerecord.attributes.revision.revision_number") %>:<%= @revision.revision_number %>
 </div>
 <div class="field">
-  <%= t("activerecord.attributes.revision.content") %>:<%= link_to "図面", revision.content %>
+  <%= t("activerecord.attributes.revision.content") %>:<%= link_to "図面", @revision.content %>
 </div>
 <div class="field">
   <%= t("activerecord.attributes.revision.comment") %>:<%= @revision.comment %>

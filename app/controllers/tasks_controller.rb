@@ -7,6 +7,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task.drawing_id = params[:drawing_id]
   end
 
   def create
@@ -47,6 +48,7 @@ class TasksController < ApplicationController
         :content,
         :status,
         :deadline,
+        :drawing_id,
       )
     end
 
