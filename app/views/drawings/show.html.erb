@@ -20,3 +20,14 @@
     <%= render partial: 'revisions/table_body', collection: sort_by_revision_number(@drawing.revisions), as: "revision" %>
   </tbody>
 </table>
+
+<div class="field">
+  <%= link_to t("activerecord.models.task")+t("crud.new"),
+      new_task_path(drawing_id: @drawing.id) %>
+</div>
+<table>
+  <%= render 'tasks/table_head' %>
+  <tbody>
+    <%= render partial: 'tasks/table_body', collection: @drawing.tasks, as: "task" %>
+  </tbody>
+</table>

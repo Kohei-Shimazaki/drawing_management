@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-
+  belongs_to :drawing
   validates :title, presence: true
   enum status: {
     waiting: 0, #未着手
