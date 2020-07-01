@@ -1,0 +1,22 @@
+<h2><%= t("activerecord.models.question") %><%= t("crud.index") %></h2>
+<table>
+  <thead>
+    <tr>
+      <th><%= t("activerecord.attributes.question.title") %></th>
+      <th><%= t("activerecord.attributes.question.question_number") %></th>
+      <th><%= t("activerecord.attributes.question.explanation") %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.content %></td>
+        <td><%= question.attachment %></td>
+        <td><%= link_to t("crud.show"), question_path(question.id) %></td>
+        <td><%= link_to t("crud.destroy"), question_path(question.id), method: :delete, data: {confirm:  I18n.t("confirm.destroy") }  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
