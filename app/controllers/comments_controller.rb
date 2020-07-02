@@ -44,10 +44,9 @@ class CommentsController < ApplicationController
   private
     def comment_params
       params.require(:comment).permit(
-        :title,
         :content,
-        attachment: [],
-        :task_id,
+        :attachment,
+        :question_id,
       )
     end
 
