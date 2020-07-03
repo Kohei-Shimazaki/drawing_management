@@ -6,6 +6,7 @@ ja:
       revision: レビジョン
       question: 質問
       comment: コメント
+      user: ユーザー
     attributes:
       task:
         title: タイトル
@@ -33,3 +34,11 @@ ja:
       comment:
         content: 内容
         attachment: 添付
+      user:
+        name: 名前
+        employee_number: 社員番号
+        email: Eメールアドレス
+        icon: アイコン
+        profile: プロフィール
+        password: パスワード
+        password_confirmation: パスワード確認

@@ -12,3 +12,5 @@ ja:
   confirm:
     destroy: 本当に削除してよろしいですか?
   submit: 登録
+  sign_up: サインアップ
+  user_update: ユーザー情報更新
