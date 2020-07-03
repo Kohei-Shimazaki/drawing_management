@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :revisions
   resources :tasks
   resources :questions
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
