@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_022407) do
+ActiveRecord::Schema.define(version: 2020_07_03_042404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 2020_07_03_022407) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.text "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_assigns", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "drawing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.text "attachment"
@@ -43,6 +57,16 @@ ActiveRecord::Schema.define(version: 2020_07_03_022407) do
     t.datetime "updated_at", null: false
     t.bigint "question_id"
     t.index ["question_id"], name: "index_comments_on_question_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.integer "name"
+    t.string "phone_number"
+    t.string "location"
+    t.text "icon"
+    t.text "overview"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "drawings", force: :cascade do |t|
@@ -60,6 +84,14 @@ ActiveRecord::Schema.define(version: 2020_07_03_022407) do
     t.datetime "updated_at", null: false
     t.bigint "task_id"
     t.index ["task_id"], name: "index_evidences_on_task_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "explanation"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
