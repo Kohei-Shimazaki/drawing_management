@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_021309) do
+ActiveRecord::Schema.define(version: 2020_07_03_022407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 2020_07_03_021309) do
     t.index ["task_id"], name: "index_questions_on_task_id"
   end
 
+  create_table "references", force: :cascade do |t|
+    t.text "content"
+    t.text "comment"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_references_on_task_id"
+  end
+
   create_table "revisions", force: :cascade do |t|
     t.integer "revision_number"
     t.text "content"
@@ -99,6 +108,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_021309) do
   add_foreign_key "comments", "questions"
   add_foreign_key "evidences", "tasks"
   add_foreign_key "questions", "tasks"
+  add_foreign_key "references", "tasks"
   add_foreign_key "revisions", "drawings"
   add_foreign_key "tasks", "drawings"
   add_foreign_key "tasks", "revisions"
