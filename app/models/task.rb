@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :drawing
+  belongs_to :revision, optional: true
+  has_many :evidences, dependent: :destroy
   validates :title, presence: true
   enum status: {
     waiting: 0, #未着手
