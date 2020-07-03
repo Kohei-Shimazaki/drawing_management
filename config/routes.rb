@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :tasks
   resources :questions
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  root 'drawings#index'
 end
