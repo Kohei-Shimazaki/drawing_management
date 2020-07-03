@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_030243) do
+ActiveRecord::Schema.define(version: 2020_07_03_014330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,9 @@ ActiveRecord::Schema.define(version: 2020_07_02_030243) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "drawing_id"
+    t.bigint "revision_id"
     t.index ["drawing_id"], name: "index_tasks_on_drawing_id"
+    t.index ["revision_id"], name: "index_tasks_on_revision_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -89,4 +91,5 @@ ActiveRecord::Schema.define(version: 2020_07_02_030243) do
   add_foreign_key "questions", "tasks"
   add_foreign_key "revisions", "drawings"
   add_foreign_key "tasks", "drawings"
+  add_foreign_key "tasks", "revisions"
 end
