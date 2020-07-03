@@ -7,15 +7,15 @@
 <% end %>
 <%= form_with(model: @revision, local: true) do |form| %>
   <div class="field">
-    <%= form.label :revision_number, t("activerecord.attributes.revision.revision_number") %>
+    <%= form.label :revision_number %>
     : <%= @revision.revision_number %>
   </div>
   <div class="field">
-    <%= form.label :content, t("activerecord.attributes.revision.content") %>
+    <%= form.label :content %>
     <%= form.file_field :content %>
   </div>
   <div class="field">
-    <%= form.label :comment, t("activerecord.attributes.revision.comment") %>
+    <%= form.label :comment %>
     <%= form.text_area :comment %>
   </div>
   <div class="field">
