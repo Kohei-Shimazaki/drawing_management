@@ -13,4 +13,6 @@ ja:
     destroy: 本当に削除してよろしいですか?
   submit: 登録
   sign_up: サインアップ
+  log_in: ログイン
+  log_out: ログアウト
   user_update: ユーザー情報更新
