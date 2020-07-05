@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_015318) do
+ActiveRecord::Schema.define(version: 2020_07_05_024039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,14 @@ ActiveRecord::Schema.define(version: 2020_07_05_015318) do
     t.index ["task_id"], name: "index_evidences_on_task_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "question_id"
+    t.integer "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "message_reads", force: :cascade do |t|
     t.integer "user_id"
     t.integer "message_id"
@@ -108,6 +116,18 @@ ActiveRecord::Schema.define(version: 2020_07_05_015318) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "subject_type"
+    t.bigint "subject_id"
+    t.bigint "user_id"
+    t.integer "action_type", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject_type_and_subject_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -199,6 +219,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_015318) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "questions"
   add_foreign_key "evidences", "tasks"
+  add_foreign_key "notifications", "users"
   add_foreign_key "questions", "tasks"
   add_foreign_key "references", "tasks"
   add_foreign_key "revisions", "drawings"
