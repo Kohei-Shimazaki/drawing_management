@@ -1,13 +1,7 @@
 <h2><%= t("activerecord.models.task") %><%= t("crud.show") %></h2>
 <div class="field">
-  <%= t("activerecord.attributes.user.name") %>:<%= @user.title %>
+  <%= t("activerecord.attributes.user.name") %>:<%= @user.name %>
 </div>
 <div class="field">
-  <%= t("activerecord.attributes.user.profile") %>:<%= t("activerecord.attributes.task.enum.#{@task.status}") %>
-</div>
-<div class="field">
-  <%= t("activerecord.attributes.user.email") %>:<%= @user.deadline %>
-</div>
-<div class="field">
-  <%= t("activerecord.attributes.user.icon") %>:<%= @task.content %>
+  <%= t("activerecord.attributes.user.profile") %>:<%= @user.profile %>
 </div>

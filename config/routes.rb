@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  resources :users, only: :show
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users
+  resources :users, only: [:show]
   resources :comments, only: %i(new create edit update)
   resources :drawings
   resources :revisions
