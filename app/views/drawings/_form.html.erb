@@ -7,15 +7,15 @@
 <% end %>
 <%= form_with(model: @drawing, local: true) do |form| %>
   <div class="field">
-    <%= form.label :title, t("activerecord.attributes.drawing.title") %>
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
   <div class="field">
-    <%= form.label :drawing_number, t("activerecord.attributes.drawing.drawing_number") %>
+    <%= form.label :drawing_number %>
     <%= form.number_field :drawing_number %>
   </div>
   <div class="field">
-    <%= form.label :explanation, t("activerecord.attributes.drawing.explanation") %>
+    <%= form.label :explanation %>
     <%= form.text_area :explanation %>
   </div>
   <%= form.submit t("submit") %>

@@ -7,19 +7,19 @@
 <% end %>
 <%= form_with(model: @task, local: true) do |form| %>
   <div class="field">
-    <%= form.label :title, t("activerecord.attributes.task.title") %>
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
   <div class="field">
-    <%= form.label :status, t("activerecord.attributes.task.status") %>
+    <%= form.label :status %>
     <%= form.select :status, Task.statuses.keys.map { |k| [I18n.t("activerecord.attributes.task.enum.#{k}"), k]} %>
   </div>
   <div class="field">
-    <%= form.label :deadline, t("activerecord.attributes.task.deadline") %>
+    <%= form.label :deadline %>
     <%= form.datetime_select :deadline, {} %>
   </div>
   <div class="field">
-    <%= form.label :content, t("activerecord.attributes.task.content") %>
+    <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
   <div class="field">
