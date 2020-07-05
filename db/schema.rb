@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_060811) do
+ActiveRecord::Schema.define(version: 2020_07_05_015318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,18 @@ ActiveRecord::Schema.define(version: 2020_07_03_060811) do
     t.index ["question_id"], name: "index_comments_on_question_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_number"
+    t.string "location"
+    t.text "icon"
+    t.text "overview"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
     t.string "phone_number"
     t.string "location"
     t.text "icon"
@@ -84,6 +94,20 @@ ActiveRecord::Schema.define(version: 2020_07_03_060811) do
     t.datetime "updated_at", null: false
     t.bigint "task_id"
     t.index ["task_id"], name: "index_evidences_on_task_id"
+  end
+
+  create_table "message_reads", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "message_id"
+    t.boolean "is_read", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -134,6 +158,21 @@ ActiveRecord::Schema.define(version: 2020_07_03_060811) do
     t.bigint "revision_id"
     t.index ["drawing_id"], name: "index_tasks_on_drawing_id"
     t.index ["revision_id"], name: "index_tasks_on_revision_id"
+  end
+
+  create_table "team_assigns", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.text "profile"
+    t.text "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
