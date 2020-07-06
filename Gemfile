@@ -15,6 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'devise-i18n'
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
