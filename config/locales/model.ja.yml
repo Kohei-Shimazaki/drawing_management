@@ -1,13 +1,75 @@
 ja:
   activerecord:
     models:
-      task: タスク
-      drawing: 図面
-      revision: レビジョン
-      question: 質問
+      category: カテゴリー
       comment: コメント
+      company: 会社
+      customer: 客先
+      drawing: 図面
+      evidence: エビデンス
+      like: いいね
+      message_read: 既読
+      message: メッセージ
+      notification: 通知
+      project: プロジェクト
+      question: 質問
+      reference: 参考
+      revision: レビジョン
+      task: タスク
+      team: チーム
       user: ユーザー
     attributes:
+      category:
+        name: カテゴリ名
+        explanation: 説明
+      comment:
+        content: 内容
+        attachment: 添付
+      customer:
+        name: 客先名
+        phone_number: 客先連絡先
+        location: 客先所在地
+        icon: 客先アイコン
+        overview: 客先概要
+      drawing:
+        title: 図名
+        drawing_number: 図番
+        explanation: 説明
+      evidence:
+        content: 内容
+        comment: コメント
+      like:
+        user_id: ユーザーID
+        question_id: 質問ID
+        comment_id: コメントID
+      message_read:
+        message_id: メッセージID
+        user_id: ユーザーID
+        is_read: 既読
+      message:
+        team_id: チームID
+        user_id: ユーザーID
+        content: 内容
+      notification:
+        checked: チェック済み
+        action_type: 通知種類
+        user_id: ユーザーID
+        subject: 通知対象
+      project:
+        name: プロジェクト名
+        explanation: 説明
+        location: 現地
+      question:
+        title: 質問タイトル
+        content: 内容
+        attachment: 添付
+      reference:
+        content: 内容
+        comment: コメント
+      revision:
+        revision_number: レビジョン番号
+        content: 図面ファイル
+        comment: コメント
       task:
         title: タイトル
         content: 内容
@@ -18,22 +80,12 @@ ja:
           working: 着手
           completed: 完了
           pending: 保留
-          discontinued: 中止
-      drawing:
-        title: 図名
-        drawing_number: 図番
-        explanation: 説明
-      revision:
-        revision_number: レビジョン番号
-        content: 図面ファイル
-        comment: コメント
-      question:
-        title: 質問タイトル
-        content: 内容
-        attachment: 添付
-      comment:
-        content: 内容
-        attachment: 添付
+          discontinued: 中断
+      team:
+        name: 名前
+        profile: プロフィール
+        icon: アイコン
+        owner_id: チームリーダーID
       user:
         name: 名前
         employee_number: 社員番号
