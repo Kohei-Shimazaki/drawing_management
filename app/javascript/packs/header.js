@@ -17,7 +17,7 @@ Vue.use(BootstrapVueIcons)
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
-    el: '#app',
+    el: '#header',
     data: {
       isActive: '1'
     },
