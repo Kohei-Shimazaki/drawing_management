@@ -10,23 +10,18 @@
     <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag 'header' %>
     <%= stylesheet_pack_tag 'header' %>
-
   </head>
 
   <body>
     <div id="header">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <div class="row">
-            <% if user_signed_in? %>
-              <%= link_to "タスク投稿", tasks_path, class: "navbar-brand" %>
-              <%= link_to t("log_out"), destroy_user_session_path, method: :delete, class: "navbar-brand" %>
-            <% else %>
-              <%= link_to t("sign_up"), new_user_registration_path, class: "navbar-brand"  %>
-              <%= link_to t("log_in"), new_user_session_path, class: "navbar-brand"  %>
-            <% end %>
-          </div>
-        </div>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <% if user_signed_in? %>
+          <%= link_to "タスク投稿", tasks_path, class: "navbar-brand " %>
+          <%= link_to t("log_out"), destroy_user_session_path, method: :delete, class: "navbar-brand" %>
+        <% else %>
+          <%= link_to t("sign_up"), new_user_registration_path, class: "navbar-brand"  %>
+          <%= link_to t("log_in"), new_user_session_path, class: "navbar-brand"  %>
+        <% end %>
       </nav>
     </div>
     <% if notice %>
