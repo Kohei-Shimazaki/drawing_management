@@ -4,7 +4,7 @@
       <div class="card-header">
         <h4><%= @drawing.title %></h4>
       </div>
-      <table class="table mb-0 table-bordered">
+      <table class="table mb-0 table-bordered table-sm">
         <thead>
           <tr>
             <th><%= t("activerecord.attributes.drawing.drawing_number") %></th>
@@ -18,17 +18,14 @@
             <td><%= @drawing.drawing_number %></td>
             <td>重工業</td>
             <td>沖縄BTG発電所</td>
-            <td>配管図</td>
+            <td>
+              基礎図 / 送風機
+            </td>
           </tr>
         </tbody>
       </table>
       <div class="card-body text-left">
-        <div class="field">
-          <%= t("activerecord.attributes.drawing.drawing_number") %>:<%= @drawing.drawing_number %>
-        </div>
-        <div class="field">
-          <%= @drawing.explanation %>
-        </div>
+        <%= @drawing.explanation %>
       </div>
     </div>
   </div>
