@@ -9,6 +9,8 @@
           <div class="col-sm-10">
             <div>
               <%= comment.content %>
+              <span><%= link_to t("crud.destroy"), question_comment_path(comment.question_id, comment.id), method: :delete, remote: true,
+                        data: { confirm: I18n.t("confirm.destroy")} %></span>
             </div>
             <div>
               <%= comment.attachment %>
@@ -18,5 +20,5 @@
       </li>
     <% end %>
   <% end %>
-  <%= paginate comments %>
+  <%= paginate comments, params: { controller: 'questions', action: 'show', id: question.id } %>
 </ul>

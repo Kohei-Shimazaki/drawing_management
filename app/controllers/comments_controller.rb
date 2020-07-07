@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i(edit update destroy)
-  PER = 10
 
   def create
     @question = Question.find(params[:question_id])
@@ -27,9 +26,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment.attachment.purge
     @comment.destroy
-    flash[:notice] = "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.destroy")}"
-    redirect_to comments_path
+    respond_to do |format|
+      flash[:notice] = "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.destroy")}"
+      format.js { render :index }
+    end
   end
 
   private
