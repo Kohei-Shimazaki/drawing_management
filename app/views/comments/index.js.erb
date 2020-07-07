@@ -1,0 +1,3 @@
+$("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.question.comments.order(created_at: :desc).page(params[:page]).per(10), question: @comment.question }) %>")
+$("textarea").val('')
+$("#comment_file").val('')

@@ -16,6 +16,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
 gem 'devise-i18n'
+gem 'kaminari-bootstrap'
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do

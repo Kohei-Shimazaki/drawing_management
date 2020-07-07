@@ -1,0 +1,22 @@
+<ul class="list-group">
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-sm-2">
+            <%= comment.user.name %>
+          </div>
+          <div class="col-sm-10">
+            <div>
+              <%= comment.content %>
+            </div>
+            <div>
+              <%= comment.attachment %>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+  <%= paginate comments %>
+</ul>

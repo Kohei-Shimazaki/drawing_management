@@ -23,7 +23,7 @@ ja:
         name: カテゴリ名
         explanation: 説明
       comment:
-        content: 内容
+        content: コメント内容
         attachment: 添付
       customer:
         name: 客先名

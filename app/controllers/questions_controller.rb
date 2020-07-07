@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i(edit update show destroy)
+  PER = 10
 
   def index
     @questions = Question.all
@@ -21,6 +22,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @comments = @question.comments.order(created_at: :desc).page(params[:page]).per(PER)
+    @comment = @question.comments.build
   end
 
   def edit
