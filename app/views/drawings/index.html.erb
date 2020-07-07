@@ -1,23 +1,27 @@
-<h2><%= t("activerecord.models.drawing") %><%= t("crud.index") %></h2>
-<table>
-  <thead>
-    <tr>
-      <th><%= t("activerecord.attributes.drawing.title") %></th>
-      <th><%= t("activerecord.attributes.drawing.drawing_number") %></th>
-      <th><%= t("activerecord.attributes.drawing.explanation") %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @drawings.each do |drawing| %>
+<div class="jumbotron text-center">
+  <h2><%= t("activerecord.models.drawing") %><%= t("crud.index") %></h2>
+</div>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= drawing.title %></td>
-        <td><%= drawing.drawing_number %></td>
-        <td><%= drawing.explanation %></td>
-        <td><%= link_to t("crud.show"), drawing_path(drawing.id) %></td>
-        <td><%= link_to t("crud.edit"), edit_drawing_path(drawing.id) %></td>
-        <td><%= link_to t("crud.destroy"), drawing_path(drawing.id), method: :delete, data: {confirm:  I18n.t("confirm.destroy") }  %></td>
+        <th><%= t("activerecord.attributes.drawing.title") %></th>
+        <th><%= t("activerecord.attributes.drawing.drawing_number") %></th>
+        <th><%= t("activerecord.attributes.drawing.explanation") %></th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @drawings.each do |drawing| %>
+        <tr>
+          <td><%= drawing.title %></td>
+          <td><%= drawing.drawing_number %></td>
+          <td><%= drawing.explanation %></td>
+          <td><%= link_to t("crud.show"), drawing_path(drawing.id) %></td>
+          <td><%= link_to t("crud.edit"), edit_drawing_path(drawing.id) %></td>
+          <td><%= link_to t("crud.destroy"), drawing_path(drawing.id), method: :delete, data: {confirm:  I18n.t("confirm.destroy") }  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

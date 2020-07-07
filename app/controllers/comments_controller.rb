@@ -47,6 +47,7 @@ class CommentsController < ApplicationController
         :content,
         :attachment,
         :question_id,
+        :user_id,
       )
     end
 

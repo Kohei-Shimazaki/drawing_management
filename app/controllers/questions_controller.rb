@@ -46,8 +46,8 @@ class QuestionsController < ApplicationController
       params.require(:question).permit(
         :title,
         :content,
-        attachment: [],
         :task_id,
+        :attachment,
       )
     end
 
