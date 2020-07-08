@@ -1,7 +1,33 @@
-<h2><%= t("activerecord.models.task") %><%= t("crud.show") %></h2>
-<div class="field">
-  <%= t("activerecord.attributes.user.name") %>:<%= @user.name %>
+<div class="jumbotron text-center">
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small><%= link_to "ユーザー編集", edit_user_registration_path %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="field">
-  <%= t("activerecord.attributes.user.profile") %>:<%= @user.profile %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="team_menu row">
+        
+      </div>
+      <div class="drawing_menu row">
+
+      </div>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+  </div>
 </div>
