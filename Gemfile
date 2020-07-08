@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 gem 'mini_magick'
+gem "roo"
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise_invitable'

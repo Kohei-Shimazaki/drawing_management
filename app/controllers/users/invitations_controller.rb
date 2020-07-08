@@ -4,7 +4,9 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def create
-    super
+    User.import(params[:user])
+    flash[:notice] = "ユーザー招待のメールを送信しました！"
+    redirect_to new_user_indivation_path
   end
 
   def edit
