@@ -1,22 +1,26 @@
-<h2><%= t("activerecord.models.question") %><%= t("crud.index") %></h2>
-<table>
-  <thead>
-    <tr>
-      <th><%= t("activerecord.attributes.question.title") %></th>
-      <th><%= t("activerecord.attributes.question.question_number") %></th>
-      <th><%= t("activerecord.attributes.question.explanation") %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="jumbotron text-center">
+  <h2><%= t("activerecord.models.question") %><%= t("crud.index") %></h2>
+</div>
+<div class="container">
+  <ul class="list-group">
     <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.content %></td>
-        <td><%= question.attachment %></td>
-        <td><%= link_to t("crud.show"), question_path(question.id) %></td>
-        <td><%= link_to t("crud.destroy"), question_path(question.id), method: :delete, data: {confirm:  I18n.t("confirm.destroy") }  %></td>
-      </tr>
+      <%= link_to drawings_path, class: "link_to_question" do %>
+        <li class="list-group-item list-group-item-action">
+          <div class="row">
+            <div class="col-sm-2">
+              <%= question.task.title %>
+            </div>
+            <div class="col-sm-10">
+              <div>
+                <strong><%= question.title %></strong>
+              </div>
+              <div>
+                <%= question.content.truncate(30) %>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>

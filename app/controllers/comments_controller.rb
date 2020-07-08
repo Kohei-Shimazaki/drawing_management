@@ -1,26 +1,16 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i(edit update show destroy)
-
-  def index
-    @comments = Comment.all
-  end
-
-  def new
-    @comment = Comment.new
-    @comment.drawing_id = params[:task_id]
-  end
+  before_action :set_comment, only: %i(edit update destroy)
 
   def create
-    @comment = Comment.new(comment_params)
-    if @comment.save
-      flash[:notice] = "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.create")}"
-      redirect_to comments_path
-    else
-      render :new
+    @question = Question.find(params[:question_id])
+    @comment = @question.comments.build(comment_params)
+    respond_to do |format|
+      if @comment.save
+        format.js { render :index }
+      else
+        format.html { redirect_to question_path(@question), notice: "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.create_failure")}"}
+      end
     end
-  end
-
-  def show
   end
 
   def edit
@@ -36,9 +26,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment.attachment.purge
     @comment.destroy
-    flash[:notice] = "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.destroy")}"
-    redirect_to comments_path
+    respond_to do |format|
+      flash[:notice] = "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.destroy")}"
+      format.js { render :index }
+    end
   end
 
   private
@@ -47,6 +40,7 @@ class CommentsController < ApplicationController
         :content,
         :attachment,
         :question_id,
+        :user_id,
       )
     end
 

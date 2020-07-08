@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_024039) do
+ActiveRecord::Schema.define(version: 2020_07_07_022813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 2020_07_05_024039) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "question_id"
+    t.bigint "user_id"
     t.index ["question_id"], name: "index_comments_on_question_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -193,6 +195,8 @@ ActiveRecord::Schema.define(version: 2020_07_05_024039) do
     t.text "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "owner_id"
+    t.index ["owner_id"], name: "index_teams_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -218,6 +222,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_024039) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "questions"
+  add_foreign_key "comments", "users"
   add_foreign_key "evidences", "tasks"
   add_foreign_key "notifications", "users"
   add_foreign_key "questions", "tasks"
@@ -225,4 +230,5 @@ ActiveRecord::Schema.define(version: 2020_07_05_024039) do
   add_foreign_key "revisions", "drawings"
   add_foreign_key "tasks", "drawings"
   add_foreign_key "tasks", "revisions"
+  add_foreign_key "teams", "users", column: "owner_id"
 end

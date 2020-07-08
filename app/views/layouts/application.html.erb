@@ -7,7 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <%= javascript_pack_tag 'header' %>
     <%= stylesheet_pack_tag 'header' %>
   </head>
@@ -31,5 +32,10 @@
       <p class="alert alert-error"><%= alert %></p>
     <% end %>
     <%= yield %>
+    <!-- <footer class="footer">
+      <div class="container">
+        <p class="text-muted">フッター</p>
+      </div>
+    </footer> -->
   </body>
 </html>
