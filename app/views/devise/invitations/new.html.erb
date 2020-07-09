@@ -4,7 +4,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-  <%= f.file_field :file %>
+    <%= f.label :file %>
+    <%= f.file_field :file %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :invited_by, value: current_user %>
   </div>
 
   <div class="actions">
