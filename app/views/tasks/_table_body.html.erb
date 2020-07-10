@@ -1,9 +1,8 @@
 <tr>
-  <td><%= task.title %></td>
+  <td class="position-relative"><%= link_to task.title, task_path(task.id), class: "stretched-link" %></td>
   <td><%= t("activerecord.attributes.task.enum.#{task.status}") %></td>
-  <td><%= task.deadline %></td>
+  <td><%= l task.deadline, format: :long %></td>
   <td><%= task.content %></td>
-  <td><%= link_to t("crud.show"), task_path(task.id) %></td>
-  <td><%= link_to t("crud.edit"), edit_task_path(task.id) %></td>
-  <td><%= link_to t("crud.destroy"), task_path(task.id), method: :delete, data: {confirm: I18n.t("confirm.destroy") }  %></td>
+  <td class="position-relative"><%= link_to t("crud.edit"), edit_task_path(task.id), class: "stretched-link"  %></td>
+  <td class="position-relative"><%= link_to t("crud.destroy"), task_path(task.id), method: :delete, data: {confirm: I18n.t("confirm.destroy") }, class: "stretched-link" %></td>
 </tr>

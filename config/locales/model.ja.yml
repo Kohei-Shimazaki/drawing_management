@@ -67,8 +67,8 @@ ja:
         content: 内容
         comment: コメント
       revision:
-        revision_number: レビジョン番号
-        content: 図面ファイル
+        revision_number: Rev
+        content: ファイル
         comment: コメント
       task:
         title: タイトル
