@@ -9,7 +9,6 @@ class User < ApplicationRecord
     xlsx = Roo::Excelx.new(user.dig(:file).tempfile)
     xlsx.each_row_streaming(offset: 1) do |row|
       User.invite!(employee_number: row[0].value, name: row[1].value, email: row[2].value)
-      binding.pry
     end
   end
 end
