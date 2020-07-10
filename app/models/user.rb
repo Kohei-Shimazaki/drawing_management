@@ -2,6 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :company
+  has_many :has_tasks, class_name: 'Task', foreign_key: :staff_id
+  has_many :has_approved_tasks, class_name: 'Task', foreign_key: :approver_id
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,

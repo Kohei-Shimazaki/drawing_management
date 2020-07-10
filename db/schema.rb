@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_015817) do
+ActiveRecord::Schema.define(version: 2020_07_10_050832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,8 +180,12 @@ ActiveRecord::Schema.define(version: 2020_07_10_015817) do
     t.datetime "updated_at", null: false
     t.bigint "drawing_id"
     t.bigint "revision_id"
+    t.bigint "staff_id"
+    t.bigint "approver_id"
+    t.index ["approver_id"], name: "index_tasks_on_approver_id"
     t.index ["drawing_id"], name: "index_tasks_on_drawing_id"
     t.index ["revision_id"], name: "index_tasks_on_revision_id"
+    t.index ["staff_id"], name: "index_tasks_on_staff_id"
   end
 
   create_table "team_assigns", force: :cascade do |t|
@@ -247,6 +251,8 @@ ActiveRecord::Schema.define(version: 2020_07_10_015817) do
   add_foreign_key "revisions", "drawings"
   add_foreign_key "tasks", "drawings"
   add_foreign_key "tasks", "revisions"
+  add_foreign_key "tasks", "users", column: "approver_id"
+  add_foreign_key "tasks", "users", column: "staff_id"
   add_foreign_key "teams", "users", column: "owner_id"
   add_foreign_key "users", "companies"
 end
