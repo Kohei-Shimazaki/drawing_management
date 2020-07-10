@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  resources :companies
+  resources :teams
   devise_for :users, controllers: {
     invitations: 'users/invitations'
   }
   resources :users, only: [:show]
   resources :drawings
   resources :revisions
-  resources :tasks
+  resources :tasks do
+    resources :evidences, only: %i(create edit update destroy)
+    resources :references, only: %i(create edit update destroy)
+  end
   resources :questions do
     resources :comments, only: %i(create edit update destroy)
   end

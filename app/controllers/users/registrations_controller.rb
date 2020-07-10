@@ -11,10 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-
     super
+    @company = Company.find(resource.company_id)
+    @company.admin_id = resource.id
   end
-
   # GET /resource/edit
   # def edit
   #   super
@@ -43,10 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def after_update_path_for(resource)
       user_path(id: current_user.id)
-    end
-
-    def company_params
-      params.require(:company).permit(:name, :phone_number, :location, :icon, :overview)
     end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
