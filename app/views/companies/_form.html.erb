@@ -1,0 +1,30 @@
+<% if @company.errors.any? %>
+  <ul>
+    <% @company.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with(model: @company, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.telephone_field :phone_number %>
+  </div>
+  <!--住所で保留 -->
+  <div class="field">
+    <%= form.label :deadline %>
+    <%= form.datetime_select :deadline, {} %>
+  </div>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <div class="field">
+    <%= form.hidden_field :drawing_id, value: @company.drawing_id %>
+  </div>
+  <%= form.submit t("submit") %>
+<% end %>

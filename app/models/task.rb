@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  belongs_to :staff, class_name: 'User', foreign_key: :staff_id, optional: true
+  belongs_to :approver, class_name: 'User', foreign_key: :approver_id, optional: true
   belongs_to :drawing
   belongs_to :revision, optional: true
   has_many :evidences, dependent: :destroy

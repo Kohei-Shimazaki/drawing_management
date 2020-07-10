@@ -10,10 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
-
+  def create
+    super
+    @company = Company.find(resource.company_id)
+    @company.admin_id = resource.id
+  end
   # GET /resource/edit
   # def edit
   #   super
