@@ -1,5 +1,15 @@
 <tr>
   <td class="position-relative"><%= link_to task.title, task_path(task.id), class: "stretched-link" %></td>
+  <td>
+    <% if task.staff %>
+      <%= task.staff.name %>
+    <% end %>
+  </td>
+  <td>
+    <% if task.approver %>
+      <%= task.approver.name %>
+    <% end %>
+  </td>
   <td><%= t("activerecord.attributes.task.enum.#{task.status}") %></td>
   <td><%= l task.deadline, format: :long %></td>
   <td><%= task.content %></td>

@@ -50,20 +50,35 @@
       <div class="tab-content">
         <div id="card1" class="tab-pane active">
           <div class="field">
-            <%= link_to t("activerecord.models.revision")+t("crud.new"),
-                new_revision_path(revision_number: @drawing.revisions.count, drawing_id: @drawing.id) %>
+            <%= link_to t("activerecord.models.revision")+t("crud.new"), new_revision_path(revision_number: @drawing.revisions.count,
+                drawing_id: @drawing.id), class: "btn btn-primary btn-block mb-1" %>
           </div>
-          <table class="table table-bordered">
-            <%= render 'revisions/table_head' %>
-            <tbody>
-              <%= render partial: 'revisions/table_body', collection: sort_by_revision_number(@drawing.revisions), as: "revision" %>
-            </tbody>
-          </table>
+          <ul class="list-group">
+            <% sort_by_revision_number(@drawing.revisions).each do |revision| %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <%= render partial: 'revisions/list_body', locals: { revision: revision } %>
+                  </div>
+                  <div class="col-sm-10">
+                    <h5>関連タスク</h5>
+                    <table class="table table-bordered">
+                      <%= render 'tasks/table_head' %>
+                      <tbody>
+                        <%= render partial: 'tasks/table_body', collection: revision.tasks, as: "task" %>
+                      </tbody>
+                    </table>
+                    <%= link_to "タスク紐づけ", drawings_path, class: "btn btn-primary" %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
         </div>
         <div id="card2", class="tab-pane">
           <div class="field">
             <%= link_to t("activerecord.models.task")+t("crud.new"),
-                new_task_path(drawing_id: @drawing.id) %>
+                new_task_path(drawing_id: @drawing.id), class: "btn btn-primary btn-block mb-1" %>
           </div>
           <table class="table table-bordered">
             <%= render 'tasks/table_head' %>
