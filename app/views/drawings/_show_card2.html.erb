@@ -2,7 +2,7 @@
   <%= link_to t("activerecord.models.task")+t("crud.new"),
       new_task_path(drawing_id: @drawing.id), class: "btn btn-primary btn-block mb-1" %>
 </div>
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <%= render 'tasks/table_head' %>
   <tbody>
     <%= render partial: 'tasks/table_body', collection: @drawing.tasks, as: "task" %>

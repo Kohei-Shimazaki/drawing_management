@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :drawings
   resources :revisions
   resources :tasks do
-    resources :evidences, only: %i(create edit update destroy)
-    resources :references, only: %i(create edit update destroy)
+    resources :evidences, only: %i(create destroy)
+    resources :references, only: %i(create destroy)
   end
   resources :questions do
     resources :comments, only: %i(create edit update destroy)

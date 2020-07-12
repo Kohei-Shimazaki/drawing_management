@@ -36,8 +36,8 @@ ja:
         drawing_number: 図番
         explanation: 説明
       evidence:
-        content: 内容
-        comment: コメント
+        content: エビデンスファイル
+        comment: エビデンスコメント
       like:
         user_id: ユーザーID
         question_id: 質問ID
