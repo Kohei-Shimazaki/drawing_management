@@ -1,0 +1,25 @@
+<div class="field">
+  <%= link_to t("activerecord.models.revision")+t("crud.new"), new_revision_path(revision_number: @drawing.revisions.count,
+      drawing_id: @drawing.id), class: "btn btn-primary btn-block mb-1" %>
+</div>
+<ul class="list-group">
+  <% sort_by_revision_number(@drawing.revisions).each do |revision| %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-2">
+          <%= render partial: 'revisions/list_body', locals: { revision: revision } %>
+        </div>
+        <div class="col-md-10">
+          <h5><%= t("activerecord.attributes.revision.tasks") %></h5>
+          <table class="table table-bordered table-hover">
+            <%= render 'tasks/table_head' %>
+            <tbody>
+              <%= render partial: 'tasks/table_body', collection: revision.tasks, as: "task" %>
+            </tbody>
+          </table>
+          <%= link_to "タスク紐づけ", drawings_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

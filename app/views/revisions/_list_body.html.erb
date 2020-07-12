@@ -1,0 +1,15 @@
+<p>
+  <strong>
+    <%= t("activerecord.attributes.revision.revision_number") %>:
+    <%= revision.revision_number %>
+  </strong>
+</p>
+<p>
+  <%= link_to t("activerecord.attributes.revision.content"), revision.content %>
+</p>
+<p>
+  <%= revision.comment %>
+</p>
+<p>
+  <%= link_to t("crud.edit"), edit_revision_path(revision.id), class: "btn btn-info" %>
+</p>

@@ -21,6 +21,8 @@ class TasksController < ApplicationController
   end
 
   def show
+    @evidences = @task.evidences
+    @evidence = @task.evidences.build
   end
 
   def edit

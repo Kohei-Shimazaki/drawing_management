@@ -1,13 +1,47 @@
-<h2><%= t("activerecord.models.task") %><%= t("crud.show") %></h2>
-<div class="field">
-  <%= t("activerecord.attributes.task.title") %>:<%= @task.title %>
+<div class="jumbotron text-center">
+  <h2><%= @task.drawing.title %>: <%= t("activerecord.models.task") %><%= t("crud.show") %></h2>
 </div>
-<div class="field">
-  <%= t("activerecord.attributes.task.status") %>:<%= t("activerecord.attributes.task.enum.#{@task.status}") %>
-</div>
-<div class="field">
-  <%= t("activerecord.attributes.task.deadline") %>:<%= @task.deadline %>
-</div>
-<div class="field">
-  <%= t("activerecord.attributes.task.content") %>:<%= @task.content %>
+<div class="container">
+
+  <div class="card">
+    <div class="card-header card-header-danger">
+      <%= @task.title %>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-2">
+            <strong><%= t("activerecord.attributes.task.status") %>:</strong>
+          </div>
+          <div class="col-md-10">
+            <%= t("activerecord.attributes.task.enum.#{@task.status}") %>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-2">
+            <strong><%= t("activerecord.attributes.task.deadline") %>:</strong>
+          </div>
+          <div class="col-md-10">
+            <%= @task.deadline %>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-2">
+            <strong><%= t("activerecord.attributes.task.content") %>:</strong>
+          </div>
+          <div class="col-md-10">
+            <%= @task.content %>
+          </div>
+        </div>
+      </li>
+      <div id="evidences_area">
+        <%= render partial: 'evidences/index', locals: { evidences: @evidences, task: @task } %>
+      </div>
+    </ul>
+  </div>
+  <%= render partial: 'evidences/form', locals: { evidence: @evidence, task: @task } %>
 </div>

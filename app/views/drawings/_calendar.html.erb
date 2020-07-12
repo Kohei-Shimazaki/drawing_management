@@ -1,0 +1,8 @@
+<%= month_calendar(events: tasks, attribute: :deadline, previous_link: calendar_ajax_previous_link, next_link: calendar_ajax_next_link) do |date, tasks| %>
+  <%= date %>
+  <% tasks.each do |task| %>
+    <div>
+      <%= link_to task.title, task %>
+    </div>
+  <% end %>
+<% end %>

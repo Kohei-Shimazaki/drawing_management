@@ -1,0 +1,3 @@
+$("#evidences_area").html("<%= j(render 'evidences/index', { evidences: @evidence.task.evidences, task: @evidence.task }) %>")
+$("textarea").val('')
+$("#evidence_file").val('')
