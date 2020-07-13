@@ -1,0 +1,3 @@
+$("#references_area").html("<%= j(render 'references/index', { references: @reference.task.references, task: @reference.task }) %>")
+$("textarea").val('')
+$("#reference_file").val('')

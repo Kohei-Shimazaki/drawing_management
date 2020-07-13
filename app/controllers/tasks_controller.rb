@@ -21,6 +21,8 @@ class TasksController < ApplicationController
   end
 
   def show
+    @references = @task.references
+    @reference = @task.references.build
     @evidences = @task.evidences
     @evidence = @task.evidences.build
   end

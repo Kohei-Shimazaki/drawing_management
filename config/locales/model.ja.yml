@@ -64,8 +64,8 @@ ja:
         content: 内容
         attachment: 添付
       reference:
-        content: 内容
-        comment: コメント
+        content: 参考ファイル
+        comment: 参考コメント
       revision:
         revision_number: Rev
         content: ファイル
