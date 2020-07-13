@@ -7,6 +7,9 @@
       <div class="card-body text-left">
         <%= @question.content %>
         <%= @question.attachment %>
+        <div id="likes_buttons_<%= @question.id %>">
+          <%= render partial: 'likes/like', locals: { question: @question } %>
+        </div>
       </div>
     </div>
   </div>
