@@ -1,11 +1,13 @@
 class TeamsController < ApplicationController
   def create
-    @team = Task.new(team_params)
-    if @team.save
-      flash[:notice] = "#{I18n.t("activerecord.models.team")}#{I18n.t("flash.create")}"
-      redirect_to user_path(current_user.id)
-    else
-      render template: "user/show"
+    @team = Team.new(team_params)
+    respond_to do |format|
+      if @team.save
+        format.html { redirect_to user_path(current_user), notice: 'チーム作成完了！' }
+        format.js { render :create }
+      else
+        format.html { redirect_to user_path(current_user), notice: "#{I18n.t("activerecord.models.team")}#{I18n.t("flash.create_failure")}"}
+      end
     end
   end
 

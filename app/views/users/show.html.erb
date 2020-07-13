@@ -3,13 +3,16 @@
     <div class="row no-gutters">
       <div class="col-md-2">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <% if @user.icon.attached? %>
+            <%= image_tag @user.icon.variant(resize:'100x100').processed, class: "user_image" %>
+          <% end %>
+          <h5 class="card-title"><%= @user.name %></h5>
         </div>
       </div>
       <div class="col-md-10">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <div class="card-body text-left">
+          <h5 class="card-title"><%= t("activerecord.attributes.user.profile") %></h5>
+          <p class="card-text"><%= simple_format(@user.profile) %></p>
           <p class="card-text"><small><%= link_to "ユーザー編集", edit_user_registration_path %></small></p>
         </div>
       </div>
@@ -19,15 +22,75 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div class="team_menu row">
-        
+      <%= link_to 'New Team', new_team_path, remote: true, class: "btn btn-lg btn-primary btn-block mb-1" %>
+      <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+      <div class="card">
+        <div class="card-header text-center">
+          所属チーム
+        </div>
+        <div class="card-body text-center">
+          チーム内容
+        </div>
       </div>
-      <div class="drawing_menu row">
-
+      <div class="card">
+        <div class="card-header text-center">
+          図面一覧
+        </div>
+        <div class="card-body text-center">
+          図面
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
 
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          担当タスク
+        </div>
+        <ul class="list-group">
+          <% @user.has_tasks.each do |task| %>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
+                </div>
+                <div class="col-md-10">
+                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header text-center">
+          承認タスク
+        </div>
+        <ul class="list-group">
+          <% @user.has_approved_tasks.each do |task| %>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
+                </div>
+                <div class="col-md-10">
+                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header text-center">
+          カレンダー
+        </div>
+        <div class="card-body">
+          カレンダー中身
+        </div>
+      </div>
     </div>
   </div>
 </div>
