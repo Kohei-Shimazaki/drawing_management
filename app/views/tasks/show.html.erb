@@ -38,10 +38,16 @@
           </div>
         </div>
       </li>
+      <div id="references_area">
+        <%= render partial: 'references/index', locals: { references: @references, task: @task } %>
+      </div>
       <div id="evidences_area">
         <%= render partial: 'evidences/index', locals: { evidences: @evidences, task: @task } %>
       </div>
     </ul>
   </div>
-  <%= render partial: 'evidences/form', locals: { evidence: @evidence, task: @task } %>
+  <%= render partial: 'references/form', locals: { reference: @reference, task: @task } %>
+  <% if current_user == @task.staff %>
+    <%= render partial: 'evidences/form', locals: { evidence: @evidence, task: @task } %>
+  <% end %>
 </div>

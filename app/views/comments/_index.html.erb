@@ -4,6 +4,9 @@
       <li class="list-group-item">
         <div class="row">
           <div class="col-sm-2">
+            <% if question.task.staff.icon.attached? %>
+              <%= image_tag question.task.staff.icon.variant(resize:'50x50').processed %><br>
+            <% end %>
             <%= comment.user.name %>
           </div>
           <div class="col-sm-10">
@@ -13,7 +16,9 @@
                         data: { confirm: I18n.t("confirm.destroy")} %></span>
             </div>
             <div>
-              <%= comment.attachment %>
+              <% if comment.attachment.attached? %>
+                <%= link_to t("activerecord.attributes.comment.attachment"), comment.attachment %>
+              <% end %>
             </div>
           </div>
         </div>

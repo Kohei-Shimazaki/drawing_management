@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :questions do
     resources :comments, only: %i(create edit update destroy)
   end
+  resources :likes, only: %i(create destroy)
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root 'drawings#index'
 end
