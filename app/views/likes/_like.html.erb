@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+    <% if question.like_users.include?(current_user) %>
+        <p><span>お気に入り解除: </span><%=link_to question.likes.count, like_path(id: Like.find_by(user_id: current_user.id, question_id: question.id).id), method: :delete, remote: true %></p>
+    <% else %>
+        <p><span>お気に入り登録: </span><%=link_to question.likes.count, likes_path(question_id: question.id), method: :post, remote: true %></p>
+    <% end %>
+<% else %>
+    <p><span>お気に入り数: </span><%= blog.likes.count %></p>
+<% end %>

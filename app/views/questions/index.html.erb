@@ -13,6 +13,13 @@
             <div class="col-sm-10">
               <div>
                 <strong><%= question.title %></strong>
+                <span>
+                  <object>
+                    <div id="likes_buttons_<%= question.id %>">
+                      <%= render partial: 'likes/like', locals: { question: question } %>
+                    </div>
+                  </object>
+                </span>
               </div>
               <div>
                 <%= question.content.truncate(30) %>
