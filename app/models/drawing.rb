@@ -3,4 +3,5 @@ class Drawing < ApplicationRecord
   has_many :categories, through: :category_assigns, source: :category
   has_many :revisions, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  belongs_to :team
 end

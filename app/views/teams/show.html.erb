@@ -1,0 +1,96 @@
+<div class="jumbotron text-center">
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <div class="card-body">
+          <% if @team.icon.attached? %>
+            <%= image_tag @team.icon.variant(resize:'100x100').processed, class: "team_image" %>
+          <% end %>
+          <h5 class="card-title"><%= @team.name %></h5>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body text-left">
+          <h5 class="card-title"><%= t("activerecord.attributes.team.profile") %></h5>
+          <p class="card-text"><%= simple_format(@team.profile) %></p>
+          <p class="card-text"><small><%= link_to "チーム編集", edit_team_path %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to 'New Team', new_team_path, remote: true, class: "btn btn-lg btn-primary btn-block mb-1" %>
+      <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+      <div class="card">
+        <div class="card-header text-center">
+          所属チーム
+        </div>
+        <div class="card-body text-center">
+          チーム内容
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header text-center">
+          図面一覧
+        </div>
+        <div class="card-body text-center">
+          図面
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          担当タスク
+        </div>
+        <ul class="list-group">
+          <% @team.drawings.each do |task| %>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
+                </div>
+                <div class="col-md-10">
+                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header text-center">
+          承認タスク
+        </div>
+        <ul class="list-group">
+          <% @team.drawings.each do |task| %>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
+                </div>
+                <div class="col-md-10">
+                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header text-center">
+          カレンダー
+        </div>
+        <div class="card-body">
+          カレンダー中身
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
