@@ -17,6 +17,7 @@ ja:
       revision: レビジョン
       task: タスク
       team: チーム
+      team_assign: チームメンバー
       user: ユーザー
     attributes:
       category:
@@ -86,14 +87,18 @@ ja:
           discontinued: 中断
       team:
         name: 名前
-        profile: プロフィール
-        icon: アイコン
+        profile: チームプロフィール
+        icon: チームアイコン
         owner_id: チームリーダーID
+        members: チームメンバー
+      team_assign:
+        user_id: メンバー
+        team_id: チーム
       user:
         name: 名前
         employee_number: 社員番号
         email: Eメールアドレス
-        icon: アイコン
+        icon: ユーザーアイコン
         profile: プロフィール
         password: パスワード
         password_confirmation: パスワード確認

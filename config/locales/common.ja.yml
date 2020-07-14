@@ -1,7 +1,7 @@
 ja:
   flash:
     create: を登録しました!
-    create_failure: を投稿できませんでした...
+    create_failure: を登録できませんでした...
     update: を更新しました!
     destroy: を削除しました!
   crud:

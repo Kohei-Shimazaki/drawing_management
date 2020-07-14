@@ -19,17 +19,19 @@
     </div>
   </div>
 </div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <%= link_to 'New Team', new_team_path, remote: true, class: "btn btn-lg btn-primary btn-block mb-1" %>
+      <%= link_to t("crud.new")+t("activerecord.models.team"), new_team_path, remote: true, class: "btn btn-lg btn-primary btn-block mb-1" %>
+
       <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
       <div class="card">
         <div class="card-header text-center">
           所属チーム
         </div>
-        <div class="card-body text-center">
-          チーム内容
+        <div id="teams_area">
+          <%= render partial: "teams/index", locals: { teams: @user.teams } %>
         </div>
       </div>
       <div class="card">

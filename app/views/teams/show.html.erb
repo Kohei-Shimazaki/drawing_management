@@ -11,7 +11,7 @@
       </div>
       <div class="col-md-10">
         <div class="card-body text-left">
-          <h5 class="card-title"><%= t("activerecord.attributes.team.profile") %></h5>
+          <h5 class="card-title border-bottom"><%= t("activerecord.attributes.team.profile") %></h5>
           <p class="card-text"><%= simple_format(@team.profile) %></p>
           <p class="card-text"><small><%= link_to "チーム編集", edit_team_path %></small></p>
         </div>
@@ -21,17 +21,22 @@
 </div>
 <div class="container">
   <div class="row">
+
     <div class="col-md-6">
-      <%= link_to 'New Team', new_team_path, remote: true, class: "btn btn-lg btn-primary btn-block mb-1" %>
-      <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+      <div id="members_form">
+        <%= render partial: 'team_assigns/form', locals: { team: @team, team_assign: @team_assign } %>
+      </div>
+
       <div class="card">
         <div class="card-header text-center">
-          所属チーム
+          <%= t("activerecord.attributes.team.members") %>
         </div>
-        <div class="card-body text-center">
-          チーム内容
+        <div id="members_area">
+          <%= render partial: 'team_assigns/index', locals: { team: @team } %>
         </div>
       </div>
+
+      <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path, class: "btn btn-primary btn-block mt-2 mb-1" %>
       <div class="card">
         <div class="card-header text-center">
           図面一覧

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :companies
   resources :teams
+  resources :team_assigns, only: %i(create destroy)
   devise_for :users, controllers: {
     invitations: 'users/invitations'
   }
