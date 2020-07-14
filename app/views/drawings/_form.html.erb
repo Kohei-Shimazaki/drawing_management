@@ -1,22 +1,30 @@
-<% if @drawing.errors.any? %>
-  <ul>
-    <% @drawing.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-<%= form_with(model: @drawing, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="field">
-    <%= form.label :drawing_number %>
-    <%= form.number_field :drawing_number %>
-  </div>
-  <div class="field">
-    <%= form.label :explanation %>
-    <%= form.text_area :explanation %>
-  </div>
-  <%= form.submit t("submit") %>
-<% end %>
+<div class="container">
+  <% if @drawing.errors.any? %>
+    <ul>
+      <% @drawing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= form_with(model: @drawing, local: true) do |form| %>
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :drawing_number %>
+        <%= form.number_field :drawing_number, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :explanation %>
+        <%= form.text_area :explanation, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= binding.pry %>
+        <%= form.hidden_field :team_id, value: @drawing.team_id %>
+      </div>
+      <%= form.submit t("submit") %>
+    </div>
+  <% end %>
+</div>

@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path, class: "btn btn-primary btn-block mt-2 mb-1" %>
+      <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path(team_id: @team.id), class: "btn btn-primary btn-block mt-2 mb-1" %>
       <div class="card">
         <div class="card-header text-center">
           図面一覧
@@ -53,14 +53,14 @@
           担当タスク
         </div>
         <ul class="list-group">
-          <% @team.drawings.each do |task| %>
+          <% @team.drawings.each do |drawing| %>
             <li class="list-group-item">
               <div class="row">
                 <div class="col-md-2">
                   <strong><%= t("activerecord.attributes.task.status") %>:</strong>
                 </div>
                 <div class="col-md-10">
-                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
+                  <%= drawing.title %>
                 </div>
               </div>
             </li>
@@ -73,14 +73,14 @@
           承認タスク
         </div>
         <ul class="list-group">
-          <% @team.drawings.each do |task| %>
+          <% @team.drawings.each do |drawing| %>
             <li class="list-group-item">
               <div class="row">
                 <div class="col-md-2">
                   <strong><%= t("activerecord.attributes.task.status") %>:</strong>
                 </div>
                 <div class="col-md-10">
-                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
+                  <%= drawing.title %>
                 </div>
               </div>
             </li>

@@ -1,4 +1,4 @@
-<ul class="list-group text-left">
+<ul class="list-group">
   <% teams.each do |team| %>
     <%= link_to team_path(team.id), class: "link_to_question" do %>
       <li class="list-group-item">
@@ -6,6 +6,7 @@
           <%= image_tag team.icon.variant(resize:'50x50').processed %>
         <% end %>
         <%= team.name %>
+        <span class="badge badge-primary badge-pill pull-right">2</span>
       </li>
     <% end %>
   <% end %>
