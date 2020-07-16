@@ -27,7 +27,14 @@
           <%= render "form" %>
         </div>
         <div id="card2", class="tab-pane">
-          ミミッキュ
+          <div class="row">
+            <div class="col-lg-4">
+              <%= render partial: "customers/form", locals: { customer: @customer} %>
+            </div>
+            <div class="col-lg-8" id="customer_area">
+              <%= render partial: "customers/index" %>
+            </div>
+          </div>
         </div>
         <div id="card3", class="tab-pane text-left">
           <div id="events_calendar">

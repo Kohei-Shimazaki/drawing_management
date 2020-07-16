@@ -1,0 +1,32 @@
+<%= form_with(model: customer) do |form| %>
+  <% if customer.errors.any? %>
+    <ul>
+      <% customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= form.label :phone_number %>
+      <%= form.telephone_field :phone_number, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= form.label :location %>
+      <%= form.text_field :location, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= form.label :icon %>
+      <%= form.file_field :icon, class: "form-control-file" %>
+    </div>
+    <div class="field">
+      <%= form.label :overview %>
+      <%= form.text_area :overview, class: "form-control" %>
+    </div>
+    <%= form.submit t("submit") %>
+  </div>
+<% end %>

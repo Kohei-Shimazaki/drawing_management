@@ -1,5 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
   def new
+    @customer = current_user.company.customers.build
     super
   end
 

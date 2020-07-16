@@ -1,0 +1,2 @@
+class CategoryAssignsController < ApplicationController
+end

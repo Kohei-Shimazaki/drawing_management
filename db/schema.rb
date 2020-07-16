@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_125817) do
+ActiveRecord::Schema.define(version: 2020_07_16_065205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_07_13_125817) do
     t.text "overview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_customers_on_company_id"
   end
 
   create_table "drawings", force: :cascade do |t|
@@ -246,6 +248,7 @@ ActiveRecord::Schema.define(version: 2020_07_13_125817) do
   add_foreign_key "comments", "questions"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users", column: "admin_id"
+  add_foreign_key "customers", "companies"
   add_foreign_key "drawings", "teams"
   add_foreign_key "evidences", "tasks"
   add_foreign_key "notifications", "users"

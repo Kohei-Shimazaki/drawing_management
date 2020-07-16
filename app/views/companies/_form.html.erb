@@ -16,15 +16,16 @@
   </div>
   <!--住所で保留 -->
   <div class="field">
-    <%= form.label :deadline %>
-    <%= form.datetime_select :deadline, {} %>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
   </div>
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label :icon %>
+    <%= form.file_field :icon %>
   </div>
   <div class="field">
-    <%= form.hidden_field :drawing_id, value: @company.drawing_id %>
+    <%= form.label :overview %>
+    <%= form.text_area :overview %>
   </div>
   <%= form.submit t("submit") %>
 <% end %>
