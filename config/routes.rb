@@ -11,11 +11,14 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :evidences, only: %i(create destroy)
     resources :references, only: %i(create destroy)
+    collection do
+      post :revision_assign
+    end
   end
   resources :questions do
     resources :comments, only: %i(create edit update destroy)
   end
   resources :likes, only: %i(create destroy)
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  root 'drawings#index'
+  root to: 'drawings#index'
 end

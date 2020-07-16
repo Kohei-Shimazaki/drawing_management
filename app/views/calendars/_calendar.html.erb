@@ -1,5 +1,5 @@
-<%= month_calendar(events: tasks, attribute: :deadline, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link) do |date, tasks| %>
-  <%= date %>
+<%= month_calendar events: tasks, attribute: :deadline, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, tasks| %>
+  <%= date.day %>
   <% tasks.each do |task| %>
     <div>
       <%= link_to task.title, task %>

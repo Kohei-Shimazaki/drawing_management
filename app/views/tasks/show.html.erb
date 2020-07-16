@@ -7,7 +7,31 @@
     <div class="card-header card-header-danger">
       <%= @task.title %>
     </div>
-    <ul class="list-group">
+    <% if @task.drawing.revisions.present? %>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-2">
+              <strong><%= t("last") %><%= t("activerecord.attributes.revision.content") %>:</strong>
+            </div>
+            <div class="col-md-10">
+              <%= link_to "Rev.#{@task.drawing.revisions.last.revision_number}", @task.drawing.revisions.last.content %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <% if @task.revision %>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-2">
+              <strong><%= t("activerecord.attributes.revision.content") %>:</strong>
+            </div>
+            <div class="col-md-10">
+              <%= link_to "Rev.#{@task.revision.revision_number}", @task.revision.content %>
+            </div>
+          </div>
+        </li>
+      <% end %>
       <li class="list-group-item">
         <div class="row">
           <div class="col-md-2">

@@ -16,11 +16,19 @@
   </div>
   <div class="field">
     <%= form.label :deadline %>
-    <%= form.datetime_select :deadline, {} %>
+    <%= form.date_field :deadline %>
   </div>
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
+  </div>
+  <div class="field">
+    <%= form.label :staff_id %>
+    <%= form.collection_select :staff_id, @drawing.team.members, :id, :name, prompt: "選択してください", class: "custom-select" %>
+  </div>
+  <div class="field">
+    <%= form.label :approver_id %>
+    <%= form.collection_select :approver_id, @drawing.team.members, :id, :name, prompt: "選択してください", class: "custom-select" %>
   </div>
   <div class="field">
     <%= form.hidden_field :drawing_id, value: @task.drawing_id %>

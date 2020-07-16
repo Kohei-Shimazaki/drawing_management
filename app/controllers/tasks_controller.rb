@@ -8,13 +8,14 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.drawing_id = params[:drawing_id]
+    @drawing = Drawing.find(params[:drawing_id])
   end
 
   def create
     @task = Task.new(task_params)
     if @task.save
       flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.create")}"
-      redirect_to tasks_path
+      redirect_to drawing_path(@task.drawing.id)
     else
       render :new
     end
@@ -45,6 +46,15 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def revision_assign
+    @task.revision_id = params[:id]
+    if @task.save
+      respond_to do |format|
+        format.js { render :revision_assign }
+      end
+    end
+  end
+
   private
     def task_params
       params.require(:task).permit(
@@ -53,6 +63,8 @@ class TasksController < ApplicationController
         :status,
         :deadline,
         :drawing_id,
+        :staff_id,
+        :approver_id,
       )
     end
 

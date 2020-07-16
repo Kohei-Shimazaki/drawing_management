@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= t("activerecord.attributes.drawing.title") %></th>
+      <th><%= t("activerecord.attributes.drawing.drawing_number") %></th>
+      <th><%= t("activerecord.attributes.drawing.explanation") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% drawings.each do |drawing| %>
+      <tr>
+        <td class="position-relative"><%= link_to drawing.title, drawing_path(drawing.id), class: "stretched-link" %></td>
+        <td><%= drawing.drawing_number %></td>
+        <td><%= drawing.explanation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

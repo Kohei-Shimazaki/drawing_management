@@ -21,7 +21,6 @@
         <%= form.text_area :explanation, class: "form-control" %>
       </div>
       <div class="field">
-        <%= binding.pry %>
         <%= form.hidden_field :team_id, value: @drawing.team_id %>
       </div>
       <%= form.submit t("submit") %>

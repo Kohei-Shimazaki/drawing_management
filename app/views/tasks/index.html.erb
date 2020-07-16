@@ -1,26 +1,3 @@
-<%= javascript_pack_tag 'sample_vue' %>
 <h2><%= t("activerecord.models.task") %><%= t("crud.index") %></h2>
-<table>
-  <%= render "table_head" %>
-  <tbody>
-    <%= render partial: "table_body", collection: @tasks, as: "task" %>
-  </tbody>
-</table>
 
-<div id="app">
-
-  <div class="vue">
-    <ul class="tabs">
-      <li v-on:click="change('1')" v-bind:class="{'active': isActive === '1'}">タブ1</li>
-      <li v-on:click="change('2')" v-bind:class="{'active': isActive === '2'}">タブ2</li>
-      <li v-on:click="change('3')" v-bind:class="{'active': isActive === '3'}">タブ3</li>
-    </ul>
-
-    <ul class="contents">
-      <li v-if="isActive === '1'">コンテンツ1コンテンツ1コンテンツ1コンテンツ1</li>
-      <li v-else-if="isActive === '2'">コンテンツ2コンテンツ2コンテンツ2コンテンツ2</li>
-      <li v-else-if="isActive === '3'">コンテンツ3コンテンツ3コンテンツ3コンテンツ3</li>
-    </ul>
-  </div>
-
-</div>
+<%= render partial: "table", locals: { tasks: @tasks } %>

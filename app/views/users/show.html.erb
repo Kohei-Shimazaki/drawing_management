@@ -22,13 +22,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-4">
       <%= link_to t("crud.new")+t("activerecord.models.team"), new_team_path, remote: true, class: "btn btn-lg btn-primary btn-block mb-1" %>
 
       <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
       <div class="card">
         <div class="card-header text-center">
-          所属チーム
+          <%= t("activerecord.attributes.team_assign.team_id") %>
         </div>
         <div id="teams_area">
           <%= render partial: "teams/index", locals: { teams: @user.teams } %>
@@ -36,61 +36,41 @@
       </div>
       <div class="card">
         <div class="card-header text-center">
-          図面一覧
+          <%= t("activerecord.models.drawing") %><%= t("crud.index") %>
         </div>
-        <div class="card-body text-center">
-
-        </div>
+        <%= render partial: "drawings/index", locals: { drawings: @user.teams.map{ |team| team.drawings }.flatten } %>
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-lg-8">
       <div class="card">
         <div class="card-header text-center">
-          担当タスク
-        </div>
-        <ul class="list-group">
-          <% @user.has_tasks.each do |task| %>
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-md-2">
-                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
-                </div>
-                <div class="col-md-10">
-                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
-                </div>
-              </div>
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a href="#card1_user" class="nav-link active" data-toggle="tab"><%= t("activerecord.attributes.task.staff_id") %><%= t("activerecord.models.task") %></a>
             </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-header text-center">
-          承認タスク
-        </div>
-        <ul class="list-group">
-          <% @user.has_approved_tasks.each do |task| %>
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-md-2">
-                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
-                </div>
-                <div class="col-md-10">
-                  <%= t("activerecord.attributes.task.enum.#{task.status}") %>
-                </div>
-              </div>
+            <li class="nav-item">
+              <a href="#card2_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.approver_id") %><%= t("activerecord.models.task") %></a>
             </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-header text-center">
-          カレンダー
+            <li class="nav-item">
+              <a href="#card3_user" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+            </li>
+          </ul>
         </div>
         <div class="card-body">
-          カレンダー中身
+          <div class="tab-content">
+            <div id="card1_user" class="tab-pane active">
+              <%= render partial: "tasks/table", locals: {tasks: @user.has_tasks } %>
+            </div>
+            <div id="card2_user", class="tab-pane">
+              <%= render partial: "tasks/table", locals: {tasks: @user.has_approved_tasks } %>
+            </div>
+            <div id="card3_user", class="tab-pane text-left">
+              <div id="events_calendar">
+                <%= render partial: "calendars/calendar", locals: {tasks: @user.has_tasks | @user.has_approved_tasks } %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

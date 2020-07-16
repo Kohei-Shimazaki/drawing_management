@@ -1,0 +1,2 @@
+$("#revision_assign_area_<%= @task.revision.id %>").html("<%= j(render 'tasks/table', { tasks: @task.revision.tasks }) %>")
+$("textarea").val('')

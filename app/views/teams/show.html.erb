@@ -22,7 +22,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-lg-4">
       <div id="members_form">
         <%= render partial: 'team_assigns/form', locals: { team: @team, team_assign: @team_assign } %>
       </div>
@@ -39,61 +39,35 @@
       <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path(team_id: @team.id), class: "btn btn-primary btn-block mt-2 mb-1" %>
       <div class="card">
         <div class="card-header text-center">
-          図面一覧
+          <%= t("activerecord.models.drawing") %><%= t("crud.index") %>
         </div>
-        <div class="card-body text-center">
-          図面
-        </div>
+        <%= render partial: "drawings/index", locals: { drawings: @team.drawings } %>
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-lg-8">
       <div class="card">
         <div class="card-header text-center">
-          担当タスク
-        </div>
-        <ul class="list-group">
-          <% @team.drawings.each do |drawing| %>
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-md-2">
-                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
-                </div>
-                <div class="col-md-10">
-                  <%= drawing.title %>
-                </div>
-              </div>
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a href="#card1_team" class="nav-link active" data-toggle="tab"><%= t("activerecord.models.task") %><%= t("crud.index") %></a>
             </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-header text-center">
-          承認タスク
-        </div>
-        <ul class="list-group">
-          <% @team.drawings.each do |drawing| %>
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-md-2">
-                  <strong><%= t("activerecord.attributes.task.status") %>:</strong>
-                </div>
-                <div class="col-md-10">
-                  <%= drawing.title %>
-                </div>
-              </div>
+            <li class="nav-item">
+              <a href="#card2_team" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
             </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-header text-center">
-          カレンダー
+          </ul>
         </div>
         <div class="card-body">
-          カレンダー中身
+          <div class="tab-content">
+            <div id="card1_team" class="tab-pane active">
+              <%= render partial: "tasks/table", locals: {tasks: @team.drawings.map{ |drawing| drawing.tasks }.flatten } %>
+            </div>
+            <div id="card2_team", class="tab-pane text-left">
+              <div id="events_calendar">
+                <%= render partial: "calendars/calendar", locals: {tasks: @team.drawings.map{ |drawing| drawing.tasks }.flatten } %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
