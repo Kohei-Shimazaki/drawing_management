@@ -4,7 +4,7 @@
     <title>DrawingManagement</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-  
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -23,6 +23,18 @@
         <% if user_signed_in? %>
           <%= link_to t("my_page"), user_path(current_user), class: "navbar-brand" %>
           <%= link_to t("log_out"), destroy_user_session_path, method: :delete, class: "navbar-brand" %>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Q
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% current_user.has_tasks.each do |task| %>
+                <div>
+                  <%= link_to task.title ,new_question_path(task_id: task.id), class: "dropdown-item" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         <% else %>
           <%= link_to t("sign_up"), new_user_registration_path, class: "navbar-brand"  %>
           <%= link_to t("log_in"), new_user_session_path, class: "navbar-brand"  %>

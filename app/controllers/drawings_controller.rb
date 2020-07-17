@@ -48,6 +48,8 @@ class DrawingsController < ApplicationController
         :drawing_number,
         :explanation,
         :team_id,
+        :project_id,
+        category_ids: []
       )
     end
 

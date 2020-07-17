@@ -4,7 +4,7 @@
 <div class="container">
   <ul class="list-group">
     <% @questions.each do |question| %>
-      <%= link_to drawings_path, class: "link_to_question" do %>
+      <%= link_to question_path(question), class: "link_to_question" do %>
         <li class="list-group-item list-group-item-action">
           <div class="row">
             <div class="col-sm-2">
@@ -16,6 +16,15 @@
             </div>
             <div class="col-sm-10">
               <div>
+                <div>
+
+                </div>
+                <div>
+                  <strong><%= t("activerecord.models.drawing") %>:</strong><%= question.task.drawing.title %>
+                </div>
+                <div>
+                  <strong><%= t("activerecord.models.task") %>:</strong><%= question.task.title %>
+                </div>
                 <strong><%= question.title %></strong>
                 <span>
                   <object>

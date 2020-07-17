@@ -1,24 +1,34 @@
-<% if @question.errors.any? %>
-  <ul>
-    <% @question.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<div class="jumbotron text-center">
+  <h2><%= t("activerecord.models.question") %><%= t("crud.new") %></h2>
+  <h3><%= @question.task.title %></h3>
+</div>
+
+<div class="container">
+  <%= form_with(model: @question, local: true) do |form| %>
+    <% if @question.errors.any? %>
+      <ul>
+        <% @question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-<%= form_with(model: @question, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-  <div class="field">
-    <%= form.label :attachment %>
-    <%= form.file_field :attachment %>
-  </div>
-  <div class="field">
-  </div>
-  <%= form.submit t("submit") %>
-<% end %>
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.text_area :content, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :attachment %>
+        <%= form.file_field :attachment, class: "form-control-file" %>
+      </div>
+      <div class="field">
+        <%= form.hidden_field :task_id, value: @question.task_id %>
+      </div>
+      <%= form.submit t("submit") %>
+    </div>
+  <% end %>
+</div>

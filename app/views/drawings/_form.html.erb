@@ -21,6 +21,17 @@
         <%= form.text_area :explanation, class: "form-control" %>
       </div>
       <div class="field">
+        <%= form.label :project_id %>
+        
+      </div>
+      <div class="field">
+        <%= form.label :category_ids %>
+        <% current_user.company.categories.each do |category| %>
+          <%= form.check_box :category_ids, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false }, category[:id] %>
+          <%= category.name %>
+        <% end %>
+      </div>
+      <div class="field">
         <%= form.hidden_field :team_id, value: @drawing.team_id %>
       </div>
       <%= form.submit t("submit") %>

@@ -36,6 +36,8 @@ ja:
         title: 図名
         drawing_number: 図番
         explanation: 説明
+        project_id: プロジェクト
+        category_ids: カテゴリー
       evidence:
         content: エビデンスファイル
         comment: エビデンスコメント
