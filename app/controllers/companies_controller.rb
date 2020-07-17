@@ -52,7 +52,7 @@ class CompaniesController < ApplicationController
     end
 
     def set_company
-      @company = company.find(params[:id])
+      @company = Company.find(params[:id])
     end
 
 end

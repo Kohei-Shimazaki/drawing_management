@@ -26,6 +26,7 @@
         <div id="card1" class="tab-pane active">
           <%= render "form" %>
         </div>
+
         <div id="card2", class="tab-pane">
           <div class="row">
             <div class="col-lg-4">
@@ -36,13 +37,27 @@
             </div>
           </div>
         </div>
-        <div id="card3", class="tab-pane text-left">
-          <div id="events_calendar">
-            ミミッキュは最小
+
+        <div id="card3", class="tab-pane">
+          <div class="row">
+            <div class="col-lg-4">
+              <%= render partial: "projects/form", locals: { project: @project } %>
+            </div>
+            <div class="col-lg-8" id="project_area">
+              <%= render partial: "projects/index" %>
+            </div>
           </div>
         </div>
+
         <div id="card4", class="tab-pane">
-          ミミッキュ
+          <div class="row">
+            <div class="col-lg-4">
+              <%= render partial: "categories/form", locals: { category: @category } %>
+            </div>
+            <div class="col-lg-8" id="category_area">
+              <%= render partial: "categories/index" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

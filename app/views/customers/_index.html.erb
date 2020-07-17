@@ -1,19 +1,24 @@
 <ul class="list-group">
   <% current_user.company.customers.each do |customer| %>
     <% if customer.id.present? %>
-      <%= link_to customer_path(customer.id), class: "link_to_question" do %>
-        <li class="list-group-item">
-          <% if customer.icon.attached? %>
-            <%= image_tag customer.icon.variant(resize:'50x50').processed %>
-          <% end %>
-          <%= customer.name %>
-          <%= customer.overview %>
-          <object>
-            <%= link_to t("crud.destroy"), customer_path(id: customer.id), method: :delete, remote: true,
-                      data: { confirm: I18n.t("confirm.destroy")} %>
-          </object>
-        </li>
-      <% end %>
+      <div id="customer_<%= customer.id %>">
+        <%= link_to customer_path(customer.id), class: "link_to_question" do %>
+          <li class="list-group-item">
+            <% if customer.icon.attached? %>
+              <%= image_tag customer.icon.variant(resize:'50x50').processed %>
+            <% end %>
+            <%= customer.name %>
+            <%= customer.overview %>
+            <object>
+              <%= link_to t("crud.edit"), edit_customer_path(id: customer.id), remote: true %>
+            </object>
+            <object>
+              <%= link_to t("crud.destroy"), customer_path(id: customer.id), method: :delete, remote: true,
+                        data: { confirm: I18n.t("confirm.destroy")} %>
+            </object>
+          </li>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </ul>

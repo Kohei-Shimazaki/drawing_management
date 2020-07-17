@@ -1,0 +1,27 @@
+<div class="jumbotron text-center">
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <div class="card-body">
+          <% if @customer.icon.attached? %>
+            <%= image_tag @customer.icon.variant(resize:'100x100').processed, class: "customer_image" %>
+          <% end %>
+          <h5 class="card-title"><%= @customer.name %></h5>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body text-left">
+          <h5 class="card-title"><%= t("activerecord.attributes.customer.profile") %></h5>
+          <p class="card-text"><%= simple_format(@customer.overview) %></p>
+          <p class="card-text"><small><%= link_to "客先情報編集", edit_customer_path %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+  </div>
+</div>
