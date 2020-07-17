@@ -1,6 +1,7 @@
 class Users::InvitationsController < Devise::InvitationsController
   def new
     @customer = current_user.company.customers.build
+    @project = Project.new
     @category = current_user.company.categories.build
     super
   end

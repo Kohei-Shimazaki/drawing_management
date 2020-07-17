@@ -62,6 +62,7 @@ ja:
         name: プロジェクト名
         explanation: 説明
         location: 現地
+        customer_id: 客先
       question:
         title: 質問タイトル
         content: 内容
