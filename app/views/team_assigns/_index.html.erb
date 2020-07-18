@@ -1,7 +1,7 @@
 <ul class="list-group">
   <% @team.team_assigns.each do |team_assign| %>
     <% if team_assign.id.present? %>
-      <%= link_to user_path(team_assign.user.id), class: "link_to_question" do %>
+      <%= link_to user_path(team_assign.user.id), class: "list_link" do %>
         <li class="list-group-item">
           <% if team_assign.user.icon.attached? %>
             <%= image_tag team_assign.user.icon.variant(resize:'50x50').processed %>

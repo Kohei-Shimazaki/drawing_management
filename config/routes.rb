@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     collection do
       post :revision_assign
     end
+    member do
+      post :revision_assign_delete
+    end
   end
   resources :questions do
     resources :comments, only: %i(create edit update destroy)

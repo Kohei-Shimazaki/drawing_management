@@ -14,7 +14,9 @@
           <div id="revision_assign_area_<%= revision.id %>">
             <%= render partial: 'tasks/table', locals: { tasks: revision.tasks } %>
           </div>
-          <%= link_to "タスク紐づけ", drawings_path, class: "btn btn-primary" %>
+          <div id="revision_assign_form_<%= revision.id %>">
+            <%= render partial: 'tasks/revision_assign', locals: {revision: revision} %>
+          </div>
         </div>
       </div>
     </li>

@@ -4,7 +4,7 @@
 <div class="container">
   <ul class="list-group">
     <% @questions.each do |question| %>
-      <%= link_to question_path(question), class: "link_to_question" do %>
+      <%= link_to question_path(question), class: "list_link" do %>
         <li class="list-group-item list-group-item-action">
           <div class="row">
             <div class="col-sm-2">

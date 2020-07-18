@@ -26,6 +26,13 @@ ja:
       comment:
         content: コメント内容
         attachment: 添付
+      company:
+        name: 会社名
+        phone_number: 連絡先
+        location: 住所
+        icon: 会社アイコン
+        overview: 会社概要
+        admin_id: 管理人
       customer:
         name: 客先名
         phone_number: 客先連絡先
@@ -79,6 +86,7 @@ ja:
         title: タイトル
         staff_id: 担当
         approver_id: 承認
+        revision_id: レビジョン
         content: 内容
         status: 状態
         deadline: 期限

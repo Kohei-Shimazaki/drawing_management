@@ -74,4 +74,7 @@
   <% if current_user == @task.staff %>
     <%= render partial: 'evidences/form', locals: { evidence: @evidence, task: @task } %>
   <% end %>
+  <div class="action">
+    <%= link_to t("back"), drawing_path(@task.drawing), class: "btn btn-secondary" %>
+  </div>
 </div>

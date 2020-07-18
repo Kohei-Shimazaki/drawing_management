@@ -1,20 +1,22 @@
-<%= form_with(model: [task, evidence]) do |form| %>
-  <% if evidence.errors.any? %>
-    <ul>
-      <% evidence.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+<div class="card mt-2">
+  <%= form_with(model: [task, evidence]) do |form| %>
+    <% if evidence.errors.any? %>
+      <ul>
+        <% evidence.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :comment %>
+        <%= form.text_area :comment, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.file_field :content, class: "form-control-file", id: "evidence_file" %>
+      </div>
+      <%= form.submit t("submit") %>
+    </div>
   <% end %>
-  <div class="form-group">
-    <div class="field">
-      <%= form.label :comment %>
-      <%= form.text_area :comment, class: "form-control" %>
-    </div>
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.file_field :content, class: "form-control-file", id: "evidence_file" %>
-    </div>
-    <%= form.submit t("submit") %>
-  </div>
-<% end %>
+</div>

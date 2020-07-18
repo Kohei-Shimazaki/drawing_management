@@ -9,7 +9,7 @@
   <div class="form-group">
     <div class="field">
       <%= form.label :customer_id %>
-      <%= form.select :customer_id, current_user.company.customers.map{ |customer| [customer.name, customer.id] if customer.id }.compact, prompt: "選択してください" %>
+      <%= form.select :customer_id, current_user.company.customers.map{ |customer| [customer.name, customer.id] if customer.id }.compact %>
     </div>
     <div class="field">
       <%= form.label :name %>

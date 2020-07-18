@@ -1,0 +1,12 @@
+<%= form_with(scope: :task, url: revision_assign_tasks_path) do |form| %>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :task_id %>
+      <%= form.collection_select :task_id, @drawing.tasks.select{|task| task.revision_id.nil?}, :id, :title, prompt: "選択してください", class: "custom-select" %>
+    </div>
+    <div class="field">
+      <%= form.hidden_field :revision_id, value: revision.id %>
+    </div>
+    <%= form.submit t("submit") %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i(edit update show destroy)
+  before_action :set_task, only: %i(edit update show destroy revision_assign_delete)
 
   def index
     @tasks = Task.all
@@ -47,12 +47,17 @@ class TasksController < ApplicationController
   end
 
   def revision_assign
-    @task.revision_id = params[:id]
+    @task = Task.find(params[:task][:task_id])
+    @task.revision_id = params[:task][:revision_id]
     if @task.save
-      respond_to do |format|
-        format.js { render :revision_assign }
-      end
+      redirect_to drawing_path(@task.drawing)
     end
+  end
+
+  def revision_assign_delete
+    @task.revision_id = nil
+    @task.save
+    redirect_to drawing_path(@task.drawing)
   end
 
   private

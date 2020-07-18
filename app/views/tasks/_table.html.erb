@@ -8,6 +8,7 @@
       <th><%= t("activerecord.attributes.task.status") %></th>
       <th><%= t("activerecord.attributes.task.deadline") %></th>
       <th><%= t("activerecord.attributes.task.content") %></th>
+      <th><%= t("activerecord.attributes.revision.revision_number") %></th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +32,14 @@
         <td><%= t("activerecord.attributes.task.enum.#{task.status}") %></td>
         <td><%= l task.deadline, format: :date %></td>
         <td><%= task.content %></td>
+        <td>
+          <% if task.revision %>
+            <%= task.revision.revision_number %>
+            <% if current_user == task.staff %>
+              <%= link_to "紐づけ解除", revision_assign_delete_task_path(task), method: :post %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
