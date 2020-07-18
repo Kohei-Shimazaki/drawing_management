@@ -11,9 +11,14 @@
       </div>
       <div class="col-md-10">
         <div class="card-body text-left">
-          <h5 class="card-title"><%= t("activerecord.attributes.customer.profile") %></h5>
+          <p class="card-text border-bottom">
+            <%= t("activerecord.attributes.customer.phone_number") %>: <%= @customer.phone_number %>
+          </p>
+          <p class="card-text border-bottom">
+            <%= t("activerecord.attributes.customer.location") %>: <%= @customer.location %>
+          </p>
+          <h5 class="card-title border-bottom"><%= t("activerecord.attributes.customer.overview") %></h5>
           <p class="card-text"><%= simple_format(@customer.overview) %></p>
-          <p class="card-text"><small><%= link_to "客先情報編集", edit_customer_path %></small></p>
         </div>
       </div>
     </div>
@@ -21,7 +26,23 @@
 </div>
 
 <div class="container">
-  <div class="row">
-
-  </div>
+  <ul class="list-group">
+    <strong>プロジェクト一覧</strong>
+    <% @customer.projects.each do |project| %>
+      <%= link_to project_path(project), class: "list_link" do %>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-lg-2">
+              <%= project.name %>
+            </div>
+            <div class="col-lg-10">
+              <% project.drawings.each do |drawing| %>
+                <%= drawing. %>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 </div>

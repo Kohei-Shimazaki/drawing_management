@@ -14,7 +14,9 @@
             <% end %>
           </div>
           <div>
-            <%= evidence.content %>
+            <% if evidence.content.attached? %>
+              <%= link_to t("attachment"), evidence.content %>
+            <% end %>
           </div>
         </div>
       </div>

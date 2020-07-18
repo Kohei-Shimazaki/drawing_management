@@ -2,7 +2,7 @@
   <% current_user.company.categories.each do |category| %>
     <% if category.id.present? %>
       <div id="category_<%= category.id %>">
-        <%= link_to category_path(category.id), class: "link_to_question" do %>
+        <%= link_to category_path(category.id), class: "list_link" do %>
           <li class="list-group-item">
             <%= category.name %>
             <%= category.explanation %>

@@ -1,0 +1,59 @@
+<div class="jumbotron text-center">
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <div class="card-body">
+          <% if @project.customer.icon.attached? %>
+            <%= image_tag @project.customer.icon.variant(resize:'100x100').processed, class: "customer_image" %>
+          <% end %>
+          <h5 class="card-title"><%= @project.customer.name %></h5>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body text-left">
+          <p class="card-text border-bottom">
+            <%= t("activerecord.attributes.project.name") %>: <%= @project.name %>
+          </p>
+          <p class="card-text border-bottom">
+            <%= t("activerecord.attributes.project.location") %>: <%= @project.location %>
+          </p>
+          <h5 class="card-title border-bottom"><%= t("activerecord.attributes.project.explanation") %></h5>
+          <p class="card-text"><%= simple_format(@project.explanation) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a href="#card1_user" class="nav-link active" data-toggle="tab"><%= t("activerecord.attributes.task.staff_id") %><%= t("activerecord.models.task") %></a>
+        </li>
+        <li class="nav-item">
+          <a href="#card2_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.approver_id") %><%= t("activerecord.models.task") %></a>
+        </li>
+        <li class="nav-item">
+          <a href="#card3_user" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content">
+        <div id="card1_user" class="tab-pane active">
+          <%= render partial: "tasks/table", locals: {tasks: @user.has_tasks } %>
+        </div>
+        <div id="card2_user", class="tab-pane">
+          <%= render partial: "tasks/table", locals: {tasks: @user.has_approved_tasks } %>
+        </div>
+        <div id="card3_user", class="tab-pane text-left">
+          <div id="events_calendar">
+            <%= render partial: "calendars/calendar", locals: {tasks: @user.has_tasks | @user.has_approved_tasks } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

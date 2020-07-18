@@ -6,6 +6,9 @@
   <div class="card">
     <div class="card-header card-header-danger">
       <%= @task.title %>
+      <% if current_user == @task.staff || current_user == @task.drawing.team.owner %>
+        <%= link_to t("crud.edit"), edit_task_path(@task) %>
+      <% end %>
     </div>
     <% if @task.drawing.revisions.present? %>
       <ul class="list-group">

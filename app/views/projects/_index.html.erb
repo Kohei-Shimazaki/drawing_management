@@ -8,7 +8,7 @@
       <% customer.projects.each do |project| %>
         <% if project.id.present? %>
           <div id="project_<%= project.id %>">
-            <%= link_to project_path(project.id), class: "link_to_question" do %>
+            <%= link_to project_path(project.id), class: "list_link" do %>
               <li class="list-group-item">
                 <%= project.name %>
                 <%= project.explanation %>

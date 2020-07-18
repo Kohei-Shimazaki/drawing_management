@@ -6,6 +6,9 @@
           <%= image_tag team.icon.variant(resize:'50x50').processed %>
         <% end %>
         <%= team.name %>
+        <% if current_user == team.owner %>
+          リーダー
+        <% end %>
       </li>
     <% end %>
   <% end %>

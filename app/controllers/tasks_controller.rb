@@ -50,14 +50,15 @@ class TasksController < ApplicationController
     @task = Task.find(params[:task][:task_id])
     @task.revision_id = params[:task][:revision_id]
     if @task.save
-      redirect_to drawing_path(@task.drawing)
+      redirect_to drawing_path(@task)
     end
   end
 
   def revision_assign_delete
     @task.revision_id = nil
-    @task.save
-    redirect_to drawing_path(@task.drawing)
+    if @task.save
+      redirect_to drawing_path(@task)
+    end
   end
 
   private

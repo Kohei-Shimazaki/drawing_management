@@ -2,7 +2,7 @@
   <% current_user.company.customers.each do |customer| %>
     <% if customer.id.present? %>
       <div id="customer_<%= customer.id %>">
-        <%= link_to customer_path(customer.id), class: "link_to_question" do %>
+        <%= link_to customer_path(customer.id), class: "list_link" do %>
           <li class="list-group-item">
             <% if customer.icon.attached? %>
               <%= image_tag customer.icon.variant(resize:'50x50').processed %>
