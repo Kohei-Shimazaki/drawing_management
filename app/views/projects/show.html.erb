@@ -29,29 +29,41 @@
   <div class="card">
     <div class="card-header text-center">
       <ul class="nav nav-tabs card-header-tabs">
+        <% j = 1 %>
+        <% @project.drawings.map{ |drawing| drawing.categories }.flatten.uniq.each_with_index do |category, i| %>
+          <% if i == 0 %>
+            <li class="nav-item">
+              <a href="#card<%= i %>_user" class="nav-link active" data-toggle="tab"><%= category.name %></a>
+            </li>
+          <% else %>
+          <li class="nav-item">
+            <a href="#card<%= i %>_user" class="nav-link" data-toggle="tab"><%= category.name %></a>
+          </li>
+          <% end %>
+          <% j += 1 %>
+        <% end %>
         <li class="nav-item">
-          <a href="#card1_user" class="nav-link active" data-toggle="tab"><%= t("activerecord.attributes.task.staff_id") %><%= t("activerecord.models.task") %></a>
-        </li>
-        <li class="nav-item">
-          <a href="#card2_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.approver_id") %><%= t("activerecord.models.task") %></a>
-        </li>
-        <li class="nav-item">
-          <a href="#card3_user" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+          <a href="#card<%= j %>_user" class="nav-link" data-toggle="tab">カテゴリなし</a>
         </li>
       </ul>
     </div>
     <div class="card-body">
       <div class="tab-content">
-        <div id="card1_user" class="tab-pane active">
-          <%= render partial: "tasks/table", locals: {tasks: @user.has_tasks } %>
-        </div>
-        <div id="card2_user", class="tab-pane">
-          <%= render partial: "tasks/table", locals: {tasks: @user.has_approved_tasks } %>
-        </div>
-        <div id="card3_user", class="tab-pane text-left">
-          <div id="events_calendar">
-            <%= render partial: "calendars/calendar", locals: {tasks: @user.has_tasks | @user.has_approved_tasks } %>
-          </div>
+        <% j = 1 %>
+        <% @project.drawings.map{ |drawing| drawing.categories }.flatten.uniq.each_with_index do |category, i| %>
+          <% if i == 0 %>
+            <div id="card<%= i %>_user" class="tab-pane active">
+              <%= render partial: "drawings/index", locals: {drawings: category.drawings & @project.drawings } %>
+            </div>
+          <% else %>
+            <div id="card<%= i %>_user" class="tab-pane">
+              <%= render partial: "drawings/index", locals: {drawings: category.drawings & @project.drawings } %>
+            </div>
+          <% end %>
+          <% j += 1 %>
+        <% end %>
+        <div id="card<%= j %>_user" class="tab-pane">
+          <%= render partial: "drawings/index", locals: {drawings: @project.drawings.select{ |drawing| drawing.categories.empty? } } %>
         </div>
       </div>
     </div>

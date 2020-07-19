@@ -12,8 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @company = Company.find(resource.company_id)
-    @company.admin_id = resource.id
+
   end
   # GET /resource/edit
   # def edit
