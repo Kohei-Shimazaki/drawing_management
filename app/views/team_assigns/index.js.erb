@@ -1,0 +1,3 @@
+$("#members_form").html("<%= j(render 'team_assigns/form', { team: @team, team_assign: @team.team_assigns.build }) %>")
+$("#members_area").html("<%= j(render 'team_assigns/index', { team: @team }) %>")
+$("select").val('選択してください')

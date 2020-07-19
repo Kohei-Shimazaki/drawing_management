@@ -17,6 +17,7 @@ ja:
       revision: レビジョン
       task: タスク
       team: チーム
+      team_assign: チームメンバー
       user: ユーザー
     attributes:
       category:
@@ -25,6 +26,13 @@ ja:
       comment:
         content: コメント内容
         attachment: 添付
+      company:
+        name: 会社名
+        phone_number: 連絡先
+        location: 住所
+        icon: 会社アイコン
+        overview: 会社概要
+        admin_id: 管理人
       customer:
         name: 客先名
         phone_number: 客先連絡先
@@ -35,6 +43,8 @@ ja:
         title: 図名
         drawing_number: 図番
         explanation: 説明
+        project_id: プロジェクト
+        category_ids: カテゴリー
       evidence:
         content: エビデンスファイル
         comment: エビデンスコメント
@@ -59,6 +69,7 @@ ja:
         name: プロジェクト名
         explanation: 説明
         location: 現地
+        customer_id: 客先
       question:
         title: 質問タイトル
         content: 内容
@@ -73,8 +84,9 @@ ja:
         tasks: 関連タスク
       task:
         title: タイトル
-        staff_id: 担当者
-        approver_id: 承認者
+        staff_id: 担当
+        approver_id: 承認
+        revision_id: レビジョン
         content: 内容
         status: 状態
         deadline: 期限
@@ -86,14 +98,18 @@ ja:
           discontinued: 中断
       team:
         name: 名前
-        profile: プロフィール
-        icon: アイコン
+        profile: チームプロフィール
+        icon: チームアイコン
         owner_id: チームリーダーID
+        members: チームメンバー
+      team_assign:
+        user_id: メンバー
+        team_id: 所属チーム
       user:
         name: 名前
         employee_number: 社員番号
         email: Eメールアドレス
-        icon: アイコン
+        icon: ユーザーアイコン
         profile: プロフィール
         password: パスワード
         password_confirmation: パスワード確認

@@ -1,0 +1,4 @@
+$("#revision_assign_area_<%= @task.revision.id %>").html("<%= j(render 'tasks/table', { tasks: @task.revision.tasks }) %>");
+<% @task.drawing.revisions.each do |revision| %>
+  $("#revision_assign_form_<%= revision.id %>").html("<%= j(render 'tasks/revision_assign', { @drawing: revision.drawing, revision: revision }) %>");
+<% end %>

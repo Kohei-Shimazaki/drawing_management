@@ -1,0 +1,21 @@
+<ul class="list-group">
+  <% current_user.company.categories.each do |category| %>
+    <% if category.id.present? %>
+      <div id="category_<%= category.id %>">
+        <%= link_to category_path(category.id), class: "list_link" do %>
+          <li class="list-group-item">
+            <%= category.name %>
+            <%= category.explanation %>
+            <object>
+              <%= link_to t("crud.edit"), edit_category_path(id: category.id), remote: true %>
+            </object>
+            <object>
+              <%= link_to t("crud.destroy"), category_path(id: category.id), method: :delete, remote: true,
+                        data: { confirm: I18n.t("confirm.destroy")} %>
+            </object>
+          </li>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</ul>

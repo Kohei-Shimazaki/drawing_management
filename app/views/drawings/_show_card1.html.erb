@@ -11,13 +11,12 @@
         </div>
         <div class="col-md-10">
           <h5><%= t("activerecord.attributes.revision.tasks") %></h5>
-          <table class="table table-bordered table-hover">
-            <%= render 'tasks/table_head' %>
-            <tbody>
-              <%= render partial: 'tasks/table_body', collection: revision.tasks, as: "task" %>
-            </tbody>
-          </table>
-          <%= link_to "タスク紐づけ", drawings_path, class: "btn btn-primary" %>
+          <div id="revision_assign_area_<%= revision.id %>">
+            <%= render partial: 'tasks/table', locals: { tasks: revision.tasks } %>
+          </div>
+          <div id="revision_assign_form_<%= revision.id %>">
+            <%= render partial: 'tasks/revision_assign', locals: { revision: revision } %>
+          </div>
         </div>
       </div>
     </li>

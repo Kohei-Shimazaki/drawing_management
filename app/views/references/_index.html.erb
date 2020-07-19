@@ -12,7 +12,9 @@
                       data: { confirm: I18n.t("confirm.destroy")} %></span>
           </div>
           <div>
-            <%= reference.content %>
+            <% if reference.content.attached? %>
+              <%= link_to t("attachment"), reference.content %>
+            <% end %>
           </div>
         </div>
       </div>

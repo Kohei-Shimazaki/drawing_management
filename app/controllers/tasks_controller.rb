@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i(edit update show destroy)
+  before_action :set_task, only: %i(edit update show destroy revision_assign_delete)
 
   def index
     @tasks = Task.all
@@ -8,13 +8,14 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.drawing_id = params[:drawing_id]
+    @drawing = Drawing.find(params[:drawing_id])
   end
 
   def create
     @task = Task.new(task_params)
     if @task.save
       flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.create")}"
-      redirect_to tasks_path
+      redirect_to drawing_path(@task.drawing.id)
     else
       render :new
     end
@@ -45,6 +46,21 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def revision_assign
+    @task = Task.find(params[:task][:task_id])
+    @task.revision_id = params[:task][:revision_id]
+    if @task.save
+      redirect_to drawing_path(@task)
+    end
+  end
+
+  def revision_assign_delete
+    @task.revision_id = nil
+    if @task.save
+      redirect_to drawing_path(@task)
+    end
+  end
+
   private
     def task_params
       params.require(:task).permit(
@@ -53,6 +69,8 @@ class TasksController < ApplicationController
         :status,
         :deadline,
         :drawing_id,
+        :staff_id,
+        :approver_id,
       )
     end
 

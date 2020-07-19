@@ -1,0 +1,46 @@
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th><%= t("activerecord.models.drawing") %></th>
+      <th><%= t("activerecord.attributes.task.title") %></th>
+      <th><%= t("activerecord.attributes.task.staff_id") %></th>
+      <th><%= t("activerecord.attributes.task.approver_id") %></th>
+      <th><%= t("activerecord.attributes.task.status") %></th>
+      <th><%= t("activerecord.attributes.task.deadline") %></th>
+      <th><%= t("activerecord.attributes.task.content") %></th>
+      <th><%= t("activerecord.attributes.revision.revision_number") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tasks.each do |task| %>
+      <tr data-href="<%= task_path(task.id) %>">
+        <td>
+          <p><%= task.drawing.drawing_number %></p>
+          <p><%= task.drawing.title %></p>
+        </td>
+        <td><%= link_to task.title, task_path(task.id) %></td>
+        <td>
+          <% if task.staff %>
+            <%= task.staff.name %>
+          <% end %>
+        </td>
+        <td>
+          <% if task.approver %>
+            <%= task.approver.name %>
+          <% end %>
+        </td>
+        <td><%= t("activerecord.attributes.task.enum.#{task.status}") %></td>
+        <td><%= l task.deadline, format: :date %></td>
+        <td><%= task.content %></td>
+        <td>
+          <% if task.revision %>
+            <%= task.revision.revision_number %>
+            <% if current_user == task.staff %>
+              <%= link_to "紐づけ解除", revision_assign_delete_task_path(task), method: :post %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

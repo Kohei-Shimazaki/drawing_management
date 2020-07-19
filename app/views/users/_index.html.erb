@@ -1,0 +1,12 @@
+<ul class="list-group">
+  <% current_user.company.users.each do |user| %>
+    <%= link_to user_path(user.id), class: "list_link" do %>
+      <li class="list-group-item">
+        <% if user.icon.attached? %>
+          <%= image_tag user.icon.variant(resize:'50x50').processed %>
+        <% end %>
+        <%= user.name %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
