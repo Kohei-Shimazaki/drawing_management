@@ -11,8 +11,45 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    @user = User.new(sign_up_params)
+    unless @user.valid?
+      render :new and return
+    end
 
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @company = Company.new
+    render :new_company
+  end
+
+  def new_company
+  end
+
+  def create_company
+    @user = User.new(session["devise.regist_data"]["user"])
+    @company = Company.new(company_params)
+    unless @company.valid?
+      render :new_company and return
+    end
+    @company.save
+    @user.company_id = @company.id
+    @user.save
+    @company.admin_id = @user.id
+    @company.save
+    sign_in(:user, @user)
+    redirect_to root_path
+  end
+
+protected
+
+  def company_params
+    params.require(:company).permit(
+      :name,
+      :icon,
+      :location,
+      :phone_number,
+      :overview,
+    )
   end
   # GET /resource/edit
   # def edit
@@ -37,8 +74,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  protected
 
     def after_update_path_for(resource)
       user_path(id: current_user.id)

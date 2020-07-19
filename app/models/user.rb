@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :icon
-  belongs_to :company
+  belongs_to :company, optional: true
   has_many :team_assigns, dependent: :destroy
   has_many :teams, through: :team_assigns
   has_many :has_tasks, class_name: 'Task', foreign_key: :staff_id, dependent: :nullify

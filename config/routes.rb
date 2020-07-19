@@ -8,8 +8,13 @@ Rails.application.routes.draw do
   resources :teams
   resources :team_assigns, only: %i(create destroy)
   devise_for :users, controllers: {
-    invitations: 'users/invitations'
+    invitations: 'users/invitations',
+    registrations: 'users/registrations'
   }
+  devise_scope :user do
+    get 'new_company', to: 'users/registrations#new_company'
+    post 'create_company', to: 'users/registrations#create_company'
+  end
   resources :users, only: [:show]
   resources :drawings
   resources :revisions
