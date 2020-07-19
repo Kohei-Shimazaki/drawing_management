@@ -15,7 +15,7 @@ class RevisionsController < ApplicationController
     @revision = Revision.new(revision_params)
     if @revision.save
       flash[:notice] = "#{I18n.t("activerecord.models.revision")}#{I18n.t("flash.create")}"
-      redirect_to new_revision_path
+      redirect_to drawing_path(@revision.drawing)
     else
       render :new
     end

@@ -1,0 +1,20 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <ul>
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="form-group">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control form_del_catebory" %>
+    </div>
+    <div class="field">
+      <%= form.label :explanation %>
+      <%= form.text_area :explanation, class: "form-control form_del_catebory" %>
+    </div>
+    <%= form.submit t("submit") %>
+  </div>
+<% end %>

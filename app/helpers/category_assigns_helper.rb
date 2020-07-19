@@ -1,0 +1,2 @@
+module CategoryAssignsHelper
+end

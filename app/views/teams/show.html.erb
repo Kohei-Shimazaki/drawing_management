@@ -1,0 +1,77 @@
+<div class="jumbotron text-center">
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <div class="card-body">
+          <% if @team.icon.attached? %>
+            <%= image_tag @team.icon.variant(resize:'100x100').processed, class: "team_image" %>
+          <% end %>
+          <h5 class="card-title"><%= @team.name %></h5>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body text-left">
+          <h5 class="card-title border-bottom"><%= t("activerecord.attributes.team.profile") %></h5>
+          <p class="card-text"><%= simple_format(@team.profile) %></p>
+          <% if current_user == @team.owner %>
+            <p class="card-text"><small><%= link_to "チーム編集", edit_team_path %></small></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-4">
+      <div id="members_form">
+        <%= render partial: 'team_assigns/form', locals: { team: @team, team_assign: @team_assign } %>
+      </div>
+
+      <div class="card">
+        <div class="card-header text-center">
+          <%= t("activerecord.attributes.team.members") %>
+        </div>
+        <div id="members_area">
+          <%= render partial: 'team_assigns/index', locals: { team: @team } %>
+        </div>
+      </div>
+
+      <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path(team_id: @team.id), class: "btn btn-primary btn-block mt-2 mb-1" %>
+      <div class="card">
+        <div class="card-header text-center">
+          <%= t("activerecord.models.drawing") %><%= t("crud.index") %>
+        </div>
+        <%= render partial: "drawings/index", locals: { drawings: @team.drawings } %>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header text-center">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a href="#card1_team" class="nav-link active" data-toggle="tab"><%= t("activerecord.models.task") %><%= t("crud.index") %></a>
+            </li>
+            <li class="nav-item">
+              <a href="#card2_team" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="tab-content">
+            <div id="card1_team" class="tab-pane active">
+              <%= render partial: "tasks/table", locals: {tasks: @team.drawings.map{ |drawing| drawing.tasks }.flatten } %>
+            </div>
+            <div id="card2_team", class="tab-pane text-left">
+              <div id="events_calendar">
+                <%= render partial: "calendars/calendar", locals: {tasks: @team.drawings.map{ |drawing| drawing.tasks }.flatten } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="card">
+  <% current_user.company.customers.each do |customer| %>
+    <% next if customer.id.nil? %>
+    <div class="card-header">
+      <%= customer.name %>
+    </div>
+    <ul class="list-group">
+      <% customer.projects.each do |project| %>
+        <% if project.id.present? %>
+          <div id="project_<%= project.id %>">
+            <%= link_to project_path(project.id), class: "list_link" do %>
+              <li class="list-group-item">
+                <%= project.name %>
+                <%= project.explanation %>
+                <object>
+                  <%= link_to t("crud.edit"), edit_project_path(id: project.id), remote: true %>
+                </object>
+                <object>
+                  <%= link_to t("crud.destroy"), project_path(id: project.id), method: :delete, remote: true,
+                            data: { confirm: I18n.t("confirm.destroy")} %>
+                </object>
+              </li>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

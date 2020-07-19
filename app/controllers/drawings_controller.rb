@@ -7,6 +7,7 @@ class DrawingsController < ApplicationController
 
   def new
     @drawing = Drawing.new
+    @drawing.team_id = params[:team_id]
   end
 
   def create
@@ -46,6 +47,9 @@ class DrawingsController < ApplicationController
         :title,
         :drawing_number,
         :explanation,
+        :team_id,
+        :project_id,
+        category_ids: []
       )
     end
 

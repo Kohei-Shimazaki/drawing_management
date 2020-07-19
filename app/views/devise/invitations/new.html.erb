@@ -1,18 +1,65 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<div class="jumbotron text-center">
+  <h2><%= t "devise.invitations.new.header" %></h2>
+</div>
 
-<%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :file %>
-    <%= f.file_field :file %>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a href="#card1" class="nav-link active" data-toggle="tab">社員</a>
+        </li>
+        <li class="nav-item">
+          <a href="#card2" class="nav-link" data-toggle="tab">客先</a>
+        </li>
+        <li class="nav-item">
+          <a href="#card3" class="nav-link" data-toggle="tab">プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a href="#card4" class="nav-link" data-toggle="tab">カテゴリー</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content">
+        <div id="card1" class="tab-pane active">
+          <%= render "form" %>
+        </div>
+
+        <div id="card2", class="tab-pane">
+          <div class="row">
+            <div class="col-lg-4">
+              <%= render partial: "customers/form", locals: { customer: @customer} %>
+            </div>
+            <div class="col-lg-8" id="customer_area">
+              <%= render partial: "customers/index" %>
+            </div>
+          </div>
+        </div>
+
+        <div id="card3", class="tab-pane">
+          <div class="row">
+            <div class="col-lg-4" id="project_form">
+              <%= render partial: "projects/form", locals: { project: @project } %>
+            </div>
+            <div class="col-lg-8" id="project_area">
+              <%= render partial: "projects/index" %>
+            </div>
+          </div>
+        </div>
+
+        <div id="card4", class="tab-pane">
+          <div class="row">
+            <div class="col-lg-4">
+              <%= render partial: "categories/form", locals: { category: @category } %>
+            </div>
+            <div class="col-lg-8" id="category_area">
+              <%= render partial: "categories/index" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.hidden_field :invited_by, value: current_user %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t("devise.invitations.new.submit_button") %>
-  </div>
-<% end %>
+</div>

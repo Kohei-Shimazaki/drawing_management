@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @question.drawing_id = params[:task_id]
+    @question.task_id = params[:task_id]
   end
 
   def create

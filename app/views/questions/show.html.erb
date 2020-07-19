@@ -5,10 +5,33 @@
         <h4><%= @question.title %></h4>
       </div>
       <div class="card-body text-left">
-        <%= @question.content %>
-        <%= @question.attachment %>
-        <div id="likes_buttons_<%= @question.id %>">
-          <%= render partial: 'likes/like', locals: { question: @question } %>
+        <div class="row">
+          <div class="col-lg-2">
+            <% if @question.task.staff.icon.attached? %>
+              <%= image_tag @question.task.staff.icon.variant(resize:'100x100').processed, class: "user_image" %>
+            <% end %>
+            <h5 class="card-title"><%= @question.task.staff.name %></h5>
+          </div>
+          <div class="col-lg-10">
+            <div class="border-bottom">
+              <div>
+                <strong><%= t("activerecord.models.project") %>:</strong><%= @question.task.drawing.project.name %>
+              </div>
+              <div>
+                <strong><%= t("activerecord.models.drawing") %>:</strong><%= @question.task.drawing.title %>
+              </div>
+              <div>
+                <strong><%= t("activerecord.models.task") %>:</strong><%= @question.task.title %>
+              </div>
+            </div>
+            <%= @question.content %>
+            <% if @question.attachment.attached? %>
+              <%= link_to t("activerecord.attributes.question.attachment"), @question.attachment %>
+            <% end %>
+            <div id="likes_buttons_<%= @question.id %>">
+              <%= render partial: 'likes/like', locals: { question: @question } %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

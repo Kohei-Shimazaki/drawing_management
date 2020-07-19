@@ -1,0 +1,24 @@
+.simple-calendar {
+  .day {}
+
+  .wday-0 {background-color: peachpuff;}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {background-color: lightskyblue;}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {background-color: lightgray;}
+  .next-month {background-color: lightgray;}
+  .current-month {}
+
+  .has-events {
+  }
+}

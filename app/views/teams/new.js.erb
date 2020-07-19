@@ -1,2 +1,2 @@
-$("#team-modal").html("<%= escape_javascript(render 'form') %>")
+$("#team-modal").html("<%= escape_javascript(render 'form', { team: Team.new }) %>")
 $("#team-modal").modal("show")
