@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'users#show'
   resources :companies
   resources :customers
   resources :projects
@@ -27,5 +28,4 @@ Rails.application.routes.draw do
   end
   resources :likes, only: %i(create destroy)
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  root to: 'drawings#index'
 end
