@@ -8,7 +8,6 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.drawing_id = params[:drawing_id]
-    @drawing = Drawing.find(params[:drawing_id])
   end
 
   def create
