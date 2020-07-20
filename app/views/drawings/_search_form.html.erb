@@ -1,0 +1,16 @@
+<%= search_form_for @q do |form| %>
+  <div class="field">
+    <%= form.label :project_id_eq, "プロジェクト" %>
+    <%= form.collection_select :project_id_in, @projects, :id, :name, include_blank: "指定なし" %>
+  </div>
+  <div class="field">
+    <%= form.label :category_id_in, "カテゴリー" %>
+    <%= form.collection_check_boxes :categories_id_in, @categories, :id, :name %>
+  </div>
+  <div class="field">
+    <%= form.label :title, "図名" %>
+    <%= form.search_field :title_cont %>
+  </div>
+
+  <%= form.submit "検索" %>
+<% end %>
