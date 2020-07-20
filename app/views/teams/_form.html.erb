@@ -20,6 +20,7 @@
           </div>
           <div class="field">
             <%= form.hidden_field :owner_id, value: current_user.id %>
+            <%= form.hidden_field :company_id, value: current_user.company.id %>
           </div>
           <%= form.submit t("submit") %>
         </div>

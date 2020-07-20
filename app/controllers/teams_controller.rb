@@ -42,6 +42,7 @@ class TeamsController < ApplicationController
         :profile,
         :icon,
         :owner_id,
+        :company_id,
       )
     end
 
