@@ -5,6 +5,7 @@ class User < ApplicationRecord
   belongs_to :company, optional: true
   has_many :team_assigns, dependent: :destroy
   has_many :teams, through: :team_assigns, source: :team
+  has_many :messages, dependent: :destroy
   has_many :has_tasks, class_name: 'Task', foreign_key: :staff_id, dependent: :nullify
   has_many :has_approved_tasks, class_name: 'Task', foreign_key: :approver_id, dependent: :nullify
   has_many :likes, dependent: :destroy

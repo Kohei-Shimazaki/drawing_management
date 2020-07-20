@@ -1,0 +1,11 @@
+<h1 id="chat" data-team_id="<%= @team.id %>" data-user_id="<%= current_user.id %>">
+  グループチャット
+</h1>
+
+<div id="messages">
+  <%= render @messages %>
+</div>
+<form>
+  <label>Say something:</label><br>
+  <input type="text" data-behavior="team_speaker", placeholder="new message">
+</form>

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :projects
   resources :categories
   resources :category_assigns, only: %i(create destroy)
-  resources :teams
+  resources :teams do
+    member do
+      get :chat
+    end
+  end
   resources :team_assigns, only: %i(create destroy)
   devise_for :users, controllers: {
     invitations: 'users/invitations',
@@ -33,4 +37,5 @@ Rails.application.routes.draw do
   end
   resources :likes, only: %i(create destroy)
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount ActionCable.server => '/cable'
 end

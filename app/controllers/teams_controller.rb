@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: %i(edit update show destroy)
+  before_action :set_team, only: %i(edit update show destroy chat)
 
   def create
     @team = Team.new(team_params)
@@ -33,6 +33,10 @@ class TeamsController < ApplicationController
     @team.destroy
     flash[:notice] = "#{I18n.t("activerecord.models.team")}#{I18n.t("flash.destroy")}"
     redirect_to user_path(current_user)
+  end
+
+  def chat
+    @messages = @team.messages
   end
 
   private
