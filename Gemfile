@@ -15,6 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 gem 'mini_magick'
 gem "roo"
+gem 'ransack'
 gem "simple_calendar"
 gem 'devise'
 gem 'devise-i18n'

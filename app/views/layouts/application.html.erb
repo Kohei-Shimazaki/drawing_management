@@ -24,7 +24,32 @@
           <%= link_to t("my_page"), user_path(current_user), class: "navbar-brand" %>
           <%= link_to t("log_out"), destroy_user_session_path, method: :delete, class: "navbar-brand" %>
           <%= link_to "登録", new_user_invitation_path, class: "navbar-brand" %>
-          <div class="dropdown">
+          <%= link_to "図面検索", drawings_path, class: "navbar-brand" %>
+          <div class="dropdown navbar-brand">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              客先
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% current_user.company.customers.each do |customer| %>
+                <div>
+                  <%= link_to customer.name, customer_path(customer), class: "dropdown-item" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="dropdown navbar-brand">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              プロジェクト
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% current_user.company.customers.map{|customer| customer.projects }.flatten.each do |project| %>
+                <div>
+                  <%= link_to project.name, project_path(project), class: "dropdown-item" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="dropdown navbar-brand">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Q
             </button>

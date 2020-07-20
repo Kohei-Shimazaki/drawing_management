@@ -1,13 +1,18 @@
-
 <div class="jumbotron text-center">
   <h2><%= t("activerecord.models.drawing") %><%= t("crud.index") %></h2>
 </div>
+
 <div class="container">
+  <%= render "search_form" %>
+
   <table class="table table-bordered">
     <thead>
       <tr>
+        <th><%= t("activerecord.models.customer") %></th>
+        <th><%= t("activerecord.models.project") %></th>
+        <th><%= t("activerecord.models.category") %></th>
         <th><%= t("activerecord.attributes.drawing.title") %></th>
-        <th><%= t("activerecord.attributes.drawing.drawing_number") %></th>
+        <th><%= sort_link(@q, :drawing_number, t("activerecord.attributes.drawing.drawing_number")) %></th>
         <th><%= t("activerecord.attributes.drawing.explanation") %></th>
         <th colspan="3"></th>
       </tr>
@@ -15,6 +20,13 @@
     <tbody>
       <% @drawings.each do |drawing| %>
         <tr>
+          <td><%= link_to drawing.project.customer.name, customer_path(drawing.project.customer) %></td>
+          <td><%= link_to drawing.project.name, project_path(drawing.project) %></td>
+          <td>
+            <% drawing.categories.each do |category| %>
+              <p><%= category.name %></p>
+            <% end %>
+          </td>
           <td><%= drawing.title %></td>
           <td><%= drawing.drawing_number %></td>
           <td><%= drawing.explanation %></td>
