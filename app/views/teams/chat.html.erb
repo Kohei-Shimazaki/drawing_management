@@ -1,11 +1,17 @@
-<h1 id="chat" data-team_id="<%= @team.id %>" data-user_id="<%= current_user.id %>">
-  グループチャット
-</h1>
-
-<div id="messages">
-  <%= render @messages %>
+<div class="jumbotron text-center">
+  <h1 id="chat" data-team_id="<%= @team.id %>" data-user_id="<%= current_user.id %>">
+    <%= @team.name %>チャットルーム
+  </h1>
 </div>
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="team_speaker", placeholder="new message">
-</form>
+
+<div class="container">
+  <form>
+    <label>Say something:</label><br>
+    <input type="text" data-behavior="team_speaker", placeholder="new message">
+  </form>
+  <div id="messages_<%= @team.id %>">
+    <ul class="list-group">
+      <%= render @messages %>
+    </ul>
+  </div>
+</div>

@@ -36,7 +36,7 @@ class TeamsController < ApplicationController
   end
 
   def chat
-    @messages = @team.messages
+    @messages = @team.messages.order(created_at: :desc)
   end
 
   private

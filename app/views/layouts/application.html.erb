@@ -42,7 +42,7 @@
               客先
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <% current_user.company.customers.each do |customer| %>
+              <% current_user.company.customers.select{|customer| customer.id }.each do |customer| %>
                 <div>
                   <%= link_to customer.name, customer_path(customer), class: "dropdown-item" %>
                 </div>
