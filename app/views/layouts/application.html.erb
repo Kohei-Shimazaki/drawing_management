@@ -27,10 +27,22 @@
           <%= link_to "図面検索", drawings_path, class: "navbar-brand" %>
           <div class="dropdown navbar-brand">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              チャット
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% current_user.teams.each do |team| %>
+                <div>
+                  <%= link_to team.name, chat_team_path(team), class: "dropdown-item" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="dropdown navbar-brand">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               客先
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <% current_user.company.customers.each do |customer| %>
+              <% current_user.company.customers.select{|customer| customer.id }.each do |customer| %>
                 <div>
                   <%= link_to customer.name, customer_path(customer), class: "dropdown-item" %>
                 </div>

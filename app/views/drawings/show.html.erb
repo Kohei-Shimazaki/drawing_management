@@ -19,9 +19,7 @@
             <td><%= @drawing.project.customer.name %></td>
             <td><%= @drawing.project.name %></td>
             <td>
-              <% @drawing.categories.each do |category| %>
-                <%= category.name %>/
-              <% end %>
+              <%= @drawing.categories.map{|category| category.name }.join("/") %>
             </td>
           </tr>
         </tbody>

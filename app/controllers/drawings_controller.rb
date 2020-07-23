@@ -2,9 +2,9 @@ class DrawingsController < ApplicationController
   before_action :set_drawing, only: %i(show edit update destroy)
 
   def index
-    @q = Drawing.ransack(params[:q])
-    @categories = Category.all
-    @projects = Project.all
+    @q = current_user.company.drawings.ransack(params[:q])
+    @categories = current_user.company.categories
+    @projects = current_user.company.projects
     @drawings = @q.result.includes(:categories, :project)
   end
 

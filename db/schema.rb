@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_083712) do
+ActiveRecord::Schema.define(version: 2020_07_20_073702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,10 @@ ActiveRecord::Schema.define(version: 2020_07_16_083712) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_messages_on_team_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -212,6 +216,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_083712) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "owner_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_teams_on_company_id"
     t.index ["owner_id"], name: "index_teams_on_owner_id"
   end
 
@@ -259,6 +265,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_083712) do
   add_foreign_key "drawings", "projects"
   add_foreign_key "drawings", "teams"
   add_foreign_key "evidences", "tasks"
+  add_foreign_key "messages", "teams"
+  add_foreign_key "messages", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "projects", "customers"
   add_foreign_key "questions", "tasks"
@@ -268,6 +276,7 @@ ActiveRecord::Schema.define(version: 2020_07_16_083712) do
   add_foreign_key "tasks", "revisions"
   add_foreign_key "tasks", "users", column: "approver_id"
   add_foreign_key "tasks", "users", column: "staff_id"
+  add_foreign_key "teams", "companies"
   add_foreign_key "teams", "users", column: "owner_id"
   add_foreign_key "users", "companies"
 end

@@ -22,7 +22,7 @@
       </div>
       <div class="field">
         <%= form.label :project_id %>
-        <%= form.select :project_id, current_user.company.customers.map{|customer| customer.projects }.flatten.map{ |customer| [customer.name, customer.id] if customer.id }, prompt: "選択してください" %>
+        <%= form.select :project_id, current_user.company.projects.map{ |project| [project.name, project.id] if project.id }, prompt: "選択してください" %>
       </div>
       <div class="field">
         <%= form.label :category_ids %>

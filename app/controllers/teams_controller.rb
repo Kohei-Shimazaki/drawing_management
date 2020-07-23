@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: %i(edit update show destroy)
+  before_action :set_team, only: %i(edit update show destroy chat)
 
   def create
     @team = Team.new(team_params)
@@ -35,6 +35,10 @@ class TeamsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def chat
+    @messages = @team.messages.order(created_at: :desc)
+  end
+
   private
     def team_params
       params.require(:team).permit(
@@ -42,6 +46,7 @@ class TeamsController < ApplicationController
         :profile,
         :icon,
         :owner_id,
+        :company_id,
       )
     end
 

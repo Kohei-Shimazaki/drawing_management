@@ -1,0 +1,15 @@
+<div class="message">
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col-lg-2">
+        <% if message.user.icon.attached? %>
+          <%= image_tag message.user.icon.variant(resize:'50x50').processed %>
+        <% end %>
+        <p><%= message.user.name %></p>
+      </div>
+      <div class="col-lg-10">
+        <%= message.content %>
+      </div>
+    </div>
+  </li>
+</div>
