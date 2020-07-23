@@ -23,9 +23,7 @@
           <td><%= link_to drawing.project.customer.name, customer_path(drawing.project.customer) %></td>
           <td><%= link_to drawing.project.name, project_path(drawing.project) %></td>
           <td>
-            <% drawing.categories.each do |category| %>
-              <p><%= category.name %></p>
-            <% end %>
+            <%= drawing.categories.map{|category| category.name }.join("/") %>
           </td>
           <td><%= drawing.title %></td>
           <td><%= drawing.drawing_number %></td>

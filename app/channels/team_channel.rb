@@ -14,4 +14,8 @@ class TeamChannel < ApplicationCable::Channel
       user_id: current_user.id
     )
   end
+
+  def notification(data)
+    ActionCable.server.broadcast 'team_channel_1', notice: data['notice']
+  end
 end

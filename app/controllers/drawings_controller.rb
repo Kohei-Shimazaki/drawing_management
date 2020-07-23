@@ -3,8 +3,8 @@ class DrawingsController < ApplicationController
 
   def index
     @q = current_user.company.drawings.ransack(params[:q])
-    @categories = Category.all
-    @projects = Project.all
+    @categories = current_user.company.categories
+    @projects = current_user.company.projects
     @drawings = @q.result.includes(:categories, :project)
   end
 
