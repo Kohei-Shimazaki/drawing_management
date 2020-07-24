@@ -15,7 +15,4 @@ class TeamChannel < ApplicationCable::Channel
     )
   end
 
-  def notification(data)
-    ActionCable.server.broadcast 'team_channel_1', notice: data['notice']
-  end
 end
