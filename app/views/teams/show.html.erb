@@ -40,14 +40,6 @@
           <%= render partial: 'team_assigns/index', locals: { team: @team } %>
         </div>
       </div>
-
-      <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path(team_id: @team.id), class: "btn btn-primary btn-block mt-2 mb-1" %>
-      <div class="card">
-        <div class="card-header text-center">
-          <%= t("activerecord.models.drawing") %><%= t("crud.index") %>
-        </div>
-        <%= render partial: "drawings/index", locals: { drawings: @team.drawings } %>
-      </div>
     </div>
 
     <div class="col-lg-8">
@@ -55,19 +47,26 @@
         <div class="card-header text-center">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a href="#card1_team" class="nav-link active" data-toggle="tab"><%= t("activerecord.models.task") %><%= t("crud.index") %></a>
+              <a href="#card1_team" class="nav-link active" data-toggle="tab"><%= t("activerecord.models.drawing") %><%= t("crud.index") %></a>
             </li>
             <li class="nav-item">
-              <a href="#card2_team" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+              <a href="#card2_team" class="nav-link" data-toggle="tab"><%= t("activerecord.models.task") %><%= t("crud.index") %></a>
+            </li>
+            <li class="nav-item">
+              <a href="#card3_team" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
             </li>
           </ul>
         </div>
         <div class="card-body">
           <div class="tab-content">
             <div id="card1_team" class="tab-pane active">
+              <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path(team_id: @team.id), class: "btn btn-primary btn-block mt-2 mb-1" %>
+              <%= render partial: "drawings/index", locals: { drawings: @team.drawings } %>
+            </div>
+            <div id="card2_team" class="tab-pane">
               <%= render partial: "tasks/table", locals: {tasks: @team.drawings.map{ |drawing| drawing.tasks }.flatten } %>
             </div>
-            <div id="card2_team", class="tab-pane text-left">
+            <div id="card3_team", class="tab-pane text-left">
               <div id="events_calendar">
                 <%= render partial: "calendars/calendar", locals: {tasks: @team.drawings.map{ |drawing| drawing.tasks }.flatten } %>
               </div>

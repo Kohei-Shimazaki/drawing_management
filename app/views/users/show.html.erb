@@ -34,12 +34,6 @@
           <%= render partial: "teams/index", locals: { teams: @user.teams } %>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header text-center">
-          <%= t("activerecord.models.drawing") %><%= t("crud.index") %>
-        </div>
-        <%= render partial: "drawings/index", locals: { drawings: @user.teams.map{ |team| team.drawings }.flatten } %>
-      </div>
     </div>
 
     <div class="col-lg-8">
@@ -47,25 +41,31 @@
         <div class="card-header text-center">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a href="#card1_user" class="nav-link active" data-toggle="tab"><%= t("activerecord.attributes.task.staff_id") %><%= t("activerecord.models.task") %></a>
+              <a href="#card1_user" class="nav-link active" data-toggle="tab"><%= t("activerecord.models.drawing") %><%= t("crud.index") %></a>
             </li>
             <li class="nav-item">
-              <a href="#card2_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.approver_id") %><%= t("activerecord.models.task") %></a>
+              <a href="#card2_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.staff_id") %><%= t("activerecord.models.task") %></a>
             </li>
             <li class="nav-item">
-              <a href="#card3_user" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+              <a href="#card3_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.approver_id") %><%= t("activerecord.models.task") %></a>
+            </li>
+            <li class="nav-item">
+              <a href="#card4_user" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
             </li>
           </ul>
         </div>
         <div class="card-body">
           <div class="tab-content">
             <div id="card1_user" class="tab-pane active">
+              <%= render partial: "drawings/index", locals: { drawings: @user.teams.map{ |team| team.drawings }.flatten } %>
+            </div>
+            <div id="card2_user" class="tab-pane">
               <%= render partial: "tasks/table", locals: {tasks: @user.has_tasks } %>
             </div>
-            <div id="card2_user", class="tab-pane">
+            <div id="card3_user", class="tab-pane">
               <%= render partial: "tasks/table", locals: {tasks: @user.has_approved_tasks } %>
             </div>
-            <div id="card3_user", class="tab-pane text-left">
+            <div id="card4_user", class="tab-pane text-left">
               <div id="events_calendar">
                 <%= render partial: "calendars/calendar", locals: {tasks: @user.has_tasks | @user.has_approved_tasks } %>
               </div>
