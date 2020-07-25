@@ -11,6 +11,7 @@
             <th><%= t("activerecord.attributes.customer.name") %></th>
             <th><%= t("activerecord.attributes.project.name") %></th>
             <th><%= t("activerecord.attributes.category.name") %></th>
+            <th><%= t("activerecord.models.team") %></th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
             <td>
               <%= @drawing.categories.map{|category| category.name }.join("/") %>
             </td>
+            <td><%= @drawing.team.name %></td>
           </tr>
         </tbody>
       </table>

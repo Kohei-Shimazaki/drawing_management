@@ -8,6 +8,10 @@
     <%= form.collection_check_boxes :categories_id_in, @categories, :id, :name %>
   </div>
   <div class="field">
+    <%= form.label :team_id_eq, "チーム" %>
+    <%= form.collection_select :team_id_in, @teams, :id, :name, include_blank: "指定なし" %>
+  </div>
+  <div class="field">
     <%= form.label :title, "図名" %>
     <%= form.search_field :title_cont %>
   </div>

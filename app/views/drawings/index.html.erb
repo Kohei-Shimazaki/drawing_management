@@ -11,6 +11,7 @@
         <th><%= t("activerecord.models.customer") %></th>
         <th><%= t("activerecord.models.project") %></th>
         <th><%= t("activerecord.models.category") %></th>
+        <th><%= t("activerecord.models.team") %></th>
         <th><%= t("activerecord.attributes.drawing.title") %></th>
         <th><%= sort_link(@q, :drawing_number, t("activerecord.attributes.drawing.drawing_number")) %></th>
         <th><%= t("activerecord.attributes.drawing.explanation") %></th>
@@ -25,6 +26,7 @@
           <td>
             <%= drawing.categories.map{|category| category.name }.join("/") %>
           </td>
+          <td><%= drawing.team.name %></td>
           <td><%= drawing.title %></td>
           <td><%= drawing.drawing_number %></td>
           <td><%= drawing.explanation %></td>
