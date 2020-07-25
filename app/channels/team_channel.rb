@@ -8,7 +8,7 @@ class TeamChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create!(
+    message = Message.create!(
       content: data['message'],
       team_id: data['team_id'],
       user_id: current_user.id
