@@ -1,0 +1,1 @@
+$("#events_calendar").html("<%= escape_javascript render(partial: "calendars/calendar", locals: {tasks: @user.has_tasks | @user.has_approved_tasks }) %>");
