@@ -15,7 +15,14 @@
     <% tasks.each do |task| %>
       <tr data-href="<%= task_path(task.id) %>">
         <td>
-          <p><%= task.drawing.drawing_number %></p>
+          <p>
+            <% if current_user == task.staff %>
+              <%= link_to revision_assign_delete_task_path(task), method: :post do %>
+                <i class="fas fa-minus"></i>
+              <% end %>
+            <% end %>
+            <%= task.drawing.drawing_number %>
+          </p>
           <p><%= task.drawing.title %></p>
         </td>
         <td><%= link_to task.title, task_path(task.id) %></td>
@@ -35,9 +42,6 @@
         <td>
           <% if task.revision %>
             <%= task.revision.revision_number %>
-            <% if current_user == task.staff %>
-              <%= link_to "紐づけ解除", revision_assign_delete_task_path(task), method: :post %>
-            <% end %>
           <% end %>
         </td>
       </tr>

@@ -38,13 +38,19 @@
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a href="#card1" class="nav-link active" data-toggle="tab">レビジョン</a>
+          <a href="#card1" class="nav-link active" data-toggle="tab">
+            <i class="fas fa-book"></i> <%= t("activerecord.models.revision") %>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#card2" class="nav-link" data-toggle="tab">タスク</a>
+          <a href="#card2" class="nav-link" data-toggle="tab">
+            <i class="fas fa-pencil-ruler"></i> <%= t("activerecord.models.task") %>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#card3" class="nav-link" data-toggle="tab">カレンダー</a>
+          <a href="#card3" class="nav-link" data-toggle="tab">
+            <i class="far fa-calendar-alt"></i> <%= t("calendar") %>
+          </a>
         </li>
       </ul>
     </div>

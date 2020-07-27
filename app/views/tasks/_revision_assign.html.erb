@@ -7,6 +7,8 @@
     <div class="field">
       <%= form.hidden_field :revision_id, value: revision.id %>
     </div>
-    <%= form.submit t("submit"), id: "notification" %>
+    <button type="submit" name="button" class="btn btn-primary" id="notification">
+      <i class="fas fa-paperclip"></i> <%= t("submit") %>
+    </button>
   </div>
 <% end %>
