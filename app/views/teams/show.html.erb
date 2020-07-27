@@ -4,7 +4,7 @@
       <div class="col-md-2">
         <div class="card-body">
           <% if @team.icon.attached? %>
-            <%= image_tag @team.icon.variant(resize:'100x100').processed, class: "team_image" %>
+            <%= image_tag @team.icon.variant(resize:'100x100').processed, class: "large_icon" %>
           <% end %>
           <h5 class="card-title"><%= @team.name %></h5>
         </div>

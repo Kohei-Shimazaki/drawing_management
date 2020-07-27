@@ -3,7 +3,7 @@
     <%= link_to team_path(team.id), class: "list_link" do %>
       <li class="list-group-item">
         <% if team.icon.attached? %>
-          <%= image_tag team.icon.variant(resize:'50x50').processed %>
+          <%= image_tag team.icon.variant(resize:'50x50').processed, class: "small_icon" %>
         <% end %>
         <%= team.name %>
         <% if current_user == team.owner %>

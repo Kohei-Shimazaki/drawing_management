@@ -1,0 +1,30 @@
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th><%= sort_link(@q, :employee_number, t("activerecord.attributes.user.employee_number")) %></th>
+      <th><%= t("activerecord.attributes.user.icon") %></th>
+      <th><%= sort_link(@q, :name, t("activerecord.attributes.user.name")) %></th>
+      <th><%= t("activerecord.attributes.user.email") %></th>
+      <th><%= t("activerecord.models.team") %></th>
+      <th><%= t("activerecord.attributes.team.owner_id") %></th>
+      <th><%= t("activerecord.attributes.user.profile") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.employee_number %></td>
+        <td>
+          <% if user.icon.attached? %>
+            <%= image_tag user.icon.variant(resize:'50x50').processed, class: "small_icon" %>
+          <% end %>
+        </td>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.teams.map{ |team| team.name }.join("/") %></td>
+        <td><%= user.teams.select{ |team| team.owner == user }.map{ |team| team.name }.join("/") %></td>
+        <td><%= user.profile %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

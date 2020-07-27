@@ -13,17 +13,26 @@
         <div class="card-body text-left">
           <h5 class="card-title border-bottom"><%= t("activerecord.attributes.company.overview") %></h5>
           <p class="card-text"><%= simple_format(@company.overview) %></p>
-          <p class="card-text"><small><%= link_to "会社編集", edit_company_path %></small></p>
+          <p class="card-text">
+            <small>
+              <%= link_to edit_company_path do %>
+                <i class="fas fa-edit"></i> <%= t("activerecord.models.company") %><%= t("crud.edit") %>
+              <% end %>
+            </small>
+          </p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container ">
+<div class="container">
   <div class="row">
-    <div class="mx-auto", id="members_area">
-      <%= render partial: 'users/index' %>
+    <div>
+      <%= render "search_form" %>
+    </div>
+    <div>
+      <%= render partial: 'users/table', locals: { users: @users } %>
     </div>
   </div>
 </div>

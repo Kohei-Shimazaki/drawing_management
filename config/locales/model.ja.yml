@@ -99,8 +99,8 @@ ja:
       team:
         name: 名前
         profile: チームプロフィール
-        icon: チームアイコン
-        owner_id: チームリーダーID
+        icon: アイコン
+        owner_id: リーダー
         members: チームメンバー
       team_assign:
         user_id: メンバー
@@ -109,7 +109,7 @@ ja:
         name: 名前
         employee_number: 社員番号
         email: Eメールアドレス
-        icon: ユーザーアイコン
+        icon: アイコン
         profile: プロフィール
         password: パスワード
         password_confirmation: パスワード確認

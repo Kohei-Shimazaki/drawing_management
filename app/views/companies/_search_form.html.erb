@@ -1,0 +1,12 @@
+<%= search_form_for @q, url: company_path(current_user.company) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.search_field :name_cont %>
+  </div>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.search_field :email_cont %>
+  </div>
+
+  <%= form.submit "検索" %>
+<% end %>

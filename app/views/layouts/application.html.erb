@@ -21,6 +21,13 @@
         <% if user_signed_in? %>
           <div id="team_ids", data-team_id="<%= current_user.teams.map{ |team| team.id } %>">
           </div>
+          <%= link_to company_path(current_user.company), class: "navbar-brand" do %>
+            <% if current_user.company.icon.attached? %>
+              <%= image_tag current_user.company.icon.variant(resize:'50x50').processed, class: "small_icon" %>
+            <% else %>
+              <%= t("activerecord.models.company") %>
+            <% end %>
+          <% end %>
           <%= link_to t("my_page"), user_path(current_user), class: "navbar-brand" %>
           <%= link_to t("log_out"), destroy_user_session_path, method: :delete, class: "navbar-brand" %>
           <%= link_to "登録", new_user_invitation_path, class: "navbar-brand" %>
@@ -28,7 +35,7 @@
 
           <div class="dropdown navbar-brand">
             <button class="btn btn-primary dropdown-toggle" type="button" id="customer_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              客先
+              <%= t("activerecord.models.customer") %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <% current_user.company.customers.select{|customer| customer.id }.each do |customer| %>
@@ -40,7 +47,7 @@
           </div>
           <div class="dropdown navbar-brand">
             <button class="btn btn-primary dropdown-toggle" type="button" id="project_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              プロジェクト
+              <%= t("activerecord.models.project") %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <% current_user.company.customers.map{|customer| customer.projects }.flatten.each do |project| %>

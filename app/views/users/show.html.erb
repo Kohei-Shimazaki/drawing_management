@@ -11,7 +11,7 @@
         <div class="card-body">
 
           <% if @user.icon.attached? %>
-            <%= image_tag @user.icon.variant(resize:'100x100').processed, class: "user_image" %>
+            <%= image_tag @user.icon.variant(resize:'100x100').processed, class: "large_icon" %>
           <% end %>
           <h5 class="card-title"><%= @user.name %></h5>
         </div>
