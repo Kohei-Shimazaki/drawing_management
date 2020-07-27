@@ -1,7 +1,7 @@
 <%= form_with(model: team_assign) do |form| %>
   <div class="form-group">
     <div class="field">
-      <%= form.label :user_id %>
+      <i class="fas fa-user-plus"></i> <%= t("crud.new") %><%= form.label :user_id %>
       <%= form.collection_select :user_id, current_user.company.users - @team.members, :id, :name, prompt: "選択してください", class: "custom-select" %>
     </div>
     <div class="field">

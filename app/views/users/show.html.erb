@@ -1,8 +1,15 @@
 <div class="jumbotron text-center">
+  <div class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
         <div class="card-body">
+
           <% if @user.icon.attached? %>
             <%= image_tag @user.icon.variant(resize:'100x100').processed, class: "user_image" %>
           <% end %>
@@ -11,9 +18,15 @@
       </div>
       <div class="col-md-10">
         <div class="card-body text-left">
-          <h5 class="card-title"><%= t("activerecord.attributes.user.profile") %></h5>
+          <h5 class="card-title border-bottom"><i class="far fa-address-card"></i> <%= t("activerecord.attributes.user.profile") %></h5>
           <p class="card-text"><%= simple_format(@user.profile) %></p>
-          <p class="card-text"><small><%= link_to "ユーザー編集", edit_user_registration_path %></small></p>
+          <p class="card-text">
+            <small>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fas fa-edit"></i> <%= t("activerecord.models.user") %><%= t("crud.edit") %>
+              <% end %>
+            </small>
+          </p>
         </div>
       </div>
     </div>
@@ -28,7 +41,7 @@
       <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
       <div class="card">
         <div class="card-header text-center">
-          <%= t("activerecord.attributes.team_assign.team_id") %>
+          <i class="fas fa-users"></i> <%= t("activerecord.attributes.team_assign.team_id") %>
         </div>
         <div id="teams_area">
           <%= render partial: "teams/index", locals: { teams: @user.teams } %>
@@ -41,16 +54,24 @@
         <div class="card-header text-center">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a href="#card1_user" class="nav-link active" data-toggle="tab"><%= t("activerecord.models.drawing") %><%= t("crud.index") %></a>
+              <a href="#card1_user" class="nav-link active" data-toggle="tab">
+                <i class="fas fa-book"></i> <%= t("activerecord.models.drawing") %><%= t("crud.index") %>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#card2_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.staff_id") %><%= t("activerecord.models.task") %></a>
+              <a href="#card2_user" class="nav-link" data-toggle="tab">
+                <i class="fas fa-pencil-ruler"></i> <%= t("activerecord.attributes.task.staff_id") %><%= t("activerecord.models.task") %>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#card3_user" class="nav-link" data-toggle="tab"><%= t("activerecord.attributes.task.approver_id") %><%= t("activerecord.models.task") %></a>
+              <a href="#card3_user" class="nav-link" data-toggle="tab">
+                <i class="fas fa-stamp"></i> <%= t("activerecord.attributes.task.approver_id") %><%= t("activerecord.models.task") %>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#card4_user" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+              <a href="#card4_user" class="nav-link" data-toggle="tab">
+                <i class="far fa-calendar-alt"></i> <%= t("calendar") %>
+              </a>
             </li>
           </ul>
         </div>

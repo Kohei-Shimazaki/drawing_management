@@ -14,7 +14,11 @@
           <h5 class="card-title border-bottom"><%= t("activerecord.attributes.team.profile") %></h5>
           <p class="card-text"><%= simple_format(@team.profile) %></p>
           <% if current_user == @team.owner %>
-            <p class="card-text"><small><%= link_to "チーム編集", edit_team_path %></small></p>
+            <p class="card-text">
+              <%= link_to edit_team_path do %>
+                <small><i class="fas fa-edit"></i> <%= t("activerecord.models.team") %><%= t("crud.edit") %></small>
+              <% end %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -47,13 +51,19 @@
         <div class="card-header text-center">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a href="#card1_team" class="nav-link active" data-toggle="tab"><%= t("activerecord.models.drawing") %><%= t("crud.index") %></a>
+              <a href="#card1_team" class="nav-link active" data-toggle="tab">
+                <i class="fas fa-book"></i> <%= t("activerecord.models.drawing") %><%= t("crud.index") %>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#card2_team" class="nav-link" data-toggle="tab"><%= t("activerecord.models.task") %><%= t("crud.index") %></a>
+              <a href="#card2_team" class="nav-link" data-toggle="tab">
+                <i class="fas fa-pencil-ruler"></i> <%= t("activerecord.models.task") %><%= t("crud.index") %>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#card3_team" class="nav-link" data-toggle="tab"><%= t("calendar") %></a>
+              <a href="#card3_team" class="nav-link" data-toggle="tab">
+                <i class="far fa-calendar-alt"></i> <%= t("calendar") %>
+              </a>
             </li>
           </ul>
         </div>
