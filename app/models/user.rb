@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_questions, through: :likes, source: :question
   has_many :like_comments, through: :likes, source: :comment
-  has_many :notifications, dependent: :destroy
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,

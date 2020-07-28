@@ -20,7 +20,9 @@
               <strong><%= t("last") %><%= t("activerecord.attributes.revision.content") %>:</strong>
             </div>
             <div class="col-md-10">
-              <%= link_to "Rev.#{@task.drawing.revisions.last.revision_number}", @task.drawing.revisions.last.content %>
+              <%= link_to @task.drawing.revisions.last.content do %>
+                <i class="far fa-file"></i> <%= "Rev.#{@task.drawing.revisions.last.revision_number}" %>
+              <% end %>
             </div>
           </div>
         </li>
@@ -32,7 +34,9 @@
               <strong><%= t("activerecord.attributes.revision.content") %>:</strong>
             </div>
             <div class="col-md-10">
-              <%= link_to "Rev.#{@task.revision.revision_number}", @task.revision.content %>
+              <%= link_to @task.revision.content do %>
+                <i class="far fa-file"></i> <%= "Rev.#{@task.revision.revision_number}" %>
+              <% end %>
             </div>
           </div>
         </li>

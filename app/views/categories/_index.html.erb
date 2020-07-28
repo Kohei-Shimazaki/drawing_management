@@ -10,11 +10,14 @@
             <div class="col-lg-10">
               <%= category.explanation %>
               <object>
-                <%= link_to t("crud.edit"), edit_category_path(id: category.id), remote: true %>
+                <%= link_to edit_category_path(id: category.id), remote: true do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
               </object>
               <object>
-                <%= link_to t("crud.destroy"), category_path(id: category.id), method: :delete, remote: true,
-                          data: { confirm: I18n.t("confirm.destroy")} %>
+                <%= link_to category_path(id: category.id), method: :delete, remote: true, data: { confirm: I18n.t("confirm.destroy")} do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
               </object>
             </div>
           </div>

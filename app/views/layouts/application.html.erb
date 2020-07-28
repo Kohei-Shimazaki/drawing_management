@@ -62,6 +62,7 @@
               <i class="far fa-question-circle"></i> <%= t("activerecord.models.question") %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to "質問一覧へ", questions_path, class: "dropdown-item" %>
               <% current_user.has_tasks.each do |task| %>
                 <div>
                   <%= link_to task.title, new_question_path(task_id: task.id), class: "dropdown-item" %>

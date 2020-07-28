@@ -6,4 +6,5 @@ class Team < ApplicationRecord
   has_many :members, through: :team_assigns, source: :user
   has_many :messages, dependent: :destroy
   has_many :drawings
+  has_many :notifications, dependent: :destroy
 end
