@@ -13,7 +13,7 @@
   </thead>
   <tbody>
     <% tasks.each do |task| %>
-      <tr data-href="<%= task_path(task.id) %>">
+      <tr data-href="<%= task_path(task.id) %>"  class=<%="table-active" if task.completed? %>>
         <td>
           <p>
             <% if current_user == task.staff %>

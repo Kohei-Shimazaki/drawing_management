@@ -9,13 +9,18 @@
           <div>
             <%= evidence.comment %>
             <% if current_user == task.staff %>
-            <span><%= link_to t("crud.destroy"), task_evidence_path(evidence.task_id, evidence.id), method: :delete, remote: true,
-                      data: { confirm: I18n.t("confirm.destroy")} %></span>
+            <span>
+              <%= link_to task_evidence_path(evidence.task_id, evidence.id), method: :delete, remote: true, data: { confirm: I18n.t("confirm.destroy")} do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </span>
             <% end %>
           </div>
           <div>
             <% if evidence.content.attached? %>
-              <%= link_to t("attachment"), evidence.content %>
+              <%= link_to evidence.content do %>
+                <i class="far fa-file"></i> <%= t("attachment") %>
+              <% end %>
             <% end %>
           </div>
         </div>

@@ -13,7 +13,9 @@
           </div>
           <div>
             <% if reference.content.attached? %>
-              <%= link_to t("attachment"), reference.content %>
+              <%= link_to reference.content do %>
+                <i class="far fa-file"></i> <%= t("attachment") %>
+              <% end %>
             <% end %>
           </div>
         </div>

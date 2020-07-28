@@ -8,7 +8,6 @@
               <%= image_tag customer.icon.variant(resize:'50x50').processed, class: "small_icon" %>
             <% end %>
             <%= customer.name %>
-            <%= customer.overview %>
             <object>
               <%= link_to edit_customer_path(id: customer.id), remote: true do %>
                 <i class="far fa-edit"></i>
