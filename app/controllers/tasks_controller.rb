@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i(edit update show destroy revision_assign_delete)
+  before_action :set_task, only: %i(edit update show destroy revision_assign_delete approval approval_delete)
 
   def index
     @tasks = Task.all
@@ -48,6 +48,7 @@ class TasksController < ApplicationController
   def revision_assign
     @task = Task.find(params[:task][:task_id])
     @task.revision_id = params[:task][:revision_id]
+    @task.status = "approval_waiting"
     if @task.save
       ActionCable.server.broadcast "team_channel_#{@task.drawing.team.id}", notice: true
       redirect_to drawing_path(@task.drawing)
@@ -56,6 +57,21 @@ class TasksController < ApplicationController
 
   def revision_assign_delete
     @task.revision_id = nil
+    @task.status = "working"
+    if @task.save
+      redirect_to drawing_path(@task.drawing)
+    end
+  end
+
+  def approval
+    @task.status = "completed"
+    if @task.save
+      redirect_to drawing_path(@task.drawing)
+    end
+  end
+
+  def approval_delete
+    @task.status = "approval_waiting"
     if @task.save
       redirect_to drawing_path(@task.drawing)
     end

@@ -2,4 +2,42 @@
   <h2><%= t("activerecord.models.task") %><%= t("crud.new") %></h2>
 </div>
 
-<%= render "form" %>
+<div class="container">
+  <% if @task.errors.any? %>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= form_with(model: @task, local: true) do |form| %>
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :deadline %>
+        <%= form.date_field :deadline %>
+      </div>
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.text_area :content, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :staff_id %>
+        <%= form.collection_select :staff_id, @task.drawing.team.members, :id, :name, prompt: "選択してください", class: "custom-select" %>
+      </div>
+      <div class="field">
+        <%= form.label :approver_id %>
+        <%= form.collection_select :approver_id, @task.drawing.team.members, :id, :name, prompt: "選択してください", class: "custom-select" %>
+      </div>
+      <div class="field">
+        <%= form.hidden_field :status, value: "waiting" %>
+        <%= form.hidden_field :drawing_id, value: @task.drawing_id %>
+      </div>
+      <%= form.submit t("submit"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <%= link_to t("back"), drawing_path(@task.drawing_id), class: "btn btn-secondary" %>
+</div>

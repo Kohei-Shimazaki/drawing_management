@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
     member do
       post :revision_assign_delete
+      post :approval
+      post :approval_delete
     end
   end
   resources :questions do

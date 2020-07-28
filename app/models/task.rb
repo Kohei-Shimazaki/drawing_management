@@ -10,8 +10,9 @@ class Task < ApplicationRecord
   enum status: {
     waiting: 0, #未着手
     working: 1, #着手
-    completed: 2, #完了
-    pending: 3, #保留
-    discontinued: 4, #中止
+    pending: 2, #保留
+    discontinued: 3, #中止
+    approval_waiting: 4, #承認待ち
+    completed: 5, #完了
   }
 end

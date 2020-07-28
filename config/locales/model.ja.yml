@@ -93,9 +93,10 @@ ja:
         enum:
           waiting: 未着手
           working: 着手
-          completed: 完了
           pending: 保留
           discontinued: 中断
+          approval_waiting: 承認待ち
+          completed: 完了
       team:
         name: 名前
         profile: チームプロフィール

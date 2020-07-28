@@ -36,7 +36,19 @@
             <%= task.approver.name %>
           <% end %>
         </td>
-        <td><%= t("activerecord.attributes.task.enum.#{task.status}") %></td>
+        <td>
+          <%= t("activerecord.attributes.task.enum.#{task.status}") %><br>
+          <% if current_user == task.approver && task.approval_waiting? %>
+            <%= link_to approval_task_path(task), method: :post do %>
+              <i class="fas fa-stamp"></i> OK
+            <% end %>
+          <% end %>
+          <% if current_user == task.approver && task.completed? %>
+            <%= link_to approval_delete_task_path(task), method: :post do %>
+              <i class="fas fa-backspace"></i> NG
+            <% end %>
+          <% end %>
+        </td>
         <td><%= l task.deadline, format: :date %></td>
         <td><%= task.content %></td>
         <td>

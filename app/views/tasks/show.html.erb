@@ -7,7 +7,9 @@
     <div class="card-header card-header-danger">
       <%= @task.title %>
       <% if current_user == @task.staff || current_user == @task.drawing.team.owner %>
-        <%= link_to t("crud.edit"), edit_task_path(@task) %>
+        <%= link_to edit_task_path(@task) do %>
+          <small><i class="fas fa-edit"></i> <%= t("activerecord.models.task") %><%= t("crud.edit") %></small>
+        <% end %>
       <% end %>
     </div>
     <% if @task.drawing.revisions.present? %>
@@ -51,7 +53,7 @@
             <strong><%= t("activerecord.attributes.task.deadline") %>:</strong>
           </div>
           <div class="col-md-10">
-            <%= @task.deadline %>
+            <%= l @task.deadline, format: :date %>
           </div>
         </div>
       </li>
