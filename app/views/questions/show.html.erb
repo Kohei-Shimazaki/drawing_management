@@ -8,12 +8,15 @@
         <div class="row">
           <div class="col-lg-2">
             <% if @question.task.staff.icon.attached? %>
-              <%= image_tag @question.task.staff.icon.variant(resize:'100x100').processed, class: "user_image" %>
+              <%= image_tag @question.task.staff.icon.variant(resize:'100x100').processed, class: "large_icon" %>
             <% end %>
             <h5 class="card-title"><%= @question.task.staff.name %></h5>
           </div>
           <div class="col-lg-10">
             <div class="border-bottom">
+              <div>
+                <small class="text-muted"><%= l @question.created_at, format: :short %></small><br>
+              </div>
               <div>
                 <strong><%= t("activerecord.models.project") %>:</strong><%= @question.task.drawing.project.name %>
               </div>

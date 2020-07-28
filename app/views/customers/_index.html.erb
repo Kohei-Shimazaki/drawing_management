@@ -5,7 +5,7 @@
         <%= link_to customer_path(customer.id), class: "list_link" do %>
           <li class="list-group-item">
             <% if customer.icon.attached? %>
-              <%= image_tag customer.icon.variant(resize:'50x50').processed %>
+              <%= image_tag customer.icon.variant(resize:'50x50').processed, class: "small_icon" %>
             <% end %>
             <%= customer.name %>
             <%= customer.overview %>

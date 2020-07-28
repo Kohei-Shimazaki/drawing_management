@@ -49,14 +49,15 @@ class TasksController < ApplicationController
     @task = Task.find(params[:task][:task_id])
     @task.revision_id = params[:task][:revision_id]
     if @task.save
-      redirect_to drawing_path(@task)
+      ActionCable.server.broadcast "team_channel_#{@task.drawing.team.id}", notice: true
+      redirect_to drawing_path(@task.drawing)
     end
   end
 
   def revision_assign_delete
     @task.revision_id = nil
     if @task.save
-      redirect_to drawing_path(@task)
+      redirect_to drawing_path(@task.drawing)
     end
   end
 

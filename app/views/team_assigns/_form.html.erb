@@ -1,12 +1,14 @@
 <%= form_with(model: team_assign) do |form| %>
   <div class="form-group">
     <div class="field">
-      <%= form.label :user_id %>
+      <%= t("crud.new") %><%= form.label :user_id %>
       <%= form.collection_select :user_id, current_user.company.users - @team.members, :id, :name, prompt: "選択してください", class: "custom-select" %>
     </div>
     <div class="field">
       <%= form.hidden_field :team_id, value: team.id %>
     </div>
-    <%= form.submit t("submit") %>
+    <button type="submit" name="button" class="btn btn-primary" id="notification">
+      <i class="fas fa-user-plus"></i> <%= t("submit") %>
+    </button>
   </div>
 <% end %>

@@ -18,6 +18,6 @@
     <div class="field">
       <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
-    <%= form.submit t("submit") %>
+    <%= form.submit t("submit"), class: "btn btn-primary" %>
   </div>
 <% end %>

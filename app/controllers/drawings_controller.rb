@@ -5,7 +5,8 @@ class DrawingsController < ApplicationController
     @q = current_user.company.drawings.ransack(params[:q])
     @categories = current_user.company.categories
     @projects = current_user.company.projects
-    @drawings = @q.result.includes(:categories, :project)
+    @teams = current_user.company.teams
+    @drawings = @q.result.includes(:categories, :project, :team)
   end
 
   def new

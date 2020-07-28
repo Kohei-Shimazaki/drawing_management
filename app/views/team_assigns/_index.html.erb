@@ -4,15 +4,16 @@
       <%= link_to user_path(team_assign.user.id), class: "list_link" do %>
         <li class="list-group-item">
           <% if team_assign.user.icon.attached? %>
-            <%= image_tag team_assign.user.icon.variant(resize:'50x50').processed %>
+            <%= image_tag team_assign.user.icon.variant(resize:'50x50').processed, class: "small_icon" %>
           <% end %>
           <%= team_assign.user.name %>
           <% if team_assign.user == team_assign.team.owner %>
-            リーダー
+            <i class="fas fa-crown"></i>
           <% end %>
           <object>
-            <%= link_to t("crud.destroy"), team_assign_path(id: team_assign.id), method: :delete, remote: true,
-                      data: { confirm: I18n.t("confirm.destroy")} %>
+            <%= link_to team_assign_path(id: team_assign.id), method: :delete, remote: true, data: { confirm: I18n.t("confirm.destroy")} do %>
+              <i class="fas fa-user-minus"></i>
+            <% end %>
           </object>
         </li>
       <% end %>
