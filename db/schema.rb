@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_073702) do
+ActiveRecord::Schema.define(version: 2020_07_28_060617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,13 +137,13 @@ ActiveRecord::Schema.define(version: 2020_07_20_073702) do
   create_table "notifications", force: :cascade do |t|
     t.string "subject_type"
     t.bigint "subject_id"
-    t.bigint "user_id"
     t.integer "action_type", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_id"
     t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject_type_and_subject_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["team_id"], name: "index_notifications_on_team_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -267,7 +267,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_073702) do
   add_foreign_key "evidences", "tasks"
   add_foreign_key "messages", "teams"
   add_foreign_key "messages", "users"
-  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "teams"
   add_foreign_key "projects", "customers"
   add_foreign_key "questions", "tasks"
   add_foreign_key "references", "tasks"

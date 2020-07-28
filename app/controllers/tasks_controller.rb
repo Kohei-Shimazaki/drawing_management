@@ -50,7 +50,6 @@ class TasksController < ApplicationController
     @task.revision_id = params[:task][:revision_id]
     @task.status = "approval_waiting"
     if @task.save
-      ActionCable.server.broadcast "team_channel_#{@task.drawing.team.id}", notice: true
       redirect_to drawing_path(@task.drawing)
     end
   end

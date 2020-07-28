@@ -22,9 +22,7 @@ document.addEventListener 'turbolinks:load', ->
         speak: (message) ->
           team_id = $('#chat').data('team_id')
           @perform 'speak', message: message, team_id: team_id
-
     i++
-
 
 $(document).on 'keypress', '[data-behavior~=team_speaker]', (event) ->
   if event.keyCode is 13 # return = send
