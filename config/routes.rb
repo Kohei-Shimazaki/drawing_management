@@ -38,6 +38,11 @@ Rails.application.routes.draw do
     resources :comments, only: %i(create edit update destroy)
   end
   resources :likes, only: %i(create destroy)
+  resources :notifications, only: [] do
+    resources :notification_reads, only: [] do
+      patch :read, on: :member
+    end
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   mount ActionCable.server => '/cable'
 end

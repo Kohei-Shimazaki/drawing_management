@@ -11,6 +11,6 @@ class Question < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(subject: self, team: task.drawing.team, action_type: :comment_to_question)
+    Notification.create(subject: self, team: task.drawing.team, action_type: :question_to_task)
   end
 end
