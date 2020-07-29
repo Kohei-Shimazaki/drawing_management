@@ -7,6 +7,8 @@ class Task < ApplicationRecord
   has_many :references, dependent: :destroy
   has_many :questions, dependent: :destroy
   validates :title, presence: true
+  has_many :notifications, as: :subject, dependent: :destroy
+
   enum status: {
     waiting: 0, #未着手
     working: 1, #着手
@@ -15,4 +17,18 @@ class Task < ApplicationRecord
     approval_waiting: 4, #承認待ち
     completed: 5, #完了
   }
+
+  after_commit :create_notifications
+
+  private
+
+  def create_notifications
+    binding.pry
+    if self.approval_waiting?
+      Notification.create(subject: self, team: drawing.team, action_type: :task_approval_waiting)
+    elsif self.completed?
+      Notification.create(subject: self, team: drawing.team, action_type: :task_completed)
+    end
+  end
+
 end
