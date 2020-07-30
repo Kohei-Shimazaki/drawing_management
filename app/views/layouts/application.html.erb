@@ -63,6 +63,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <%= link_to "質問一覧へ", questions_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
               <% current_user.has_tasks.each do |task| %>
                 <div>
                   <%= link_to task.title, new_question_path(task_id: task.id), class: "dropdown-item" %>
@@ -77,13 +78,18 @@
             <div class="container">
               <div class="dropdown-menu notification-menu" aria-labelledby="dropdownMenuButton">
                 <ul class="list-group">
+                  <%= link_to all_read_notification_reads_path, method: :post do %>
+                    <li class="list-group-item list_link">
+                      全ての通知を既読にする
+                    </li>
+                  <% end %>
+                  <div id="notifications">
                   <% current_user.notifications.order(created_at: :desc).each do |notification| %>
-                    <% unless notification.has_read_users.include?(current_user) %>
-                    <div id="notifications">
+                    <% unless notification.has_read_users.include?(current_user) %>          
                       <%= render partial: "notifications/#{notification.action_type}", locals: {notification: notification} %>
-                    </div>
                     <% end %>
                   <% end %>
+                  </div>
                 </ul>
               </div>
             </div>

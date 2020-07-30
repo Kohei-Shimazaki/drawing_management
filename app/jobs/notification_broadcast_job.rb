@@ -18,9 +18,9 @@ class NotificationBroadcastJob < ApplicationJob
     def user_id(notification)
       case notification.action_type.to_sym
       when :question_to_task
-        notification.subject.staff.id
+        notification.subject.task.staff.id
       when :comment_to_question
-        notification.user.id
+        notification.subject.user.id
       when :task_approval_waiting
         notification.subject.staff.id
       when :task_completed
