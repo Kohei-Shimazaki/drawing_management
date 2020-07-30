@@ -3,7 +3,8 @@ class CompaniesController < ApplicationController
 
   def show
     @q = @company.users.ransack(params[:q])
-    @users = @q.result.distinct(true)
+    @teams = @company.teams
+    @users = @q.result.includes(:teams)
   end
 
   def edit

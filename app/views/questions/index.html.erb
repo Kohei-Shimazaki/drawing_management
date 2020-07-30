@@ -2,6 +2,7 @@
   <h2><%= t("activerecord.models.question") %><%= t("crud.index") %></h2>
 </div>
 <div class="container">
+  <%= render "search_form" %>
   <ul class="list-group">
     <% @questions.each do |question| %>
       <%= link_to question_path(question), class: "list_link" do %>
@@ -20,6 +21,9 @@
                 </div>
                 <div>
                   <strong><%= t("activerecord.models.project") %>:</strong><%= question.task.drawing.project.name %>
+                </div>
+                <div>
+                  <strong><%= t("activerecord.models.team") %>:</strong><%= question.task.drawing.team.name %>
                 </div>
                 <div>
                   <strong><%= t("activerecord.models.drawing") %>:</strong><%= question.task.drawing.title %>
@@ -43,4 +47,5 @@
       <% end %>
     <% end %>
   </ul>
+  <%= paginate @questions %>
 </div>

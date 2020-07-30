@@ -1,5 +1,9 @@
 <%= search_form_for @q, url: company_path(current_user.company) do |form| %>
   <div class="field">
+    <%= form.label :team_id_in, "チーム" %>
+    <%= form.collection_check_boxes :teams_id_in, @teams, :id, :name %>
+  </div>
+  <div class="field">
     <%= form.label :name %>
     <%= form.search_field :name_cont %>
   </div>

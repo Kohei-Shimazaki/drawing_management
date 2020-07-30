@@ -3,7 +3,12 @@ class QuestionsController < ApplicationController
   PER = 10
 
   def index
-    @questions = Question.all
+    @q = current_user.company.questions.order(created_at: :desc).ransack(params[:q])
+    @tasks = current_user.company.tasks
+    @drawings = current_user.company.drawings
+    @projects = current_user.company.projects
+    @teams = current_user.company.teams
+    @questions = @q.result.includes(:task, :drawing, :project, :team).page(params[:page]).per(PER)
   end
 
   def new

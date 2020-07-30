@@ -1,4 +1,8 @@
 <%= search_form_for @q do |form| %>
+<div class="field">
+  <%= form.label :customer_id_eq, "客先" %>
+  <%= form.collection_select :customer_id_eq, @customers, :id, :name, include_blank: "指定なし" %>
+</div>
   <div class="field">
     <%= form.label :project_id_eq, "プロジェクト" %>
     <%= form.collection_select :project_id_eq, @projects, :id, :name, include_blank: "指定なし" %>

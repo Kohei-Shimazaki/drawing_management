@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: %i(edit update show destroy chat)
+  PER = 10
 
   def create
     @team = Team.new(team_params)
@@ -36,7 +37,7 @@ class TeamsController < ApplicationController
   end
 
   def chat
-    @messages = @team.messages.order(created_at: :desc)
+    @messages = @team.messages.order(created_at: :desc).page(params[:page]).per(PER)
   end
 
   private
