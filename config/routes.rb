@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   resources :notifications, only: [] do
     resources :notification_reads, only: %i(create)
   end
+  resources :notification_reads, only: [] do
+    post :all_read
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   mount ActionCable.server => '/cable'
 end

@@ -19,7 +19,7 @@
     <div id="header">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <% if user_signed_in? %>
-          <div id="team_ids", data-team_id="<%= current_user.teams.map{ |team| team.id } %>">
+          <div id="team_coffee_datas", data-team_ids="<%= current_user.teams.map{ |team| team.id } %>", data-user_id="<%= current_user.id %>">
           </div>
           <%= link_to company_path(current_user.company), class: "navbar-brand" do %>
             <% if current_user.company.icon.attached? %>
@@ -72,14 +72,16 @@
           </div>
           <div class="dropdown navbar-brand">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="far fa-bell"></i> <%= t("activerecord.models.notification") %> <%= number_of_unread_notifications %>
+              <i class="far fa-bell"></i> <%= t("activerecord.models.notification") %> <span id="unread_notifications"><%= number_of_unread_notifications %></span>
             </button>
             <div class="container">
               <div class="dropdown-menu notification-menu" aria-labelledby="dropdownMenuButton">
                 <ul class="list-group">
-                  <% current_user.notifications.each do |notification| %>
+                  <% current_user.notifications.order(created_at: :desc).each do |notification| %>
                     <% unless notification.has_read_users.include?(current_user) %>
+                    <div id="notifications">
                       <%= render partial: "notifications/#{notification.action_type}", locals: {notification: notification} %>
+                    </div>
                     <% end %>
                   <% end %>
                 </ul>

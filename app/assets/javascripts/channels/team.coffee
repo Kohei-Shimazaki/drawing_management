@@ -1,11 +1,11 @@
 document.addEventListener 'turbolinks:load', ->
   subscriptions = App.cable.subscriptions['subscriptions'];
   i = 0
-  while i < $("#team_ids").data("team_id").length
+  while i < $("#team_coffee_datas").data("team_ids").length
     if (!subscriptions[i])
       App.team = App.cable.subscriptions.create {
         channel: "TeamChannel",
-        team_id: $("#team_ids").data("team_id")[i]},
+        team_id: $("#team_coffee_datas").data("team_ids")[i]},
 
         connected: ->
           # Called when the subscription is ready for use on the server
@@ -16,8 +16,9 @@ document.addEventListener 'turbolinks:load', ->
         received: (data) ->
           if data['message']
             $('#messages_'+data['team_id']).prepend data['message']
-          if data['notice']
-            alert "OK"
+          if data['notification'] && data['user_id'] != $("#team_coffee_datas").data("user_id")
+            $('#notifications').prepend data['notification']
+            $("#unread_notifications").text String(Number($("#unread_notifications").text()) + 1)
 
         speak: (message) ->
           team_id = $('#chat').data('team_id')

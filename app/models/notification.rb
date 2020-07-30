@@ -15,6 +15,8 @@ class Notification < ApplicationRecord
     task_approval_rescission: 5,
   }
 
+  after_create_commit { NotificationBroadcastJob.perform_later self }
+
   def redirect_path
     case action_type.to_sym
     when :question_to_task
