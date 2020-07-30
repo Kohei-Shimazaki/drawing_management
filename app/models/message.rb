@@ -8,6 +8,7 @@ class Message < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(subject: self, team: team, action_type: :chat_to_team)
+    notification = Notification.create(subject: self, team: team, action_type: :chat_to_team)
+    NotificationRead.create(user_id: user.id, notification_id: notification.id)
   end
 end

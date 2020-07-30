@@ -72,15 +72,17 @@
           </div>
           <div class="dropdown navbar-brand">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="far fa-bell"></i> <%= t("activerecord.models.notification") %>
+              <i class="far fa-bell"></i> <%= t("activerecord.models.notification") %> <%= number_of_unread_notifications %>
             </button>
             <div class="container">
               <div class="dropdown-menu notification-menu" aria-labelledby="dropdownMenuButton">
-                <% current_user.notifications.each do |notification| %>
-                  <ul class="list-group">
-                    <%= render partial: "notifications/#{notification.action_type}", locals: {notification: notification} %>
-                  </ul>
-                <% end %>
+                <ul class="list-group">
+                  <% current_user.notifications.each do |notification| %>
+                    <% unless notification.has_read_users.include?(current_user) %>
+                      <%= render partial: "notifications/#{notification.action_type}", locals: {notification: notification} %>
+                    <% end %>
+                  <% end %>
+                </ul>
               </div>
             </div>
           </div>

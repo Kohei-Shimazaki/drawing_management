@@ -1,12 +1,14 @@
-<% unless current_user == notification.subject.task.staff %>
+<%= link_to notification_notification_reads_path(notification), method: :post, class: "list_link" do %>
   <li class="list-group-item">
     <div class="row">
       <div class="col-md-2">
         <%= image_tag notification.subject.task.staff.icon.variant(resize:'50x50').processed, class: "small_icon" %>
       </div>
       <div class="col-md-10">
+        <small class="text-muted"><%= l notification.created_at, format: :short %></small><br>
         <%= notification.subject.task.staff.name %>さんが<br>
-        <%= notification.subject.task.title %>に質問しました！
+        <%= notification.subject.task.title %>に<br>
+        質問しました！
       </div>
     </div>
   </li>

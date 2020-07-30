@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.create")}"
-      redirect_to drawing_path(@task.drawing.id)
+      redirect_to drawing_path(@task.drawing)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.update")}"
-      redirect_to tasks_path
+      redirect_to drawing_path(@task.drawing)
     else
       render :edit
     end
@@ -70,7 +70,8 @@ class TasksController < ApplicationController
   end
 
   def approval_delete
-    @task.status = "approval_waiting"
+    @task.status = "approval_rescission"
+    @task.revision_id = nil
     if @task.save
       redirect_to drawing_path(@task.drawing)
     end

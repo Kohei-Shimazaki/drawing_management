@@ -16,6 +16,7 @@ class Task < ApplicationRecord
     discontinued: 3, #中止
     approval_waiting: 4, #承認待ち
     completed: 5, #完了
+    approval_rescission: 6, #承認取り消し
   }
 
   after_commit :create_notifications
@@ -24,9 +25,14 @@ class Task < ApplicationRecord
 
   def create_notifications
     if self.approval_waiting?
-      Notification.create(subject: self, team: drawing.team, action_type: :task_approval_waiting)
+      notification = Notification.create(subject: self, team: drawing.team, action_type: :task_approval_waiting)
+      NotificationRead.create(user_id: staff.id, notification_id: notification.id)
     elsif self.completed?
-      Notification.create(subject: self, team: drawing.team, action_type: :task_completed)
+      notification = Notification.create(subject: self, team: drawing.team, action_type: :task_completed)
+      NotificationRead.create(user_id: approver.id, notification_id: notification.id)
+    elsif self.approval_rescission?
+      notification = Notification.create(subject: self, team: drawing.team, action_type: :task_approval_rescission)
+      NotificationRead.create(user_id: approver.id, notification_id: notification.id)
     end
   end
 

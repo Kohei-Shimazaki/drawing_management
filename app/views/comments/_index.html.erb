@@ -4,8 +4,8 @@
       <li class="list-group-item">
         <div class="row">
           <div class="col-sm-2">
-            <% if question.task.staff.icon.attached? %>
-              <%= image_tag question.task.staff.icon.variant(resize:'50x50').processed %><br>
+            <% if comment.user.icon.attached? %>
+              <%= image_tag comment.user.icon.variant(resize:'50x50').processed %><br>
             <% end %>
             <%= comment.user.name %>
           </div>

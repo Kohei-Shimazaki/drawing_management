@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_060617) do
+ActiveRecord::Schema.define(version: 2020_07_29_071603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,15 @@ ActiveRecord::Schema.define(version: 2020_07_28_060617) do
     t.bigint "team_id"
     t.index ["team_id"], name: "index_messages_on_team_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notification_reads", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "notification_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_id"], name: "index_notification_reads_on_notification_id"
+    t.index ["user_id"], name: "index_notification_reads_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -267,6 +276,8 @@ ActiveRecord::Schema.define(version: 2020_07_28_060617) do
   add_foreign_key "evidences", "tasks"
   add_foreign_key "messages", "teams"
   add_foreign_key "messages", "users"
+  add_foreign_key "notification_reads", "notifications"
+  add_foreign_key "notification_reads", "users"
   add_foreign_key "notifications", "teams"
   add_foreign_key "projects", "customers"
   add_foreign_key "questions", "tasks"

@@ -11,6 +11,7 @@ class Comment < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(subject: self, team: question.task.drawing.team, action_type: :comment_to_question)
+    notification = Notification.create(subject: self, team: question.task.drawing.team, action_type: :comment_to_question)
+    NotificationRead.create(user_id: user.id, notification_id: notification.id)
   end
 end

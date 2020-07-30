@@ -97,6 +97,7 @@ ja:
           discontinued: 中断
           approval_waiting: 承認待ち
           completed: 完了
+          approval_rescission: 承認取り消し
       team:
         name: 名前
         profile: チームプロフィール
