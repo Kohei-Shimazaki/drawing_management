@@ -9,12 +9,15 @@ class Question < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
   has_one :notification, as: :subject, dependent: :destroy
 
+  validates :title, presence: true, length: {maximum: 100}
+  validates :content, presence: true
+
   after_create_commit :create_notifications
 
   private
 
-  def create_notifications
-    notification = Notification.create(subject: self, team: task.drawing.team, action_type: :question_to_task)
-    NotificationRead.create(user_id: task.staff.id, notification_id: notification.id)
-  end
+    def create_notifications
+      notification = Notification.create(subject: self, team: task.drawing.team, action_type: :question_to_task)
+      NotificationRead.create(user_id: task.staff.id, notification_id: notification.id)
+    end
 end

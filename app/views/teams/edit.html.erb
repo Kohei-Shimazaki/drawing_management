@@ -3,6 +3,13 @@
 </div>
 <div class="container">
   <%= form_with(model: @team, local: true) do |form| %>
+    <% if @team.errors.any? %>
+      <ul>
+        <% @team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <div class="form-group">
       <div class="field">
         <%= form.label :name, t("activerecord.attributes.team.name") %>

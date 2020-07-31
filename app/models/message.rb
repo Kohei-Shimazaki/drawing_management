@@ -3,6 +3,8 @@ class Message < ApplicationRecord
   belongs_to :team
   after_create_commit { MessageBroadcastJob.perform_later self }
 
+  validates :content, presence: true, length: {maximum: 140}
+
   after_create_commit :create_notifications
 
   private

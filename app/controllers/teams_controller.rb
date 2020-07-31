@@ -37,7 +37,9 @@ class TeamsController < ApplicationController
   end
 
   def chat
-    @messages = @team.messages.order(created_at: :desc).page(params[:page]).per(PER)
+    @q = @team.messages.order(created_at: :desc).ransack(params[:q])
+    @users = @team.members
+    @messages = @q.result.includes(:user).page(params[:page]).per(PER)
   end
 
   private

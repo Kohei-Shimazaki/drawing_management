@@ -6,8 +6,10 @@ class Task < ApplicationRecord
   has_many :evidences, dependent: :destroy
   has_many :references, dependent: :destroy
   has_many :questions, dependent: :destroy
-  validates :title, presence: true
   has_many :notification, as: :subject, dependent: :destroy
+
+  validates :title, presence: true, length: {maximum: 100}
+  validates :deadline, presence: true
 
   enum status: {
     waiting: 0, #未着手

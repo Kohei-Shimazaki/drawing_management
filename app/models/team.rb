@@ -9,4 +9,7 @@ class Team < ApplicationRecord
   has_many :tasks, through: :dtawings
   has_many :questions, through: :tasks
   has_many :notifications, dependent: :destroy
+
+  validates :name, presence: true, length: {maximum: 100}
+
 end

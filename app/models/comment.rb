@@ -8,6 +8,8 @@ class Comment < ApplicationRecord
 
   after_create_commit :create_notifications
 
+  validates :content, presence: true
+
   private
 
   def create_notifications

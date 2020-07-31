@@ -15,6 +15,13 @@ class User < ApplicationRecord
   has_many :like_questions, through: :likes, source: :question
   has_many :like_comments, through: :likes, source: :comment
 
+  validates :name, presence: true, length: {maximum: 25}
+  validates :email, presence: true, length: {maximum: 90},
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+                    uniqueness: true
+  before_validation {email.downcase!}
+  validates :employee_number, presence: true
+
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,
          :validatable, invite_for: 2.weeks

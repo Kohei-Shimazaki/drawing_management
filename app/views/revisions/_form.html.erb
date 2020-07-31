@@ -1,12 +1,12 @@
-<% if @revision.errors.any? %>
-  <ul>
-    <% @revision.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
 <%= form_with(model: @revision, local: true) do |form| %>
   <div class="container">
+    <% if @revision.errors.any? %>
+      <ul>
+        <% @revision.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <div class="form-group">
       <div class="field">
         <%= form.label :revision_number %>

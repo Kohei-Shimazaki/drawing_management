@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i(show edit update destroy)
+  PER = 10
 
   def show
     @q = @company.users.ransack(params[:q])
     @teams = @company.teams
-    @users = @q.result.includes(:teams)
+    @users = @q.result.includes(:teams).page(params[:page]).per(PER)
   end
 
   def edit

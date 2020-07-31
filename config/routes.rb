@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'users#show'
+  root to: 'informations#top'
+
   resources :companies
-  resources :customers
-  resources :projects
-  resources :categories
-  resources :category_assigns, only: %i(create destroy)
   resources :teams do
     member do
       get :chat
@@ -20,6 +17,10 @@ Rails.application.routes.draw do
     post 'create_company', to: 'users/registrations#create_company'
   end
   resources :users, only: %i(show)
+  resources :customers
+  resources :projects
+  resources :categories
+  resources :category_assigns, only: %i(create destroy)
   resources :drawings
   resources :revisions
   resources :tasks do
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
   resources :questions do
     resources :comments, only: %i(create edit update destroy)
   end
-  resources :likes, only: %i(create destroy)
+  resources :likes, only: %i(index create destroy)
   resources :notifications, only: [] do
     resources :notification_reads, only: %i(create)
   end

@@ -37,7 +37,7 @@
           <% end %>
         </td>
         <td>
-          <%= t("activerecord.attributes.task.enum.#{task.status}") %><br>
+          <span class="badge <%= badge_status(task) %>"><%= t("activerecord.attributes.task.enum.#{task.status}") %></span><br>
           <% if current_user == task.approver && task.approval_waiting? %>
             <%= link_to approval_task_path(task), method: :post do %>
               <i class="fas fa-stamp"></i> OK

@@ -1,0 +1,25 @@
+<%= search_form_for @q, url: likes_path do |form| %>
+
+  <div class="field">
+    <%= form.label :project_id_eq, "プロジェクト" %>
+    <%= form.collection_select :project_id_eq, @projects, :id, :name, include_blank: "指定なし" %>
+  </div>
+  <div class="field">
+    <%= form.label :team_id_eq, "チーム" %>
+    <%= form.collection_select :team_id_eq, @teams, :id, :name, include_blank: "指定なし" %>
+  </div>
+  <div class="field">
+    <%= form.label :drawing_title, "図名" %>
+    <%= form.search_field :drawing_title_cont %>
+  </div>
+  <div class="field">
+    <%= form.label :task_title, "タスク名" %>
+    <%= form.search_field :task_title_cont %>
+  </div>
+  <div class="field">
+    <%= form.label :title, "質問タイトル" %>
+    <%= form.search_field :title_cont %>
+  </div>
+
+  <%= form.submit "検索" %>
+<% end %>
