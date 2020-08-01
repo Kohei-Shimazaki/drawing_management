@@ -1,10 +1,12 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :team
-  after_create_commit { MessageBroadcastJob.perform_later self }
+  has_many :message_reads, dependent: :destroy
+  has_many :has_read_users, through: :message_reads, source: :user
 
   validates :content, presence: true, length: {maximum: 140}
 
+  after_create_commit { MessageBroadcastJob.perform_later self }
   after_create_commit :create_notifications
 
   private

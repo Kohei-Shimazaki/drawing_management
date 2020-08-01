@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :notification_reads, dependent: :destroy
   has_many :has_read_notifications, through: :notification_reads, source: :notification
   has_many :messages, dependent: :destroy
+  has_many :message_reads, dependent: :destroy
+  has_many :has_read_messages, through: :message_reads, source: :message
   has_many :has_tasks, class_name: 'Task', foreign_key: :staff_id, dependent: :nullify
   has_many :has_approved_tasks, class_name: 'Task', foreign_key: :approver_id, dependent: :nullify
   has_many :likes, dependent: :destroy

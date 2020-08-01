@@ -37,6 +37,10 @@ class TeamsController < ApplicationController
   end
 
   def chat
+    messages = @team.messages
+    read_messages = current_user.has_read_messages
+    unread_messages = messages - read_messages
+    unread_messages.each { |message| MessageRead.create(user_id: current_user.id, message_id: message.id) unless current_user == message.user }
     @q = @team.messages.order(created_at: :desc).ransack(params[:q])
     @users = @team.members
     @messages = @q.result.includes(:user).page(params[:page]).per(PER)
