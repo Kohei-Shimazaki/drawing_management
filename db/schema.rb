@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_012816) do
+ActiveRecord::Schema.define(version: 2020_08_01_021812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,7 +118,6 @@ ActiveRecord::Schema.define(version: 2020_08_01_012816) do
   create_table "message_reads", force: :cascade do |t|
     t.integer "user_id"
     t.integer "message_id"
-    t.boolean "is_read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -146,7 +145,6 @@ ActiveRecord::Schema.define(version: 2020_08_01_012816) do
     t.string "subject_type"
     t.bigint "subject_id"
     t.integer "action_type", null: false
-    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"

@@ -23,6 +23,11 @@ document.addEventListener 'turbolinks:load', ->
         speak: (message) ->
           team_id = $('#chat').data('team_id')
           @perform 'speak', message: message, team_id: team_id
+
+        message_read: ->
+          setInterval ->
+            @perform 'message_read',
+            1000
     i++
 
 $(document).on 'keypress', '[data-behavior~=team_speaker]', (event) ->
