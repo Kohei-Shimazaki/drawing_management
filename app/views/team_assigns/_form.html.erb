@@ -2,12 +2,13 @@
   <div class="form-group">
     <div class="field">
       <%= t("crud.new") %><%= form.label :user_id %>
-      <%= form.collection_select :user_id, current_user.company.users - @team.members, :id, :name, prompt: "選択してください", class: "custom-select" %>
+      <%= form.collection_select :user_id, current_user.company.users - @team.members, :id, :name,
+          prompt: "選択してください", class: "member_select" %>
     </div>
     <div class="field">
       <%= form.hidden_field :team_id, value: team.id %>
     </div>
-    <button type="submit" name="button" class="btn btn-primary" id="notification">
+    <button type="submit" name="button" class="btn btn-primary" id="team_assign_btn">
       <i class="fas fa-user-plus"></i> <%= t("submit") %>
     </button>
   </div>

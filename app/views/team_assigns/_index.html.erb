@@ -12,7 +12,8 @@
           <% end %>
           <% if current_user == @team.owner || current_user == team_assign.user %>
             <object>
-              <%= link_to team_assign_path(id: team_assign.id), method: :delete, remote: true, data: { confirm: I18n.t("confirm.destroy")} do %>
+              <%= link_to team_assign_path(id: team_assign.id), method: :delete, remote: true,
+                  data: { confirm: I18n.t("confirm.destroy")}, id: "member_delete_#{team_assign.id}" do %>
                 <i class="fas fa-user-minus"></i>
               <% end %>
             </object>
