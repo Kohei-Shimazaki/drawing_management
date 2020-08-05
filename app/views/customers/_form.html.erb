@@ -6,27 +6,33 @@
       <% end %>
     </ul>
   <% end %>
+  <% if customer.id.present? %>
+    <% id = customer.id %>
+  <% else %>
+    <% id = 0 %>
+  <% end %>
   <div class="form-group">
     <div class="field">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control form_del_customer" %>
+      <%= form.text_field :name, class: "form-control form_del_customer", id: "customer_name_#{id}" %>
     </div>
     <div class="field">
       <%= form.label :phone_number %>
-      <%= form.telephone_field :phone_number, class: "form-control form_del_customer" %>
+      <%= form.telephone_field :phone_number, class: "form-control form_del_customer",
+          id: "customer_phone_number_#{id}" %>
     </div>
     <div class="field">
       <%= form.label :location %>
-      <%= form.text_field :location, class: "form-control form_del_customer" %>
+      <%= form.text_field :location, class: "form-control form_del_customer", id: "customer_location_#{id}" %>
     </div>
     <div class="field">
       <%= form.label :icon %>
-      <%= form.file_field :icon, class: "form-control-file form_del_customer" %>
+      <%= form.file_field :icon, class: "form-control-file form_del_customer", id: "customer_icon_#{id}" %>
     </div>
     <div class="field">
       <%= form.label :overview %>
-      <%= form.text_area :overview, class: "form-control form_del_customer" %>
+      <%= form.text_area :overview, class: "form-control form_del_customer", id: "customer_overview_#{id}" %>
     </div>
-    <%= form.submit t("submit"), id: "create_customer_btn" %>
+    <%= form.submit t("submit"), id: "create_customer_btn_#{id}" %>
   </div>
 <% end %>

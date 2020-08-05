@@ -9,12 +9,14 @@
             <% end %>
             <%= customer.name %>
             <object>
-              <%= link_to edit_customer_path(id: customer.id), remote: true do %>
+              <%= link_to edit_customer_path(id: customer.id), remote: true,
+                  id: "customer_edit_#{customer.id}" do %>
                 <i class="far fa-edit"></i>
               <% end %>
             </object>
             <object>
-              <%= link_to customer_path(id: customer.id), method: :delete, remote: true, data: { confirm: I18n.t("confirm.destroy")} do %>
+              <%= link_to customer_path(id: customer.id), method: :delete, remote: true,
+                  data: { confirm: I18n.t("confirm.destroy")}, id: "customer_delete_#{customer.id}" do %>
                 <i class="fas fa-trash"></i>
               <% end %>
             </object>
