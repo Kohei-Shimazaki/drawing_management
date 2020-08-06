@@ -24,7 +24,7 @@
         <%= form.hidden_field :revision_number, value: @revision.revision_number %>
         <%= form.hidden_field :drawing_id, value: @revision.drawing_id %>
       </div>
-      <%= form.submit t("submit"), class: "btn btn-primary" %>
+      <%= form.submit t("submit"), class: "btn btn-primary", id: "revision_submit_btn" %>
     </div>
   </div>
 

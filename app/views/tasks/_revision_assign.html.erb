@@ -2,13 +2,14 @@
   <div class="form-group">
     <div class="field">
       <%= form.label :task_id, t("activerecord.models.task") %>
-      <%= form.collection_select :task_id, @drawing.tasks.select{|task| task.revision_id.nil? && current_user == task.staff }, :id, :title, prompt: "選択してください", class: "custom-select" %>
+      <%= form.collection_select :task_id, @drawing.tasks.select{|task| task.revision_id.nil? && current_user == task.staff },
+          :id, :title, prompt: "選択してください", class: "custom-select" %>
     </div>
     <div class="field">
       <%= form.hidden_field :revision_id, value: revision.id %>
     </div>
-    <button type="submit" name="button" class="btn btn-primary" id="notification">
-      <i class="fas fa-paperclip"></i> <%= t("submit") %>
+    <button type="submit" name="button" class="btn btn-primary" id="revision_assign_btn">
+      <i class="fas fa-paperclip"></i> レビジョン<%= t("submit") %>
     </button>
   </div>
 <% end %>

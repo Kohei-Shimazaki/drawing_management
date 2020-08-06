@@ -13,11 +13,11 @@
   </thead>
   <tbody>
     <% tasks.each do |task| %>
-      <tr data-href="<%= task_path(task.id) %>"  class=<%="table-active" if task.completed? %>>
+      <tr>
         <td>
           <p>
             <% if current_user == task.staff && task.approval_waiting? %>
-              <%= link_to revision_assign_delete_task_path(task), method: :post do %>
+              <%= link_to revision_assign_delete_task_path(task), method: :post, id: "task_app" do %>
                 <i class="fas fa-minus"></i>
               <% end %>
             <% end %>

@@ -38,7 +38,7 @@
       <div class="field">
         <%= form.hidden_field :drawing_id, value: @task.drawing_id %>
       </div>
-      <%= form.submit t("submit"), class: "btn btn-primary" %>
+      <%= form.submit t("submit"), class: "btn btn-primary", id: "task_update_btn" %>
     </div>
   <% end %>
   <%= link_to t("back"), drawing_path(@task.drawing_id), class: "btn btn-secondary" %>

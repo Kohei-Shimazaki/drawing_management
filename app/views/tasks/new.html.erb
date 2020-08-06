@@ -36,7 +36,7 @@
         <%= form.hidden_field :status, value: "waiting" %>
         <%= form.hidden_field :drawing_id, value: @task.drawing_id %>
       </div>
-      <%= form.submit t("submit"), class: "btn btn-primary" %>
+      <%= form.submit t("submit"), class: "btn btn-primary", id: "task_create_btn" %>
     </div>
   <% end %>
   <%= link_to t("back"), drawing_path(@task.drawing_id), class: "btn btn-secondary" %>
