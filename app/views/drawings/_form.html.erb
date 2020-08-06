@@ -34,7 +34,7 @@
       <div class="field">
         <%= form.hidden_field :team_id, value: @drawing.team_id %>
       </div>
-      <%= form.submit t("submit"), class: "btn btn-primary" %>
+      <%= form.submit t("submit"), class: "btn btn-primary", id: "drawing_submit_btn" %>
     </div>
   <% end %>
 </div>
