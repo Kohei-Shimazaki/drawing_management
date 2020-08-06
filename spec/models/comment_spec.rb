@@ -15,25 +15,15 @@ RSpec.describe Comment, type: :model do
       @question = create(:question, task: @task)
     end
     context '質問タイトルバリデーション' do
-      it 'titleが空ならバリデーションが通らない' do
-        question = Question.new(content: "sample", task: @task)
-        expect(question).not_to be_valid
-      end
-      it 'titleが101文字以上ならバリデーションが通らない' do
-        question = Question.new(title: "a"*101, content: "sample", task: @task)
-        expect(question).not_to be_valid
-      end
-    end
-    context '質問内容バリデーション' do
       it 'contentが空ならバリデーションが通らない' do
-        question = Question.new(title: "sample", task: @task)
-        expect(question).not_to be_valid
+        comment = Comment.new(question: @question, user: @user)
+        expect(comment).not_to be_valid
       end
     end
     context 'バリデーションクリア' do
-      it 'title,contentのバリデーションが通る' do
-        question = Question.new(title: "sample", content: "sample", task: @task)
-        expect(question).to be_valid
+      it 'contentのバリデーションが通る' do
+        comment = Comment.new(content: "sample", question: @question, user: @user)
+        expect(comment).to be_valid
       end
     end
   end

@@ -28,7 +28,7 @@
       <div class="field">
         <%= form.hidden_field :task_id, value: @question.task_id %>
       </div>
-      <%= form.submit t("submit") %>
+      <%= form.submit t("submit"), id: "create_question_btn" %>
     </div>
   <% end %>
 </div>

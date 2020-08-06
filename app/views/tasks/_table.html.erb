@@ -39,12 +39,12 @@
         <td>
           <span class="badge <%= badge_status(task) %>"><%= t("activerecord.attributes.task.enum.#{task.status}") %></span><br>
           <% if current_user == task.approver && task.approval_waiting? %>
-            <%= link_to approval_task_path(task), method: :post do %>
+            <%= link_to approval_task_path(task), method: :post, id: "task_completed_#{task.id}" do %>
               <i class="fas fa-stamp"></i> OK
             <% end %>
           <% end %>
           <% if current_user == task.approver && task.completed? %>
-            <%= link_to approval_delete_task_path(task), method: :post do %>
+            <%= link_to approval_delete_task_path(task), method: :post, id: "task_approval_rescission_#{task.id}" do %>
               <i class="fas fa-backspace"></i> NG
             <% end %>
           <% end %>
