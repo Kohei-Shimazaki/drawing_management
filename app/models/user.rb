@@ -31,7 +31,9 @@ class User < ApplicationRecord
   def self.import(user_params, current_user)
     xlsx = Roo::Excelx.new(user_params.dig(:file).tempfile)
     xlsx.each_row_streaming(offset: 1) do |row|
-      User.invite!(employee_number: row[0].value, name: row[1].value, email: row[2].value, company_id: current_user.company_id)
+      if row[0].present? && row[1].present? && row[2].present?
+        User.invite!(employee_number: row[0].value, name: row[1].value, email: row[2].value, company_id: current_user.company_id)
+      end
     end
   end
 end

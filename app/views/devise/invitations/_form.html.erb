@@ -1,3 +1,14 @@
+<h5>下図のようなExcelファイルを貼り付けることで、社員当てに招待メールを送ることができます。</h5>
+<ul>
+  <li>1シート目に作成してください</li>
+  <li>一列目に社員番号、二列目に名前、三列目にメールアドレスを記入してください</li>
+  <li>一度に複数人にメールを送ることができます</li>
+</ul>
+
+<div>
+  <%= image_tag 'excel.jpg', class: "img-fluid" %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 

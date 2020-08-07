@@ -7,8 +7,14 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def create
+    redirect_to new_user_invitation_path and return if params[:user].nil?
+    user_count = User.all.count
     User.import(user_params, current_user)
-    flash[:notice] = "ユーザー招待のメールを送信しました！"
+    if user_count < User.all.count
+      flash[:notice] = "ユーザー招待のメールを送信しました！"
+    else
+      flash[:notice] = "ユーザー招待のメールを送信できませんでした"
+    end
     redirect_to new_user_invitation_path
   end
 
