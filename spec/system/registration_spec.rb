@@ -17,6 +17,16 @@ RSpec.describe '登録機能', type: :system do
       find("#login_btn").click
       visit new_user_invitation_path
     end
+    context '社員登録をする場合' do
+      before do
+        attach_file 'Excelファイル', "#{Rails.root}/spec/factories/test_1.xlsx"
+        find("#user_invitation_btn").click
+        sleep(5)
+      end
+      it '社員招待メールを送ることができる' do
+        expect(User.last.name).to eq 'test_user'
+      end
+    end
     context '客先登録をする場合' do
       before do
         find("#customer_registration").click

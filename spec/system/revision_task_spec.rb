@@ -99,6 +99,7 @@ RSpec.describe 'レビジョン・タスク管理機能', type: :system do
       before do
         select @task.title, from: "task[task_id]"
         click_on "レビジョン登録"
+        sleep(1)
       end
       it 'タスクのstatusがapproval_waitingに変わる' do
         expect(page).to have_content "承認待ち"

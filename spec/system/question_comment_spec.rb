@@ -24,11 +24,16 @@ RSpec.describe '質問管理機能', type: :system do
       visit new_question_path(task_id: @task.id)
     end
     context '正しい情報を入力する場合' do
-      it '質問が投稿できる' do
+      before do
         fill_in "タイトル", with: "new_question"
         fill_in "内容", with: "new_question_content"
         find("#create_question_btn").click
+      end
+      it '質問が投稿できる' do
         expect(Question.all.count).to eq 1
+      end
+      it '質問をした通知が作成される' do
+        expect(Notification.last.action_type).to eq 'question_to_task'
       end
     end
     context '正しい情報を入力していない場合' do
@@ -45,16 +50,32 @@ RSpec.describe '質問管理機能', type: :system do
       visit question_path(@question)
     end
     context 'コメントを投稿する場合' do
-      it '正しい情報入力で、コメントを投稿できる' do
+      before do
         fill_in "内容", with: "new_comment"
         find("#comment_create_btn").click
         sleep(3)
+      end
+      it '正しい情報入力で、コメントを投稿できる' do
         expect(Comment.all.count).to eq 1
       end
-      it '正しい情報を入力しないとコメントできない' do
+      it 'コメントをした通知が作成される' do
+        expect(Notification.last.action_type).to eq 'comment_to_question'
+      end
+    end
+    context '正しい情報を入力していない場合' do
+      it 'コメントできない' do
         find("#comment_create_btn").click
         sleep(1)
         expect(page).to have_content 'コメントを登録できませんでした...'
+      end
+    end
+    context '質問にいいねをつける場合' do
+      before do
+        find(".like_btn").click
+        sleep(3)
+      end
+      it 'いいねボタンをおすと、いいねがつけられる' do
+        expect(Like.all.count).to eq 1
       end
     end
   end

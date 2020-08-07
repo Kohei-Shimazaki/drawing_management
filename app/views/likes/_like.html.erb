@@ -7,7 +7,7 @@
   </p>
 <% else %>
   <p>
-    <%=link_to likes_path(question_id: question.id), method: :post, remote: true do %>
+    <%=link_to likes_path(question_id: question.id), method: :post, remote: true, class: "like_btn" do %>
       <i class="far fa-heart"></i>
     <% end %>
     <%= question.likes.count %>
