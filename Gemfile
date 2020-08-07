@@ -21,6 +21,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise_invitable'
 gem 'kaminari-bootstrap'
+gem 'faker'
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
