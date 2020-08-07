@@ -10,6 +10,9 @@
         <%= link_to edit_task_path(@task) do %>
           <small><i class="fas fa-edit"></i> <%= t("activerecord.models.task") %><%= t("crud.edit") %></small>
         <% end %>
+        <%= link_to task_path(@task), method: :delete, data: { confirm: I18n.t("confirm.destroy")} do %>
+          <small><i class="fas fa-trash"></i> <%= t("activerecord.models.task") %><%= t("crud.destroy") %></small>
+        <% end %>
       <% end %>
     </div>
     <% if @task.drawing.revisions.present? %>

@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i(edit update show destroy revision_assign_delete approval approval_delete)
 
-  def index
-    @tasks = Task.all
-  end
-
   def new
     @task = Task.new
     @task.drawing_id = params[:drawing_id]
@@ -42,7 +38,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.destroy")}"
-    redirect_to tasks_path
+    redirect_to drawing_path(@task.drawing)
   end
 
   def revision_assign

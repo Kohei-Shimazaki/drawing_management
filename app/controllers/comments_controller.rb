@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i(edit update destroy)
+  before_action :set_comment, only: %i(destroy)
 
   def create
     @question = Question.find(params[:question_id])
@@ -10,18 +10,6 @@ class CommentsController < ApplicationController
       else
         format.html { redirect_to question_path(@question), notice: "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.create_failure")}"}
       end
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @comment.update(comment_params)
-      flash[:notice] = "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.update")}"
-      redirect_to comments_path
-    else
-      render :edit
     end
   end
 

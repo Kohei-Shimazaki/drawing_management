@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :category_assigns, only: %i(create destroy)
   resources :drawings
   resources :revisions
-  resources :tasks do
+  resources :tasks, only: %i(new create show edit update destroy) do
     resources :evidences, only: %i(create destroy)
     resources :references, only: %i(create destroy)
     collection do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
   resources :questions do
-    resources :comments, only: %i(create edit update destroy)
+    resources :comments, only: %i(create destroy)
   end
   resources :likes, only: %i(index create destroy)
   resources :notifications, only: [] do
