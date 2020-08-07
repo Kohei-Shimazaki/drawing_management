@@ -1,26 +1,31 @@
-<% if @revision.errors.any? %>
-  <ul>
-    <% @revision.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
 <%= form_with(model: @revision, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :revision_number %>
-    : <%= @revision.revision_number %>
+  <div class="container">
+    <% if @revision.errors.any? %>
+      <ul>
+        <% @revision.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :revision_number %>
+        : <%= @revision.revision_number %>
+      </div>
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.file_field :content %>
+      </div>
+      <div class="field">
+        <%= form.label :comment %>
+        <%= form.text_area :comment, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.hidden_field :revision_number, value: @revision.revision_number %>
+        <%= form.hidden_field :drawing_id, value: @revision.drawing_id %>
+      </div>
+      <%= form.submit t("submit"), class: "btn btn-primary", id: "revision_submit_btn" %>
+    </div>
   </div>
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.file_field :content %>
-  </div>
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-  <div class="field">
-    <%= form.hidden_field :revision_number, value: @revision.revision_number %>
-    <%= form.hidden_field :drawing_id, value: @revision.drawing_id %>
-  </div>
-  <%= form.submit t("submit") %>
+
 <% end %>

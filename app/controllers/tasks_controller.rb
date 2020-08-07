@@ -1,9 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i(edit update show destroy revision_assign_delete)
-
-  def index
-    @tasks = Task.all
-  end
+  before_action :set_task, only: %i(edit update show destroy revision_assign_delete approval approval_delete)
 
   def new
     @task = Task.new
@@ -14,7 +10,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.create")}"
-      redirect_to drawing_path(@task.drawing.id)
+      redirect_to drawing_path(@task.drawing)
     else
       render :new
     end
@@ -33,7 +29,7 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.update")}"
-      redirect_to tasks_path
+      redirect_to drawing_path(@task.drawing)
     else
       render :edit
     end
@@ -42,19 +38,35 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     flash[:notice] = "#{I18n.t("activerecord.models.task")}#{I18n.t("flash.destroy")}"
-    redirect_to tasks_path
+    redirect_to drawing_path(@task.drawing)
   end
 
   def revision_assign
     @task = Task.find(params[:task][:task_id])
     @task.revision_id = params[:task][:revision_id]
+    @task.status = "approval_waiting"
     if @task.save
-      ActionCable.server.broadcast "team_channel_#{@task.drawing.team.id}", notice: true
       redirect_to drawing_path(@task.drawing)
     end
   end
 
   def revision_assign_delete
+    @task.revision_id = nil
+    @task.status = "working"
+    if @task.save
+      redirect_to drawing_path(@task.drawing)
+    end
+  end
+
+  def approval
+    @task.status = "completed"
+    if @task.save
+      redirect_to drawing_path(@task.drawing)
+    end
+  end
+
+  def approval_delete
+    @task.status = "approval_rescission"
     @task.revision_id = nil
     if @task.save
       redirect_to drawing_path(@task.drawing)

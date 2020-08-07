@@ -7,7 +7,12 @@
     <div class="card-header card-header-danger">
       <%= @task.title %>
       <% if current_user == @task.staff || current_user == @task.drawing.team.owner %>
-        <%= link_to t("crud.edit"), edit_task_path(@task) %>
+        <%= link_to edit_task_path(@task) do %>
+          <small><i class="fas fa-edit"></i> <%= t("activerecord.models.task") %><%= t("crud.edit") %></small>
+        <% end %>
+        <%= link_to task_path(@task), method: :delete, data: { confirm: I18n.t("confirm.destroy")} do %>
+          <small><i class="fas fa-trash"></i> <%= t("activerecord.models.task") %><%= t("crud.destroy") %></small>
+        <% end %>
       <% end %>
     </div>
     <% if @task.drawing.revisions.present? %>
@@ -18,7 +23,9 @@
               <strong><%= t("last") %><%= t("activerecord.attributes.revision.content") %>:</strong>
             </div>
             <div class="col-md-10">
-              <%= link_to "Rev.#{@task.drawing.revisions.last.revision_number}", @task.drawing.revisions.last.content %>
+              <%= link_to @task.drawing.revisions.last.content do %>
+                <i class="far fa-file"></i> <%= "Rev.#{@task.drawing.revisions.last.revision_number}" %>
+              <% end %>
             </div>
           </div>
         </li>
@@ -30,7 +37,9 @@
               <strong><%= t("activerecord.attributes.revision.content") %>:</strong>
             </div>
             <div class="col-md-10">
-              <%= link_to "Rev.#{@task.revision.revision_number}", @task.revision.content %>
+              <%= link_to @task.revision.content do %>
+                <i class="far fa-file"></i> <%= "Rev.#{@task.revision.revision_number}" %>
+              <% end %>
             </div>
           </div>
         </li>
@@ -51,7 +60,7 @@
             <strong><%= t("activerecord.attributes.task.deadline") %>:</strong>
           </div>
           <div class="col-md-10">
-            <%= @task.deadline %>
+            <%= l @task.deadline, format: :date %>
           </div>
         </div>
       </li>

@@ -6,23 +6,29 @@
       <% end %>
     </ul>
   <% end %>
+  <% if project.id.present? %>
+    <% id = project.id %>
+  <% else %>
+    <% id = 0 %>
+  <% end %>
   <div class="form-group">
     <div class="field">
       <%= form.label :customer_id %>
-      <%= form.select :customer_id, current_user.company.customers.map{ |customer| [customer.name, customer.id] if customer.id }.compact %>
+      <%= form.select :customer_id, current_user.company.customers.map{ |customer| [customer.name, customer.id] if customer.id }.compact,
+          id: "project_customer_#{id}"%>
     </div>
     <div class="field">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control form_del_project" %>
+      <%= form.text_field :name, class: "form-control form_del_project", id: "project_name_#{id}" %>
     </div>
     <div class="field">
       <%= form.label :location %>
-      <%= form.text_field :location, class: "form-control form_del_project" %>
+      <%= form.text_field :location, class: "form-control form_del_project", id: "project_location_#{id}" %>
     </div>
     <div class="field">
       <%= form.label :explanation %>
-      <%= form.text_area :explanaeion, class: "form-control form_del_project" %>
+      <%= form.text_area :explanation, class: "form-control form_del_project", id: "project_explanation_#{id}" %>
     </div>
-    <%= form.submit t("submit") %>
+    <%= form.submit t("submit"), id: "create_project_btn_#{id}" %>
   </div>
 <% end %>

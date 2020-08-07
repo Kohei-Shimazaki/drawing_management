@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :company do
     name { "MyString" }
-    phone_number { "MyString" }
+    phone_number { "090-101-1001" }
     location { "MyString" }
-    icon { "MyText" }
     overview { "MyText" }
   end
 end

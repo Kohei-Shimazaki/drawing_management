@@ -1,0 +1,6 @@
+<div class="jumbotron text-center">
+  <h2><%= t("activerecord.models.like") %><%= t("crud.index") %></h2>
+</div>
+<div class="container">
+  <%= render partial: "questions/index", locals: {questions: @questions } %>
+</div>

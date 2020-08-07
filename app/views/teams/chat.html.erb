@@ -5,13 +5,17 @@
 </div>
 
 <div class="container">
-  <form>
+  <div class="search_chat_form mb-2">
+    <%= render "search_chat_form" %>
+  </div>
+  <form class="form-group">
     <label>チャット:</label><br>
-    <input type="text" data-behavior="team_speaker", placeholder="内容">
+    <input type="text" data-behavior="team_speaker", placeholder="内容", class="form-control">
   </form>
   <div id="messages_<%= @team.id %>">
     <ul class="list-group">
       <%= render @messages %>
     </ul>
   </div>
+  <%= paginate @messages %>
 </div>

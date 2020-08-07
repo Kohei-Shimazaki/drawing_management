@@ -1,6 +1,8 @@
-<div class="container">
+<div class="jumbotron text-center">
   <h2><%= t('.title', resource: resource.model_name.human) %></h2>
+</div>
 
+<div class="container">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="form-group">
@@ -43,14 +45,15 @@
       </div>
 
       <div class="actions">
-        <%= f.submit t('.update') %>
+        <%= f.submit t('.update'), class: "btn btn-primary mt-1" %>
       </div>
     </div>
   <% end %>
+  <% unless current_user == current_user.company.admin %>
+    <h3><%= t('.cancel_my_account') %></h3>
+    <p><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name),
+        data: { confirm: t('.are_you_sure') }, method: :delete, id: "user_delete_btn" %></p>
+  <% end %>
 
-  <h3><%= t('.cancel_my_account') %></h3>
-
-  <p><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %></p>
-
-  <%= link_to t('devise.shared.links.back'), :back %>
+  <%= link_to t('devise.shared.links.back'), :back, class: "btn btn-secondary" %>
 </div>

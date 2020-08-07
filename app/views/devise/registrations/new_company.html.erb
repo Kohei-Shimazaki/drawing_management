@@ -1,34 +1,45 @@
-<h2>
-  <%= t('activerecord.models.company') %><%= t('crud.new') %>
-</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-auto flex-md-fill">
+      <h2>
+        <%= t('activerecord.models.company') %><%= t('crud.new') %>
+      </h2>
 
-<%= form_with(model: @company, url: create_company_path, local:true) do |form| %>
-  <div class="form-group">
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
-    <div class="field">
-      <%= form.label :phone_number %>
-      <%= form.telephone_field :phone_number, class: "form-control" %>
-    </div>
-    <div class="field">
-      <%= form.label :location %>
-      <%= form.text_field :location, class: "form-control" %>
-    </div>
-    <div class="field">
-      <%= form.label :icon %>
-      <%= form.file_field :icon, class: "form-control-file" %>
-    </div>
-    <div class="field">
-      <%= form.label :overview %>
-      <%= form.text_area :overview, class: "form-control" %>
-    </div>
-    <div class="actions">
-      <%= form.submit t("submit") %>
+      <%= form_with(model: @company, url: create_company_path, local:true) do |form| %>
+        <% if @company.errors.any? %>
+          <ul>
+            <% @company.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <div class="form-group">
+          <div class="field">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: "form-control" %>
+          </div>
+          <div class="field">
+            <%= form.label :phone_number %>
+            <%= form.telephone_field :phone_number, class: "form-control" %>
+          </div>
+          <div class="field">
+            <%= form.label :location %>
+            <%= form.text_field :location, class: "form-control" %>
+          </div>
+          <div class="field">
+            <%= form.label :icon %>
+            <%= form.file_field :icon, class: "form-control-file" %>
+          </div>
+          <div class="field">
+            <%= form.label :overview %>
+            <%= form.text_area :overview, class: "form-control" %>
+          </div>
+          <div class="actions">
+            <%= form.submit t("submit"), class: "btn btn-primary mt-2" %>
+          </div>
+        </div>
+
+      <% end %>
     </div>
   </div>
-
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

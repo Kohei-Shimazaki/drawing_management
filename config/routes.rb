@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'users#show'
+  root to: 'informations#top'
+
   resources :companies
-  resources :customers
-  resources :projects
-  resources :categories
-  resources :category_assigns, only: %i(create destroy)
   resources :teams do
     member do
       get :chat
@@ -19,10 +16,14 @@ Rails.application.routes.draw do
     get 'new_company', to: 'users/registrations#new_company'
     post 'create_company', to: 'users/registrations#create_company'
   end
-  resources :users, only: [:show]
+  resources :users, only: %i(show)
+  resources :customers
+  resources :projects
+  resources :categories
+  resources :category_assigns, only: %i(create destroy)
   resources :drawings
   resources :revisions
-  resources :tasks do
+  resources :tasks, only: %i(new create show edit update destroy) do
     resources :evidences, only: %i(create destroy)
     resources :references, only: %i(create destroy)
     collection do
@@ -30,12 +31,22 @@ Rails.application.routes.draw do
     end
     member do
       post :revision_assign_delete
+      post :approval
+      post :approval_delete
     end
   end
   resources :questions do
-    resources :comments, only: %i(create edit update destroy)
+    resources :comments, only: %i(create destroy)
   end
-  resources :likes, only: %i(create destroy)
+  resources :likes, only: %i(index create destroy)
+  resources :notifications, only: [] do
+    resources :notification_reads, only: %i(create)
+  end
+  resources :notification_reads, only: [] do
+    collection do
+      post :all_read
+    end
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   mount ActionCable.server => '/cable'
 end

@@ -19,7 +19,7 @@
     <div id="header">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <% if user_signed_in? %>
-          <div id="team_ids", data-team_id="<%= current_user.teams.map{ |team| team.id } %>">
+          <div id="team_coffee_datas", data-team_ids="<%= current_user.teams.map{ |team| team.id } %>", data-user_id="<%= current_user.id %>">
           </div>
           <%= link_to company_path(current_user.company), class: "navbar-brand" do %>
             <% if current_user.company.icon.attached? %>
@@ -62,6 +62,8 @@
               <i class="far fa-question-circle"></i> <%= t("activerecord.models.question") %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to "質問一覧へ", questions_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
               <% current_user.has_tasks.each do |task| %>
                 <div>
                   <%= link_to task.title, new_question_path(task_id: task.id), class: "dropdown-item" %>
@@ -70,8 +72,31 @@
             </div>
           </div>
           <div class="dropdown navbar-brand">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="far fa-bell"></i> <%= t("activerecord.models.notification") %> <span id="unread_notifications"><%= number_of_unread_notifications %></span>
+            </button>
+            <div class="container">
+              <div class="dropdown-menu notification-menu" aria-labelledby="dropdownMenuButton">
+                <ul class="list-group">
+                  <%= link_to all_read_notification_reads_path, method: :post do %>
+                    <li class="list-group-item list_link">
+                      全ての通知を既読にする
+                    </li>
+                  <% end %>
+                  <div id="notifications">
+                  <% current_user.notifications.order(created_at: :desc).each do |notification| %>
+                    <% unless notification.has_read_users.include?(current_user) %>
+                      <%= render partial: "notifications/#{notification.action_type}", locals: {notification: notification} %>
+                    <% end %>
+                  <% end %>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown navbar-brand">
             <button class="btn btn-primary dropdown-toggle" type="button" id="chat_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="far fa-comment"></i> チャット
+              <i class="far fa-comment"></i> <%= t("activerecord.models.message") %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <% current_user.teams.each do |team| %>

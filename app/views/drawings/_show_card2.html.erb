@@ -1,5 +1,5 @@
 <div class="field">
-  <%= link_to t("activerecord.models.task")+t("crud.new"),
-      new_task_path(drawing_id: @drawing.id), class: "btn btn-primary btn-block mb-1" %>
+  <%= link_to t("activerecord.models.task")+t("crud.new"), new_task_path(drawing_id: @drawing.id),
+      class: "btn btn-primary btn-block mb-1", id: "new_task_btn" %>
 </div>
 <%= render partial: "tasks/table", locals: { tasks: @drawing.tasks } %>

@@ -21,11 +21,13 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise_invitable'
 gem 'kaminari-bootstrap'
+gem 'faker'
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
+  gem 'action-cable-testing'
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'better_errors'

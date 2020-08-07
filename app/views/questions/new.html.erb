@@ -1,6 +1,37 @@
 <div class="jumbotron text-center">
-  <h2><%= t("activerecord.models.question") %><%= t("crud.new") %></h2>
-  <h3><%= @question.task.title %></h3>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h4><%= @question.task.drawing.title %></h4>
+      </div>
+      <table class="table mb-0 table-bordered table-sm">
+        <thead>
+          <tr>
+            <th><%= t("activerecord.attributes.drawing.drawing_number") %></th>
+            <th><%= t("activerecord.attributes.customer.name") %></th>
+            <th><%= t("activerecord.attributes.project.name") %></th>
+            <th><%= t("activerecord.attributes.category.name") %></th>
+            <th><%= t("activerecord.models.team") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @question.task.drawing.drawing_number %></td>
+            <td><%= @question.task.drawing.project.customer.name %></td>
+            <td><%= @question.task.drawing.project.name %></td>
+            <td>
+              <%= @question.task.drawing.categories.map{|category| category.name }.join("/") %>
+            </td>
+            <td><%= @question.task.drawing.team.name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card-body">
+        <strong><%= @question.task.title %></strong>
+        <%= simple_format(@question.task.content) %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
@@ -28,7 +59,7 @@
       <div class="field">
         <%= form.hidden_field :task_id, value: @question.task_id %>
       </div>
-      <%= form.submit t("submit") %>
+      <%= form.submit t("submit"), id: "create_question_btn" %>
     </div>
   <% end %>
 </div>

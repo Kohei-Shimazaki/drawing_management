@@ -5,7 +5,9 @@
   </strong>
 </p>
 <p>
-  <%= link_to t("activerecord.attributes.revision.content"), revision.content %>
+  <%= link_to revision.content do %>
+    <i class="far fa-file"></i> <%= t("activerecord.attributes.revision.content") %>
+  <% end %>
 </p>
 <p>
   <%= revision.comment %>

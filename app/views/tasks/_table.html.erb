@@ -13,11 +13,11 @@
   </thead>
   <tbody>
     <% tasks.each do |task| %>
-      <tr data-href="<%= task_path(task.id) %>">
+      <tr>
         <td>
           <p>
-            <% if current_user == task.staff %>
-              <%= link_to revision_assign_delete_task_path(task), method: :post do %>
+            <% if current_user == task.staff && task.approval_waiting? %>
+              <%= link_to revision_assign_delete_task_path(task), method: :post, id: "task_app" do %>
                 <i class="fas fa-minus"></i>
               <% end %>
             <% end %>
@@ -36,7 +36,19 @@
             <%= task.approver.name %>
           <% end %>
         </td>
-        <td><%= t("activerecord.attributes.task.enum.#{task.status}") %></td>
+        <td>
+          <span class="badge <%= badge_status(task) %>"><%= t("activerecord.attributes.task.enum.#{task.status}") %></span><br>
+          <% if current_user == task.approver && task.approval_waiting? %>
+            <%= link_to approval_task_path(task), method: :post, id: "task_completed_#{task.id}" do %>
+              <i class="fas fa-stamp"></i> OK
+            <% end %>
+          <% end %>
+          <% if current_user == task.approver && task.completed? %>
+            <%= link_to approval_delete_task_path(task), method: :post, id: "task_approval_rescission_#{task.id}" do %>
+              <i class="fas fa-backspace"></i> NG
+            <% end %>
+          <% end %>
+        </td>
         <td><%= l task.deadline, format: :date %></td>
         <td><%= task.content %></td>
         <td>

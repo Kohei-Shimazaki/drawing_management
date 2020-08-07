@@ -9,6 +9,7 @@
       </div>
       <div class="col-md-10">
         <small class="text-muted"><%= l message.created_at, format: :short %></small><br>
+        <small class="text-muted">既読 <%=message.has_read_users.count %> : <%= message.has_read_users.map{ |user| user.name }.join("/") %></small><br>
         <%= message.content %>
       </div>
     </div>

@@ -1,0 +1,46 @@
+<%= render partial: "search_form" %>
+<ul class="list-group">
+  <% @questions.each do |question| %>
+    <%= link_to question_path(question), class: "list_link" do %>
+      <li class="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-2">
+            <% if question.task.staff.icon.attached? %>
+              <%= image_tag question.task.staff.icon.variant(resize:'50x50').processed %><br>
+            <% end %>
+            <%= question.task.staff.name %>
+          </div>
+          <div class="col-sm-10">
+            <div>
+              <div>
+                <small class="text-muted"><%= l question.created_at, format: :short %></small><br>
+              </div>
+              <div>
+                <strong><%= t("activerecord.models.project") %>:</strong><%= question.task.drawing.project.name %>
+              </div>
+              <div>
+                <strong><%= t("activerecord.models.team") %>:</strong><%= question.task.drawing.team.name %>
+              </div>
+              <div>
+                <strong><%= t("activerecord.models.drawing") %>:</strong><%= question.task.drawing.title %>
+              </div>
+              <div>
+                <strong><%= t("activerecord.models.task") %>:</strong><%= question.task.title %>
+              </div>
+              <strong><%= question.title %></strong>
+            </div>
+            <div>
+              <%= question.content.truncate(30) %>
+              <object>
+                <div id="likes_buttons_<%= question.id %>">
+                  <%= render partial: 'likes/like', locals: { question: question } %>
+                </div>
+              </object>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<%= paginate @questions %>

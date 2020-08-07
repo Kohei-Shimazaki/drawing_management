@@ -1,4 +1,15 @@
 class LikesController < ApplicationController
+  PER = 10
+
+  def index
+    @q = User.find(params[:user_id]).like_questions.order(created_at: :desc).ransack(params[:q])
+    @tasks = current_user.company.tasks
+    @drawings = current_user.company.drawings
+    @projects = current_user.company.projects
+    @teams = current_user.company.teams
+    @questions = @q.result.includes(:task, :drawing, :project, :team).page(params[:page]).per(PER)
+  end
+
   def create
     @question = Question.find(params[:question_id])
     like = current_user.likes.create(question_id: params[:question_id])

@@ -37,7 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @company.admin_id = @user.id
     @company.save
     sign_in(:user, @user)
-    redirect_to root_path
+    redirect_to user_path(@user)
   end
 
 protected
