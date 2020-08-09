@@ -11,7 +11,10 @@ class MessageBroadcastJob < ApplicationJob
 
   private
     def render_message(message)
-      renderer = ApplicationController.renderer.new(http_host: 'localhost:3000')
+      renderer = ApplicationController.renderer.new(
+        http_host: 'pacific-shelf-39716.herokuapp.com',
+        https: true,
+      )
       renderer.render(partial: 'messages/message', locals: { message: message })
     end
 end
