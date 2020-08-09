@@ -12,6 +12,6 @@ class MessageBroadcastJob < ApplicationJob
   private
     def render_message(message)
       # renderer = ApplicationController.renderer.new(http_host: 'localhost:3000')
-      renderer.render(partial: 'messages/message', locals: { message: message })
+      ApplicationController.render(partial: 'messages/message', locals: { message: message })
     end
 end
