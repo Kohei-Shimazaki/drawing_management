@@ -81,5 +81,16 @@ RSpec.describe 'チーム作成機能', type: :system do
         expect(@team.members.count).to eq 2
       end
     end
+    context "チャットを送る場合" do
+      before do
+        click_on 'チャットルーム'
+      end
+      it 'メッセージを送れる' do
+        find(".form-control").set('sample_chat')
+        find(".form-control").native.send_keys(:return)
+        sleep(3)
+        expect(Message.last.content).to eq "sample_chat"
+      end
+    end
   end
 end

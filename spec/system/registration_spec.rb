@@ -12,13 +12,14 @@ RSpec.describe '登録機能', type: :system do
       @project = create(:project, customer: @customer)
       @category = create(:category, company: @company)
       visit new_user_invitation_path
-      fill_in 'Eメールアドレス', with: 'sample2@example.com'
+      fill_in 'Eメールアドレス', with: 'sample@example.com'
       fill_in 'パスワード', with: 'password'
       find("#login_btn").click
       visit new_user_invitation_path
     end
     context '社員登録をする場合' do
       before do
+        find("#user_invitation").click
         attach_file 'Excelファイル', "#{Rails.root}/spec/factories/test_1.xlsx"
         find("#user_invitation_btn").click
         sleep(5)
