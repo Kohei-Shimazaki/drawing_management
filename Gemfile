@@ -24,7 +24,6 @@ gem 'devise_invitable'
 gem 'kaminari-bootstrap'
 gem 'faker'
 gem "aws-sdk-s3", require: false
-gem 'webpacker', github: 'rails/webpacker'
 gem 'dotenv-rails'
 gem 'unicorn'
 gem 'mini_racer', platforms: :ruby

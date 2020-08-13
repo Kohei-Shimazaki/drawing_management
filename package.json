@@ -2,7 +2,6 @@
   "name": "drawing_management",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.1.1",
     "bootstrap": "4",
     "bootstrap-vue": "^2.15.0",
     "jquery": "^3.5.1",
