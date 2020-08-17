@@ -15,7 +15,7 @@ class NotificationBroadcastJob < ApplicationJob
         http_host: 'pacific-shelf-39716.herokuapp.com',
         https: true
       )
-      render.render(partial: "notifications/#{notification.action_type}", locals: { notification: notification })
+      renderer.render(partial: "notifications/#{notification.action_type}", locals: { notification: notification })
     end
 
     def user_id(notification)
