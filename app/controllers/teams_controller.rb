@@ -40,7 +40,15 @@ class TeamsController < ApplicationController
     messages = @team.messages
     read_messages = current_user.has_read_messages
     unread_messages = messages - read_messages
-    unread_messages.each { |message| MessageRead.create(user_id: current_user.id, message_id: message.id) unless current_user == message.user }
+    unread_messages.each do |message|
+      MessageRead.create(user_id: current_user.id, message_id: message.id) unless current_user == message.user
+      ActionCable.server.broadcast(
+        "team_channel_#{message.team_id}",
+        message_read: true,
+        message_id: message.id,
+        user_name: current_user.name
+      )
+    end
     @q = @team.messages.order(created_at: :desc).ransack(params[:q])
     @users = @team.members
     @messages = @q.result.includes(:user).page(params[:page]).per(PER)
