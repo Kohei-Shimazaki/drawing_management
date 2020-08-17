@@ -15,4 +15,18 @@ class TeamChannel < ApplicationCable::Channel
     )
   end
 
+  def message_read(data)
+    unless data['user_id'] == current_user.id
+      message_read = MessageRead.create!(
+        user_id: current_user.id,
+        message_id: data['message_id'],
+      )
+      ActionCable.server.broadcast(
+        "team_channel_#{message_read.message.team_id}",
+        message_read: true,
+        message_id: message_read.message.id,
+        user_name: message_read.user.name
+      )
+    end
+  end
 end

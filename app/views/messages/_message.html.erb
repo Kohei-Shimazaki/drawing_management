@@ -9,7 +9,18 @@
       </div>
       <div class="col-md-10">
         <small class="text-muted"><%= l message.created_at, format: :short %></small><br>
-        <small class="text-muted">既読 <%=message.has_read_users.count %> : <%= message.has_read_users.map{ |user| user.name }.join("/") %></small><br>
+        <div class="hidden" id="message_id"><%= message.id %></div>
+        <div class="hidden" id="message_created_at"><%= message.created_at.strftime('%s%L').to_i %></div>
+        <div class="hidden" id="message_user_id"><%= message.user.id %></div>
+        <small class="text-muted">
+          既読
+        </small>
+        <small class="text-muted" id="message_read_count_<%= message.id %>">
+          <%=message.has_read_users.count %>
+        </small>
+        <small class="text-muted" id="message_read_users_<%= message.id %>">
+          : <%= message.has_read_users.map{ |user| user.name }.join("/") %>
+        </small><br>
         <%= message.content %>
       </div>
     </div>

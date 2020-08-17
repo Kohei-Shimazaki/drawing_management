@@ -14,7 +14,7 @@ class NotificationBroadcastJob < ApplicationJob
       renderer = ApplicationController.renderer.new(
         http_host: '54.95.190.19',
       )
-      render.render(partial: "notifications/#{notification.action_type}", locals: { notification: notification })
+      renderer.render(partial: "notifications/#{notification.action_type}", locals: { notification: notification })
     end
 
     def user_id(notification)

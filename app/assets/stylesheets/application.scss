@@ -17,6 +17,10 @@ footer {
   background-color: black;
 }
 
+.hidden {
+  display: none;
+}
+
 .top-image {
   background-image: image-url(image-path('top_image.jpg'));
   background-size: cover;
