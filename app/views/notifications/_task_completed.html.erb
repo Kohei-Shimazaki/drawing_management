@@ -2,7 +2,9 @@
   <li class="list-group-item">
     <div class="row">
       <div class="col-md-2">
-        <%= image_tag notification.subject.approver.icon.variant(resize:'50x50').processed, class: "small_icon" %>
+        <% if notification.subject.approver.icon.attached? %>
+          <%= image_tag notification.subject.approver.icon.variant(resize:'50x50').processed, class: "small_icon" %>
+        <% end %>
       </div>
       <div class="col-md-10">
         <small class="text-muted"><%= l notification.created_at, format: :short %></small><br>
