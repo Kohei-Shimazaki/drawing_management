@@ -65,16 +65,14 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "drawing_management_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'https://pacific-shelf-39716.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'http://54.95.190.19'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:"smtp.gmail.com",
     domain: 'gmail.com',
     port:587,
     user_name: Rails.application.credentials.gmail[:mail_address],
-    #gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得、必ずcredentials.yml.endに設定を！！
     password: Rails.application.credentials.gmail[:app_password],
-    #パスワードをBase64でエンコード
     authentication: :login
   }
   # Ignore bad email addresses and do not raise email delivery errors.

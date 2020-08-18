@@ -12,8 +12,7 @@ class NotificationBroadcastJob < ApplicationJob
   private
     def render_notification(notification)
       renderer = ApplicationController.renderer.new(
-        http_host: 'pacific-shelf-39716.herokuapp.com',
-        https: true
+        http_host: '54.95.190.19',
       )
       renderer.render(partial: "notifications/#{notification.action_type}", locals: { notification: notification })
     end
