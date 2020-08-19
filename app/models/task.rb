@@ -10,6 +10,7 @@ class Task < ApplicationRecord
 
   validates :title, presence: true, length: {maximum: 100}
   validates :deadline, presence: true
+  validate :date_not_before_today
 
   enum status: {
     waiting: 0, #未着手
@@ -24,6 +25,10 @@ class Task < ApplicationRecord
   after_commit :create_notifications
 
   private
+
+  def date_not_before_today
+    errors.add(:start_date, "は今日以降のものを選択してください") if deadline.nil? || deadline <= Date.today - 1
+  end
 
   def create_notifications
     if self.approval_waiting?

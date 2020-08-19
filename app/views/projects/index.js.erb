@@ -1,2 +1,2 @@
 $("#project_area").html("<%= j(render 'projects/index') %>")
-$(".form_del_project").val('')
+$("#project_form_area").html("<%= escape_javascript render(partial: "projects/form", locals: { project: Project.new }) %>");

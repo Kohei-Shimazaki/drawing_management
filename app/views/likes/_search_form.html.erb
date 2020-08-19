@@ -20,6 +20,9 @@
     <%= form.label :title, "質問タイトル" %>
     <%= form.search_field :title_cont %>
   </div>
+  <div class="field">
+    <%= form.hidden_field :user_id, value: @user.id %>
+  </div>
 
   <%= form.submit "検索" %>
 <% end %>

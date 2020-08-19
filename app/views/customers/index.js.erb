@@ -1,4 +1,2 @@
 $("#customer_area").html("<%= j(render 'customers/index') %>")
-$("#project_form").html("<%= j(render 'projects/form', project: Project.new ) %>")
-$("#project_area").html("<%= j(render 'projects/index') %>")
-$(".form_del_customer").val('')
+$("#customer_form_area").html("<%= escape_javascript render(partial: "customers/form", locals: { customer: @customer.company.customers.build }) %>");

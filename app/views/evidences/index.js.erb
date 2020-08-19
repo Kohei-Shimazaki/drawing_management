@@ -1,3 +1,2 @@
 $("#evidences_area").html("<%= j(render 'evidences/index', { evidences: @evidence.task.evidences, task: @evidence.task }) %>")
-$("textarea").val('')
-$("#evidence_file").val('')
+$("#evidence_form_area").html("<%= escape_javascript render(partial: "evidences/form", locals: { evidence: @evidence.task.evidences.build, task: @evidence.task }) %>");

@@ -33,7 +33,7 @@ RSpec.describe 'エビデンス・参考管理機能', type: :system do
       it '正しい情報を入力していないと登録できない' do
         find("#create_evidence_btn").click
         sleep(1)
-        expect(page).to have_content 'エビデンスを登録できませんでした...'
+        expect(page).to have_content 'エビデンスコメントを入力してください'
       end
     end
     context '参考を登録する場合' do
@@ -46,7 +46,7 @@ RSpec.describe 'エビデンス・参考管理機能', type: :system do
       it '正しい情報を入力していないと登録できない' do
         find("#create_reference_btn").click
         sleep(1)
-        expect(page).to have_content '参考を登録できませんでした...'
+        expect(page).to have_content '参考コメントを入力してください'
       end
     end
   end

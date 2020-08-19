@@ -1,2 +1,2 @@
 $("#category_area").html("<%= j(render 'categories/index') %>")
-$(".form_del_catebory").val('')
+$("#category_form_area").html("<%= escape_javascript render(partial: "categories/form", locals: { category: @category.company.categories.build }) %>");

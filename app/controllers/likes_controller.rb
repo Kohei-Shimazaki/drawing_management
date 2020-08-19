@@ -2,7 +2,12 @@ class LikesController < ApplicationController
   PER = 10
 
   def index
-    @q = User.find(params[:user_id]).like_questions.order(created_at: :desc).ransack(params[:q])
+    if params[:q]
+      @user = User.find(params[:q][:user_id])
+    else
+      @user = User.find(params[:user_id])
+    end
+    @q = @user.like_questions.order(created_at: :desc).ransack(params[:q])
     @tasks = current_user.company.tasks
     @drawings = current_user.company.drawings
     @projects = current_user.company.projects

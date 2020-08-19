@@ -8,7 +8,7 @@ class EvidencesController < ApplicationController
       if @evidence.save
         format.js { render :index }
       else
-        format.html { redirect_to task_path(@task), notice: "#{I18n.t("activerecord.models.evidence")}#{I18n.t("flash.create_failure")}"}
+        format.js { render :new }
       end
     end
   end

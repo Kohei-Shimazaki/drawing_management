@@ -2,7 +2,7 @@
   <% if category.errors.any? %>
     <ul>
       <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="category_error_message"><%= message %></li>
       <% end %>
     </ul>
   <% end %>
@@ -14,11 +14,11 @@
   <div class="form-group">
     <div class="field">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control form_del_catebory", id: "category_name_#{id}"  %>
+      <%= form.text_field :name, class: "form-control form_del_category", id: "category_name_#{id}"  %>
     </div>
     <div class="field">
       <%= form.label :explanation %>
-      <%= form.text_area :explanation, class: "form-control form_del_catebory", id: "category_explanation_#{id}" %>
+      <%= form.text_area :explanation, class: "form-control form_del_category", id: "category_explanation_#{id}" %>
     </div>
     <%= form.submit t("submit"), id: "create_category_btn_#{id}" %>
   </div>

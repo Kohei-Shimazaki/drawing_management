@@ -1,3 +1,2 @@
 $("#references_area").html("<%= j(render 'references/index', { references: @reference.task.references, task: @reference.task }) %>")
-$("textarea").val('')
-$("#reference_file").val('')
+$("#reference_form_area").html("<%= escape_javascript render(partial: "references/form", locals: { reference: @reference.task.references.build, task: @reference.task }) %>");

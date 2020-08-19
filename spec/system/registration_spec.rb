@@ -45,14 +45,14 @@ RSpec.describe '登録機能', type: :system do
         fill_in 'customer_location_0', with: 'new_customer_location'
         find("#create_customer_btn_0").click
         sleep(1)
-        expect(page).to have_content "客先を登録できませんでした..."
+        expect(page).to have_content "客先名を入力してください"
       end
       it '連絡先が欠けていると登録できない' do
         fill_in 'customer_name_0', with: 'new_customer'
         fill_in 'customer_location_0', with: 'new_customer_location'
         find("#create_customer_btn_0").click
         sleep(1)
-        expect(page).to have_content "客先を登録できませんでした..."
+        expect(page).to have_content "連絡先を入力してください"
       end
     end
     context '客先を編集・削除する場合' do
@@ -92,7 +92,7 @@ RSpec.describe '登録機能', type: :system do
         fill_in 'project_explanation_0', with: 'new_project_explanation'
         find("#create_project_btn_0").click
         sleep(1)
-        expect(page).to have_content "プロジェクトを登録できませんでした..."
+        expect(page).to have_content "プロジェクト名を入力してください"
       end
     end
     context 'プロジェクトを編集・削除する場合' do
@@ -130,7 +130,7 @@ RSpec.describe '登録機能', type: :system do
         fill_in 'category_explanation_0', with: 'new_category_explanation'
         find("#create_category_btn_0").click
         sleep(1)
-        expect(page).to have_content "カテゴリーを登録できませんでした..."
+        expect(page).to have_content "カテゴリ名を入力してください"
       end
     end
     context 'カテゴリーを編集・削除する場合' do

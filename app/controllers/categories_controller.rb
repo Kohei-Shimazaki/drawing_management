@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
       if @category.save
         format.js { render :index }
       else
-        format.html { redirect_to new_user_invitation_path, notice: "#{I18n.t("activerecord.models.category")}#{I18n.t("flash.create_failure")}"}
+        format.js { render :new }
       end
     end
   end
@@ -18,7 +18,6 @@ class CategoriesController < ApplicationController
   def edit
     @category = current_user.company.categories.find(params[:id])
     respond_to do |format|
-      flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
     end
   end
@@ -27,11 +26,9 @@ class CategoriesController < ApplicationController
     @category = current_user.company.categories.find(params[:id])
     respond_to do |format|
       if @category.update(category_params)
-        flash.now[:notice] = 'コメントが編集されました'
         format.js { render :index }
       else
-        flash.now[:notice] = 'コメントの編集に失敗しました'
-        format.js { render :edit_error }
+        format.js { render :edit }
       end
     end
   end

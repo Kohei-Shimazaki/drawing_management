@@ -8,7 +8,7 @@ class ReferencesController < ApplicationController
       if @reference.save
         format.js { render :index }
       else
-        format.html { redirect_to task_path(@task), notice: "#{I18n.t("activerecord.models.reference")}#{I18n.t("flash.create_failure")}"}
+        format.js { render :new }
       end
     end
   end

@@ -82,9 +82,13 @@
       </div>
     </ul>
   </div>
-  <%= render partial: 'references/form', locals: { reference: @reference, task: @task } %>
+  <div id="reference_form_area">
+    <%= render partial: 'references/form', locals: { reference: @reference, task: @task } %>
+  </div>
   <% if current_user == @task.staff %>
-    <%= render partial: 'evidences/form', locals: { evidence: @evidence, task: @task } %>
+    <div id="evidence_form_area">
+      <%= render partial: 'evidences/form', locals: { evidence: @evidence, task: @task } %>
+    </div>
   <% end %>
   <div class="action">
     <%= link_to t("back"), drawing_path(@task.drawing), class: "btn btn-secondary" %>

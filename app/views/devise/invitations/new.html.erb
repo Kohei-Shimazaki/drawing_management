@@ -24,7 +24,7 @@
       <div class="tab-content">
         <div id="card1", class="tab-pane active">
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4" id="customer_form_area">
               <%= render partial: "customers/form", locals: { customer: @customer} %>
             </div>
             <div class="col-lg-8" id="customer_area">
@@ -35,7 +35,7 @@
 
         <div id="card2", class="tab-pane">
           <div class="row">
-            <div class="col-lg-4" id="project_form">
+            <div class="col-lg-4" id="project_form_area">
               <%= render partial: "projects/form", locals: { project: @project } %>
             </div>
             <div class="col-lg-8" id="project_area">
@@ -46,7 +46,7 @@
 
         <div id="card3", class="tab-pane">
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4" id="category_form_area">
               <%= render partial: "categories/form", locals: { category: @category } %>
             </div>
             <div class="col-lg-8" id="category_area">
