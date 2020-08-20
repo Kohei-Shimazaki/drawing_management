@@ -14,11 +14,14 @@ document.addEventListener 'turbolinks:load', ->
           # Called when the subscription has been terminated by the server
 
         received: (data) ->
+          # speakメソッドで受け取ったチャットを受け取る
           if data['message']
             $('#messages_'+data['team_id']).prepend data['message']
+          # Notificationのインスタンスが作成されるとチームメンバーに通知が届く
           if data['notification'] && data['user_id'] != $("#team_coffee_datas").data("user_id")
             $('#notifications').prepend data['notification']
             $("#unread_notifications").text String(Number($("#unread_notifications").text()) + 1)
+          # チャット画面を開くと、チャット画面に既読表示が出る
           if data['message_read']
             $('#message_read_count_'+data['message_id']).text String(Number($('#message_read_count').text()) + 1)
             if $('#message_read_users_'+data['message_id']).text().replace(/\r?\n/g,"").replace(/^\s+/g, "") == ":         "

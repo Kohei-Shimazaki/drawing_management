@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.js { render :index }
       else
-        format.html { redirect_to question_path(@question), notice: "#{I18n.t("activerecord.models.comment")}#{I18n.t("flash.create_failure")}"}
+        format.js { render :new }
       end
     end
   end

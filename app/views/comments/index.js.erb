@@ -1,3 +1,2 @@
 $("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.question.comments.order(created_at: :desc).page(params[:page]).per(10), question: @comment.question }) %>")
-$("textarea").val('')
-$("#comment_file").val('')
+$("#comment_form_area").html("<%= j(render 'comments/form', { comment: @comment.question.comments.build, question: @comment.question }) %>")

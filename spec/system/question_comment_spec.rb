@@ -66,7 +66,7 @@ RSpec.describe '質問管理機能', type: :system do
       it 'コメントできない' do
         find("#comment_create_btn").click
         sleep(1)
-        expect(page).to have_content 'コメントを登録できませんでした...'
+        expect(page).to have_content 'コメント内容を入力してください'
       end
     end
     context '質問にいいねをつける場合' do
