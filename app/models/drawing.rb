@@ -9,6 +9,6 @@ class Drawing < ApplicationRecord
   has_many :questions, through: :tasks
 
   validates :title, presence: true, length: {maximum: 100}
-  validates :drawing_number, presence: true, length: {maximum: 20}
+  validates :drawing_number, presence: true, length: {maximum: 20}, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
 end

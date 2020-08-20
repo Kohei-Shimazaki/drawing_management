@@ -37,6 +37,14 @@ RSpec.describe User, type: :model do
         user = User.new(name: '失敗テスト', email: 'user@example.com', password: 'password')
         expect(user).not_to be_valid
       end
+      it 'employee_numberが21桁以上ならバリデーションが通らない' do
+        user = User.new(name: '失敗テスト', employee_number: 10**20, email: 'user@example.com', password: 'password')
+        expect(user).not_to be_valid
+      end
+      it 'employee_numberが負の値ならバリデーションが通らない' do
+        user = User.new(name: '失敗テスト', employee_number: -100, email: 'user@example.com', password: 'password')
+        expect(user).not_to be_valid
+      end
     end
     context 'バリデーションクリア' do
       it 'name,email,passwordをフォーマットに従って入力した場合、バリデーションが通る' do
