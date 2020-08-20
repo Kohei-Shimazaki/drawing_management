@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
         message_read: true,
         message_id: message.id,
         user_name: current_user.name
-      )
+      ) unless current_user == message.user
     end
     @q = @team.messages.order(created_at: :desc).ransack(params[:q])
     @users = @team.members
