@@ -6,11 +6,7 @@
       <% end %>
     </ul>
   <% end %>
-  <% if project.id.present? %>
-    <% id = project.id %>
-  <% else %>
-    <% id = 0 %>
-  <% end %>
+  <% project.id.present? ? id = project.id : id = 0 %>
   <div class="form-group">
     <div class="field">
       <%= form.label :customer_id %>
