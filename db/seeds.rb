@@ -87,6 +87,14 @@
           category_id: @category.id,
         )
       end
+      3.times do |r|
+        revision = Revision.new
+        revision.revision_number = r
+        revision.comment = "revision_comment"
+        revision.drawing_id = drawing.id
+        revision.content.attach(io: File.open('spec/factories/test.jpg'), filename: 'test.jpg')
+        revision.save!
+      end
       2.times do |t|
         title = Faker::Job.title
         content = "task_content"
@@ -111,6 +119,23 @@
           comment: comment,
           task_id: task.id,
         )
+        2.times do |q|
+          title = Faker::Job.title
+          content = "question_content"
+          question = Question.create!(
+            title: title,
+            content: content,
+            task_id: task.id,
+          )
+          2.times do |com|
+            content = "comment_content"
+            comment = Comment.create!(
+              content: content,
+              user_id: user.id,
+              question_id: question.id
+            )
+          end
+        end
       end
     end
   end
