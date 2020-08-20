@@ -10,7 +10,6 @@
       <div class="col-md-10">
         <small class="text-muted"><%= l message.created_at, format: :short %></small><br>
         <div class="hidden" id="message_id"><%= message.id %></div>
-        <div class="hidden" id="message_created_at"><%= message.created_at.strftime('%s%L').to_i %></div>
         <div class="hidden" id="message_user_id"><%= message.user.id %></div>
         <small class="text-muted">
           既読

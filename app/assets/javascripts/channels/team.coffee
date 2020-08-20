@@ -23,11 +23,11 @@ document.addEventListener 'turbolinks:load', ->
             $("#unread_notifications").text String(Number($("#unread_notifications").text()) + 1)
           # チャット画面を開くと、チャット画面に既読表示が出る
           if data['message_read']
-            $('#message_read_count_'+data['message_id']).text String(Number($('#message_read_count').text()) + 1)
+            $('#message_read_count_'+data['message_id']).text String(Number($('#message_read_count_'+data['message_id']).text()) + 1)
             if $('#message_read_users_'+data['message_id']).text().replace(/\r?\n/g,"").replace(/^\s+/g, "") == ":         "
-              $('#message_read_users_'+data['message_id']).text $('#message_read_users').text()+data['user_name']
+              $('#message_read_users_'+data['message_id']).text $('#message_read_users_'+data['message_id']).text()+data['user_name']
             else
-              $('#message_read_users_'+data['message_id']).text $('#message_read_users').text()+"/"+data['user_name']
+              $('#message_read_users_'+data['message_id']).text $('#message_read_users_'+data['message_id']).text()+"/"+data['user_name']
 
         speak: (message) ->
           team_id = $('#chat').data('team_id')
@@ -39,15 +39,15 @@ document.addEventListener 'turbolinks:load', ->
             user_id: Number($("#message_user_id").text()),
             team_id: $('#chat').data('team_id')
 
-        message_created_at = null
+        message_id = null
         setInterval ->
           if $("#chat").data('team_id')
-            if message_created_at
-              if message_created_at != $("#message_created_at").text()
+            if message_id
+              if message_id != Number($("#message_id").text())
                 App.team.message_read()
-                message_created_at = $("#message_created_at").text()
+                message_id = Number($("#message_id").text())
             else
-              message_created_at = $("#message_created_at").text()
+              message_id = Number($("#message_id").text())
 
     i++
 
