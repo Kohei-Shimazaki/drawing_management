@@ -32,7 +32,7 @@ ja:
         location: 住所
         icon: 会社アイコン
         overview: 会社概要
-        admin_id: 管理人
+        admin: 管理人
       customer:
         name: 客先名
         phone_number: 客先連絡先
@@ -43,33 +43,33 @@ ja:
         title: 図名
         drawing_number: 図番
         explanation: 説明
-        project_id: プロジェクト
+        project: プロジェクト
         category_ids: カテゴリー
       evidence:
         content: エビデンスファイル
         comment: エビデンスコメント
       like:
-        user_id: ユーザーID
-        question_id: 質問ID
-        comment_id: コメントID
+        user: ユーザー
+        question: 質問
+        comment: コメント
       message_read:
-        message_id: メッセージID
-        user_id: ユーザーID
+        message: メッセージ
+        user: ユーザー
         is_read: 既読
       message:
-        team_id: チームID
-        user_id: ユーザーID
+        team: チーム
+        user: ユーザー
         content: 内容
       notification:
         checked: チェック済み
         action_type: 通知種類
-        user_id: ユーザーID
+        user: ユーザーID
         subject: 通知対象
       project:
         name: プロジェクト名
         explanation: 説明
         location: 現地
-        customer_id: 客先
+        customer: 客先
       question:
         title: 質問タイトル
         content: 内容
