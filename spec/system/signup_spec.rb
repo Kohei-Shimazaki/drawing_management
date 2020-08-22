@@ -85,4 +85,14 @@ RSpec.describe 'サインアップ機能', type: :system do
       end
     end
   end
+  describe 'トップ画面' do
+    before do
+      company = create(:company, id: 1)
+      visit root_path
+    end
+    it 'ゲストログインができる' do
+      click_on "ゲストログイン"
+      expect(page).to have_content "ゲストユーザーとしてログインしました。"
+    end
+  end
 end

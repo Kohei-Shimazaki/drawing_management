@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   has_one :notification, as: :subject, dependent: :destroy
 
-  # after_create_commit :create_notifications
+  after_create_commit :create_notifications
 
   validates :content, presence: true
 

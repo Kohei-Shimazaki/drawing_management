@@ -30,6 +30,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :validatable, invite_for: 2.weeks
 
+  def self.guest
+    find_or_create_by!(email: "guest@example.com", employee_number: 100001, name: "guest", company_id: 1,) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   def self.import(user_params, current_user)
     xlsx = Roo::Excelx.new(user_params.dig(:file).tempfile)
     xlsx.each_row_streaming(offset: 1) do |row|

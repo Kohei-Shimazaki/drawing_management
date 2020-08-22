@@ -74,13 +74,14 @@
           </div>
         </div>
       </li>
-      <div id="references_area">
-        <%= render partial: 'references/index', locals: { references: @references, task: @task } %>
-      </div>
-      <div id="evidences_area">
-        <%= render partial: 'evidences/index', locals: { evidences: @evidences, task: @task } %>
-      </div>
     </ul>
+    <ul class="list-group" id="references_area">
+      <%= render partial: 'references/index', locals: { references: @references, task: @task } %>
+    </ul>
+    <ul class="list-group" id="evidences_area">
+      <%= render partial: 'evidences/index', locals: { evidences: @evidences, task: @task } %>
+    </ul>
+
   </div>
   <div id="reference_form_area">
     <%= render partial: 'references/form', locals: { reference: @reference, task: @task } %>

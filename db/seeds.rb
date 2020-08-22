@@ -9,15 +9,19 @@
     location: location,
     overview: overview,
   )
+  @categories = []
   5.times do |n|
     category_name = Faker::Color.color_name
     explanation = "category_explanation"
-    @category = Category.create!(
+    category = Category.create!(
       name: category_name,
       explanation: explanation,
       company_id: company.id,
     )
+    @categories << category
   end
+  @customers = []
+  @projects = []
   5.times do |n|
     customer_name = Faker::Company.name
     phone_number = Faker::Company.duns_number
@@ -30,18 +34,21 @@
       overview: overview,
       company_id: company.id,
     )
+    @customers << customer
     5.times do |l|
       project_name = Faker::App.name
       explanation = "project_explanation"
       location = Faker::Address.city
-      @project = Project.create!(
+      project = Project.create!(
         name: project_name,
         explanation: explanation,
         location: location,
         customer_id: customer.id,
       )
+      @projects << project
     end
   end
+  @users = []
   5.times do |n|
     name = Faker::Name.name
     employee_number = Faker::Number.number(digits: 6)
@@ -58,18 +65,37 @@
     if n == 0
       company.update!(admin_id: user.id)
     end
+    @users << user
+  end
+  5.times do |t|
+    @members = []
     team_name = Faker::Team.name
     team_profile = "team_profile"
+    owner = @users.sample
     team = Team.create!(
       name: team_name,
       profile: team_profile,
-      owner_id: user.id,
+      owner_id: owner.id,
       company_id: company.id,
     )
     team_assign = TeamAssign.create!(
-      user_id: user.id,
+      user_id: owner.id,
       team_id: team.id,
     )
+    @members << owner
+    2.times do |ta|
+      loop do
+        member = @users.sample
+        unless @members.include?(member)
+          @members << member
+          break
+        end
+      end
+      TeamAssign.create!(
+        team_id: team.id,
+        user_id: @members[-1].id
+      )
+    end
     5.times do |l|
       title = Faker::Job.field
       drawing_number = Faker::Number.number(digits: 6)
@@ -79,14 +105,8 @@
         drawing_number: drawing_number,
         explanation: explanation,
         team_id: team.id,
-        project_id: @project.id
+        project_id: @projects.sample.id
       )
-      if l.even?
-        CategoryAssign.create!(
-          drawing_id: drawing.id,
-          category_id: @category.id,
-        )
-      end
       3.times do |r|
         revision = Revision.new
         revision.revision_number = r
@@ -106,8 +126,8 @@
           status: status,
           deadline: deadline,
           drawing_id: drawing.id,
-          staff_id: user.id,
-          approver_id: user.id,
+          staff_id: @members.sample.id,
+          approver_id: @members.sample.id,
         )
         comment = "evidence_comment"
         evidence = Evidence.create!(
@@ -131,7 +151,7 @@
             content = "comment_content"
             comment = Comment.create!(
               content: content,
-              user_id: user.id,
+              user_id: @members.sample.id,
               question_id: question.id
             )
           end

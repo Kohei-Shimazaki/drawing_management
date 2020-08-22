@@ -12,7 +12,7 @@ class Question < ApplicationRecord
   validates :title, presence: true, length: {maximum: 100}
   validates :content, presence: true
 
-  # after_create_commit :create_notifications
+  after_create_commit :create_notifications
 
   private
 
