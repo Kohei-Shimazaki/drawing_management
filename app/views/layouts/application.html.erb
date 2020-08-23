@@ -21,19 +21,28 @@
         <% if user_signed_in? %>
           <div id="team_coffee_datas", data-team_ids="<%= current_user.teams.map{ |team| team.id } %>", data-user_id="<%= current_user.id %>">
           </div>
-          <%= link_to company_path(current_user.company), class: "navbar-brand" do %>
-            <% if current_user.company.icon.attached? %>
-              <%= image_tag current_user.company.icon.variant(resize:'50x50').processed, class: "small_icon" %>
-            <% else %>
-              <%= t("activerecord.models.company") %>
+          <div data-toggle="tooltip" title="所属している会社の詳細情報・社員表を見ることができます">
+            <%= link_to company_path(current_user.company), class: "navbar-brand" do %>
+              <% if current_user.company.icon.attached? %>
+                <%= image_tag current_user.company.icon.variant(resize:'50x50').processed, class: "small_icon" %>
+              <% else %>
+                <%= t("activerecord.models.company") %>
+              <% end %>
             <% end %>
-          <% end %>
-          <%= link_to t("my_page"), user_path(current_user), class: "navbar-brand" %>
-          <%= link_to t("log_out"), destroy_user_session_path, method: :delete, class: "navbar-brand" %>
-          <%= link_to "登録", new_user_invitation_path, class: "navbar-brand" %>
-          <%= link_to "図面検索", drawings_path, class: "navbar-brand" %>
-
-          <div class="dropdown navbar-brand">
+          </div>
+          <div data-toggle="tooltip" title="自分の情報を見ることができます">
+            <%= link_to t("my_page"), user_path(current_user), class: "navbar-brand" %>
+          </div>
+          <div data-toggle="tooltip" title="ログアウトします">
+            <%= link_to t("log_out"), destroy_user_session_path, method: :delete, class: "navbar-brand" %>
+          </div>
+          <div data-toggle="tooltip" title="客先・プロジェクト・カテゴリー登録ができます。管理者は社員登録もできます">
+            <%= link_to "登録", new_user_invitation_path, class: "navbar-brand" %>
+          </div>
+          <div data-toggle="tooltip" title="社内で登録した図面を一覧・検索できます">
+            <%= link_to "図面検索", drawings_path, class: "navbar-brand" %>
+          </div>
+          <div class="dropdown navbar-brand" data-toggle="tooltip" title="社内で登録した客先の情報を見ることができます">
             <button class="btn btn-primary dropdown-toggle" type="button" id="customer_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t("activerecord.models.customer") %>
             </button>
@@ -45,7 +54,7 @@
               <% end %>
             </div>
           </div>
-          <div class="dropdown navbar-brand">
+          <div class="dropdown navbar-brand" data-toggle="tooltip" title="社内で登録したプロジェクトの情報を見ることができます">
             <button class="btn btn-primary dropdown-toggle" type="button" id="project_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= t("activerecord.models.project") %>
             </button>
@@ -57,7 +66,7 @@
               <% end %>
             </div>
           </div>
-          <div class="dropdown navbar-brand">
+          <div class="dropdown navbar-brand" data-toggle="tooltip" title="担当者に割り当てられたタスクに対して、チームメンバーに質問することができます。社内の質問一覧を見ることもできます">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-question-circle"></i> <%= t("activerecord.models.question") %>
             </button>
@@ -71,7 +80,7 @@
               <% end %>
             </div>
           </div>
-          <div class="dropdown navbar-brand">
+          <div class="dropdown navbar-brand" data-toggle="tooltip" title="所属しているチームからの通知が届きます">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-bell"></i> <%= t("activerecord.models.notification") %> <span id="unread_notifications"><%= number_of_unread_notifications %></span>
             </button>
@@ -94,7 +103,7 @@
               </div>
             </div>
           </div>
-          <div class="dropdown navbar-brand">
+          <div class="dropdown navbar-brand" data-toggle="tooltip" title="所属しているチーム内でリアルタイムチャットを送れます。緊急性が高い連絡をするのに活用して下さい">
             <button class="btn btn-primary dropdown-toggle" type="button" id="chat_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-comment"></i> <%= t("activerecord.models.message") %>
             </button>

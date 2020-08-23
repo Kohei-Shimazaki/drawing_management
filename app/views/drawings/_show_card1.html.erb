@@ -1,4 +1,4 @@
-<div class="field">
+<div data-toggle="tooltip" title="作成した図面を新しいレビジョンとして登録できます">
   <%= link_to t("activerecord.models.revision")+t("crud.new"), new_revision_path(revision_number: @drawing.revisions.count,
       drawing_id: @drawing.id), class: "btn btn-primary btn-block mb-1" %>
 </div>

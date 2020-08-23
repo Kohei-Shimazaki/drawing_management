@@ -1,4 +1,11 @@
-$("#customer_area").html("<%= j(render 'customers/index') %>")
+$("#customer_area").html("<%= j(render 'customers/index') %>");
 $("#customer_form_area").html("<%= escape_javascript render(partial: "customers/form", locals: { customer: @customer.company.customers.build }) %>");
-$("#project_area").html("<%= j(render 'projects/index') %>")
+$("#project_area").html("<%= j(render 'projects/index') %>");
 $("#project_form_area").html("<%= escape_javascript render(partial: "projects/form", locals: { project: Project.new }) %>");
+var count;
+count = <%= @customer.company.customers.count.to_i %>;
+if (count == 0) {
+  $("#project_registration").addClass("disabled");
+} else {
+  $("#project_registration").removeClass("disabled");
+}

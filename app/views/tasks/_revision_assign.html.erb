@@ -8,7 +8,7 @@
     <div class="field">
       <%= form.hidden_field :revision_id, value: revision.id %>
     </div>
-    <button type="submit" name="button" class="btn btn-primary" id="revision_assign_btn">
+    <button type="submit" name="button" class="btn btn-primary" id="revision_assign_btn" data-toggle="tooltip" title="レビジョンに紐づいているタスクを登録できます。紐づけられたタスクは承認者のチェック待ち状態になります">
       <i class="fas fa-paperclip"></i> レビジョン<%= t("submit") %>
     </button>
   </div>

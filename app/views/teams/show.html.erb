@@ -29,7 +29,7 @@
   <div class="row">
 
     <div class="col-lg-4">
-      <div class="chat_link">
+      <div class="chat_link" data-toggle="tooltip" title="チーム内のチャットルームに移動できます">
         <%= link_to "チャットルーム", chat_team_path(@team), class: "btn btn-primary btn-block mb-1" %>
       </div>
       <div id="members_form">
@@ -69,7 +69,9 @@
         <div class="card-body">
           <div class="tab-content">
             <div id="card1_team" class="tab-pane active">
-              <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path(team_id: @team.id), class: "btn btn-primary btn-block mt-2 mb-1" %>
+              <div  data-toggle="tooltip" title="チームで作成・管理する図面を登録できます">
+                <%= link_to t("activerecord.models.drawing")+t("crud.new"), new_drawing_path(team_id: @team.id), class: "btn btn-primary btn-block mt-2 mb-1" %>
+              </div>
               <%= render partial: "drawings/index", locals: { drawings: @team.drawings } %>
             </div>
             <div id="card2_team" class="tab-pane">

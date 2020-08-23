@@ -28,14 +28,14 @@ ja:
         attachment: 添付
       company:
         name: 会社名
-        phone_number: 連絡先
+        phone_number: 電話番号
         location: 住所
         icon: 会社アイコン
         overview: 会社概要
         admin: 管理人
       customer:
         name: 客先名
-        phone_number: 客先連絡先
+        phone_number: 電話番号
         location: 客先所在地
         icon: 客先アイコン
         overview: 客先概要
@@ -44,6 +44,7 @@ ja:
         drawing_number: 図番
         explanation: 説明
         project: プロジェクト
+        project_id: プロジェクト名
         category_ids: カテゴリー
       evidence:
         content: エビデンスファイル
@@ -70,6 +71,7 @@ ja:
         explanation: 説明
         location: 現地
         customer: 客先
+        customer_id: 客先名
       question:
         title: 質問タイトル
         content: 内容

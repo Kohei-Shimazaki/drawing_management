@@ -30,12 +30,12 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <div class="new_team_link">
+      <div class="new_team_link" data-toggle="tooltip" title="図面の作成・管理をするチームを作ります">
         <%= link_to t("crud.new")+t("activerecord.models.team"), new_team_path, remote: true,
             class: "btn btn-lg btn-primary btn-block mb-1", id: "new_team_btn" %>
       </div>
       <div id="team-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-      <div class="likes_questions_link">
+      <div class="likes_questions_link" data-toggle="tooltip" title="いいね登録した質問を見ることができます">
         <%= link_to t("activerecord.models.like")+t("crud.index"), likes_path(user_id: @user.id), class: "btn btn-lg btn-primary btn-block mb-1" %>
       </div>
       <div class="card">
