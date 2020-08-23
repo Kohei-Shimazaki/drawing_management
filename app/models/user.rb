@@ -37,11 +37,14 @@ class User < ApplicationRecord
   end
 
   def self.import(user_params, current_user)
+    @users = []
     xlsx = Roo::Excelx.new(user_params.dig(:file).tempfile)
     xlsx.each_row_streaming(offset: 1) do |row|
       if row[0].present? && row[1].present? && row[2].present?
-        User.invite!(employee_number: row[0].value, name: row[1].value, email: row[2].value, company_id: current_user.company_id)
+        user = User.invite!(employee_number: row[0].value, name: row[1].value, email: row[2].value, company_id: current_user.company_id)
+        @users << user
       end
     end
+    ConfirmationMailer.confirmation_mail(@users, current_user).deliver if @users
   end
 end

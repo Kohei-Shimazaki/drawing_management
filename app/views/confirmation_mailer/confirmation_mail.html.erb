@@ -1,0 +1,22 @@
+<h1>招待メールを送信しました！</h1>
+<div>
+  招待メールを送ったユーザー情報は下記の通りです。ご確認よろしくお願いします。
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>社員番号</th>
+      <th>氏名</th>
+      <th>Eメールアドレス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.employee_number %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
