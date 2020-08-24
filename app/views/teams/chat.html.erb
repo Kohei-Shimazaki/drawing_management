@@ -4,7 +4,13 @@
   </h1>
 </div>
 
+
 <div class="container">
+  <% if @team.members.count == 1 %>
+    <div class="alert alert-danger" role="alert">
+      チャットするチームメンバーがいません。チーム画面からメンバーを追加して下さい
+    </div>
+  <% end %>
   <div class="search_chat_form mb-2">
     <%= render "search_chat_form" %>
   </div>
