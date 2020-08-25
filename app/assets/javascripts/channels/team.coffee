@@ -42,7 +42,7 @@ document.addEventListener 'turbolinks:load', ->
         message_id = null
         setInterval ->
           if $("#chat").data('team_id')
-            if message_id
+            if message_id && !$("#message_id").data("has_read_users").includes($("#chat").data("current_user"))
               if message_id != Number($("#message_id").text())
                 App.team.message_read()
                 message_id = Number($("#message_id").text())

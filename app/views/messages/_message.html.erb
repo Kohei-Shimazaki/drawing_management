@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-10">
         <small class="text-muted"><%= l message.created_at, format: :short %></small><br>
-        <div class="hidden" id="message_id"><%= message.id %></div>
+        <div class="hidden" id="message_id" data-has_read_users="<%= message.has_read_users.pluck(:id) %>"><%= message.id %></div>
         <div class="hidden" id="message_user_id"><%= message.user.id %></div>
         <small class="text-muted">
           既読

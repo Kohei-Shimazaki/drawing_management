@@ -12,7 +12,6 @@ class NotificationReadsController < ApplicationController
     read_notifications = current_user.has_read_notifications
     unread_notifications = notifications - read_notifications
     unread_notifications.each{ |notification| NotificationRead.create(user_id: current_user.id, notification_id: notification.id) }
-    redirect_to user_path(current_user)
+    redirect_back(fallback_location: user_path(current_user))
   end
-
 end
