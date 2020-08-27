@@ -1,0 +1,236 @@
+<div class="container">
+  <h1>アプリ説明</h1>
+  <div>
+    このアプリは会社での書類・図面の管理、報連相をするためのサービスです。
+  </div>
+  <h4 id="index">目次</h4>
+  <ol>
+    <li><a href="#help1">管理人と会社を登録する</a></li>
+    <li><a href="#help2">社員を登録する（管理人のみ可能）</a></li>
+    <li><a href="#help3">招待メールからアカウントを作成する（招待された社員のみ可能）</a></li>
+    <li><a href="#help4">図面を仕分けるための情報を登録する</a></li>
+    <li><a href="#help5">図面を作成・管理するチームを作成する</a></li>
+    <li><a href="#help6">図面を登録する</a></li>
+    <li><a href="#help7">タスクを登録する</a></li>
+    <li><a href="#help8">レビジョンを登録する</a></li>
+    <li><a href="#help9">タスクをレビジョンに紐づける</a></li>
+    <li><a href="#help10">タスクの承認者がタスクを承認する</a></li>
+    <li><a href="#help11">タスクの担当者がチームへ質問する</a></li>
+    <li><a href="#help12">チーム内でチャットする</a></li>
+  </ol>
+
+  <div>
+    <%= link_to "トップページへ", root_path, class: "btn btn-secondary mt-2" %>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help1">1.管理人と会社を登録する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5>
+      ①サインアップをクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help1.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②管理人の情報を下図のように入力して、会社登録へを押します。
+    </h5>
+    <div>
+      <%= image_tag 'help2.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ③会社情報を下図のように入力して、登録を押します。
+    </h5>
+    <div>
+      <%= image_tag 'help3.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      登録後、マイページに遷移します。これで、管理人と会社の登録は完了です。
+    </h5>
+    <div>
+      <%= image_tag 'help4.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help2">2.社員を登録する（管理人のみ可能） <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①登録をクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help5.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②社員をクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help6.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ③Excelの社員表を貼り付けて、「招待メールを送る」を押して下さい。以上で、招待は完了です。
+    </h5>
+    <div class="mt-2">
+      <%= image_tag 'help7.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help3">3.招待メールからアカウントを作成する（招待された社員のみ可能） <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①送られたメールから、「招待を承認する」を押します。
+    </h5>
+    <div>
+      <%= image_tag 'help8.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②パスワードを設定して下さい。以上で、アカウント作成は完了です。
+    </h5>
+    <div>
+      <%= image_tag 'help9.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help4">4.図面を仕分けるための情報を登録する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①登録をクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help5.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②客先情報を登録します。
+    </h5>
+    <div>
+      <%= image_tag 'help10.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ③客先と進めているプロジェクト情報を登録します。
+    </h5>
+    <div>
+      <%= image_tag 'help11.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ④図面のカテゴリーを登録します。
+    </h5>
+    <div>
+      <%= image_tag 'help12.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help5">5.図面を作成・管理するチームを作成する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①マイページから、新規チームをクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help13.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②チームの情報を入力してください。これで、チームを作成できます。
+    </h5>
+    <div>
+      <%= image_tag 'help14.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help6">6.図面を登録する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①チームページの新規図面をクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help15.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②図面の情報を入力してください。
+    </h5>
+    <div>
+      <%= image_tag 'help16.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help7">7.タスクを登録する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①図面の詳細画面に移動し、タスク新規をクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help17.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②タスクの情報を登録してください。
+    </h5>
+    <div>
+      <%= image_tag 'help18.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ③タスクの詳細画面から参考になる資料の登録とエビデンスの登録ができます。(※エビデンスは担当者のみ登録可能)
+    </h5>
+    <div>
+      <%= image_tag 'help19.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help8">8.レビジョンを登録する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①図面の最新版を登録します。図面詳細画面からレビジョン新規をクリックします。
+    </h5>
+    <div>
+      <%= image_tag 'help20.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②レビジョンの情報を登録してください。
+    </h5>
+    <div>
+      <%= image_tag 'help21.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help9">9.タスクの担当者がタスクをレビジョンに紐づける <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①担当者は作業が完了したタスクをレビジョンに紐づけることで、チームに「作業が完了した」という通知を送れます。<br>
+       担当しているタスクを選択し、レビジョン登録をクリックしてください。
+    </h5>
+    <div>
+      <%= image_tag 'help22.jpg', class: "img-fluid" %>
+    </div>
+
+  <div class="mt-5">
+    <h3 id="help10">10.タスクの承認者がタスクを承認する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①タスクの承認者は、レビジョンの図面とタスクのエビデンスを確認し、問題がなければ、下図にあるOKを押して、タスクを承認します。
+    </h5>
+    <div>
+      <%= image_tag 'help23.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help11">11.タスクの担当者がチームへ質問する <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①タスクの担当者は、持っているタスクについて質問することができます。図の質問から、質問したいタスクを選びます。
+    </h5>
+    <div>
+      <%= image_tag 'help24.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 id="help12">12.チーム内でチャットする <a href="#index"><i class="far fa-caret-square-up"></i></a></h3>
+    <h5 class="mt-2">
+      ①自分が所属しているチームのチャットルームを選びます。
+    </h5>
+    <div>
+      <%= image_tag 'help25.jpg', class: "img-fluid" %>
+    </div>
+    <h5 class="mt-2">
+      ②チャットしたい内容を入力して、Enterキーを押すとリアルタイムチャットができます。緊急性が高い連絡をするのに活用してください。
+    </h5>
+    <div>
+      <%= image_tag 'help26.jpg', class: "img-fluid" %>
+    </div>
+  </div>
+
+</div>

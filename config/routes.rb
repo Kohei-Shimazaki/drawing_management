@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'informations#top'
-
+  root to: 'information#top'
+  get 'information/help', to: 'information#help'
   resources :companies
   resources :teams do
     member do
