@@ -15,26 +15,12 @@
         <% end %>
       <% end %>
     </div>
-    <% if @task.drawing.revisions.present? %>
       <ul class="list-group">
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-2">
-              <strong><%= t("last") %><%= t("activerecord.attributes.revision.content") %>:</strong>
-            </div>
-            <div class="col-md-10">
-              <%= link_to @task.drawing.revisions.last.content do %>
-                <i class="far fa-file"></i> <%= "Rev.#{@task.drawing.revisions.last.revision_number}" %>
-              <% end %>
-            </div>
-          </div>
-        </li>
-      <% end %>
       <% if @task.revision %>
         <li class="list-group-item">
           <div class="row">
             <div class="col-md-2">
-              <strong><%= t("activerecord.attributes.revision.content") %>:</strong>
+              <strong>レビジョン:</strong>
             </div>
             <div class="col-md-10">
               <%= link_to @task.revision.content do %>
