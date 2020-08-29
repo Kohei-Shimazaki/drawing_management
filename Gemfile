@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.1'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'redis-rails'
 gem "roo"
 gem 'ransack'
 gem "simple_calendar"
