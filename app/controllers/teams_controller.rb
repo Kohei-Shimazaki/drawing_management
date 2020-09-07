@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TeamsController < ApplicationController
-  before_action :set_team, only: %i(edit update show destroy chat)
+  before_action :set_team, only: %i[edit update show destroy chat]
   PER = 10
 
   def create
@@ -9,7 +11,7 @@ class TeamsController < ApplicationController
         @team_assign = TeamAssign.create(user_id: current_user.id, team_id: @team.id)
         format.js { render :create }
       else
-        format.html { redirect_to user_path(current_user), notice: "#{I18n.t("activerecord.models.team")}#{I18n.t("flash.create_failure")}"}
+        format.html { redirect_to user_path(current_user), notice: "#{I18n.t('activerecord.models.team')}#{I18n.t('flash.create_failure')}" }
       end
     end
   end
@@ -18,12 +20,11 @@ class TeamsController < ApplicationController
     @team_assign = @team.team_assigns.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @team.update(team_params)
-      flash[:notice] = "#{I18n.t("activerecord.models.team")}#{I18n.t("flash.update")}"
+      flash[:notice] = "#{I18n.t('activerecord.models.team')}#{I18n.t('flash.update')}"
       redirect_to team_path(@team)
     else
       render :edit
@@ -32,7 +33,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    flash[:notice] = "#{I18n.t("activerecord.models.team")}#{I18n.t("flash.destroy")}"
+    flash[:notice] = "#{I18n.t('activerecord.models.team')}#{I18n.t('flash.destroy')}"
     redirect_to user_path(current_user)
   end
 
@@ -42,12 +43,14 @@ class TeamsController < ApplicationController
     unread_messages = messages - read_messages
     unread_messages.each do |message|
       MessageRead.create(user_id: current_user.id, message_id: message.id) unless current_user == message.user
+      next if current_user == message.user
+
       ActionCable.server.broadcast(
         "team_channel_#{message.team_id}",
         message_read: true,
         message_id: message.id,
         user_name: current_user.name
-      ) unless current_user == message.user
+      )
     end
     @q = @team.messages.order(created_at: :desc).ransack(params[:q])
     @users = @team.members
@@ -55,17 +58,18 @@ class TeamsController < ApplicationController
   end
 
   private
-    def team_params
-      params.require(:team).permit(
-        :name,
-        :profile,
-        :icon,
-        :owner_id,
-        :company_id,
-      )
-    end
 
-    def set_team
-      @team = Team.find(params[:id])
-    end
+  def team_params
+    params.require(:team).permit(
+      :name,
+      :profile,
+      :icon,
+      :owner_id,
+      :company_id
+    )
+  end
+
+  def set_team
+    @team = Team.find(params[:id])
+  end
 end

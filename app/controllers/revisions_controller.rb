@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RevisionsController < ApplicationController
-  before_action :set_revision, only: %i(edit update show destroy)
+  before_action :set_revision, only: %i[edit update show destroy]
 
   def index
     @revisions = Revision.all
@@ -14,22 +16,20 @@ class RevisionsController < ApplicationController
   def create
     @revision = Revision.new(revision_params)
     if @revision.save
-      flash[:notice] = "#{I18n.t("activerecord.models.revision")}#{I18n.t("flash.create")}"
+      flash[:notice] = "#{I18n.t('activerecord.models.revision')}#{I18n.t('flash.create')}"
       redirect_to drawing_path(@revision.drawing)
     else
       render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @revision.update(revision_params)
-      flash[:notice] = "#{I18n.t("activerecord.models.revision")}#{I18n.t("flash.update")}"
+      flash[:notice] = "#{I18n.t('activerecord.models.revision')}#{I18n.t('flash.update')}"
       redirect_to revisions_path
     else
       render :edit
@@ -39,22 +39,22 @@ class RevisionsController < ApplicationController
   def destroy
     @revision.content.purge
     @revision.destroy
-    flash[:notice] = "#{I18n.t("activerecord.models.revision")}#{I18n.t("flash.destroy")}"
+    flash[:notice] = "#{I18n.t('activerecord.models.revision')}#{I18n.t('flash.destroy')}"
     redirect_to revisions_path
   end
 
   private
-    def revision_params
-      params.require(:revision).permit(
-        :revision_number,
-        :content,
-        :comment,
-        :drawing_id,
-      )
-    end
 
-    def set_revision
-      @revision = Revision.find(params[:id])
-    end
+  def revision_params
+    params.require(:revision).permit(
+      :revision_number,
+      :content,
+      :comment,
+      :drawing_id
+    )
+  end
 
+  def set_revision
+    @revision = Revision.find(params[:id])
+  end
 end

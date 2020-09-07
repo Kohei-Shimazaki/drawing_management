@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddCompanyRefCategories < ActiveRecord::Migration[5.2]
   def change
-    add_reference :categories, :company, foreign_key: true    
+    add_reference :categories, :company, foreign_key: true
   end
 end

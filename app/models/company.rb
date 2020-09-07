@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Company < ApplicationRecord
   has_one_attached :icon
   has_many :teams, dependent: :destroy
@@ -11,6 +13,6 @@ class Company < ApplicationRecord
   has_many :projects, through: :customers
   has_many :categories, dependent: :destroy
 
-  validates :name, presence: true, length: {maximum: 100}
-  validates :phone_number, presence: true, format: {with: /\A\d{1,4}-\d{1,4}-\d{3,4}\z/}
+  validates :name, presence: true, length: { maximum: 100 }
+  validates :phone_number, presence: true, format: { with: /\A\d{1,4}-\d{1,4}-\d{3,4}\z/}
 end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   PER = 10
 
   def index
-    params[:q] ? @user = User.find(params[:q][:user_id]) : @user = User.find(params[:user_id])
+    @user = params[:q] ? User.find(params[:q][:user_id]) : User.find(params[:user_id])
     @q = @user.like_questions.order(created_at: :desc).ransack(params[:q])
     @tasks = current_user.company.tasks
     @drawings = current_user.company.drawings
@@ -23,10 +25,11 @@ class LikesController < ApplicationController
   end
 
   private
-    def like_params
-      params.permit(
-        question_id,
-        comment_id,
-      )
-    end
+
+  def like_params
+    params.permit(
+      question_id,
+      comment_id
+    )
+  end
 end
