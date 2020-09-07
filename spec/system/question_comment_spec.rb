@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe '質問管理機能', type: :system do
@@ -17,7 +19,7 @@ RSpec.describe '質問管理機能', type: :system do
     visit new_user_session_path
     fill_in 'Eメールアドレス', with: 'sample@example.com'
     fill_in 'パスワード', with: 'password'
-    find("#login_btn").click
+    find('#login_btn').click
   end
   describe '質問登録画面' do
     before do
@@ -25,9 +27,9 @@ RSpec.describe '質問管理機能', type: :system do
     end
     context '正しい情報を入力する場合' do
       before do
-        fill_in "タイトル", with: "new_question"
-        fill_in "内容", with: "new_question_content"
-        find("#create_question_btn").click
+        fill_in 'タイトル', with: 'new_question'
+        fill_in '内容', with: 'new_question_content'
+        find('#create_question_btn').click
       end
       it '質問が投稿できる' do
         expect(Question.all.count).to eq 1
@@ -38,9 +40,9 @@ RSpec.describe '質問管理機能', type: :system do
     end
     context '正しい情報を入力していない場合' do
       it '質問が投稿できない' do
-        fill_in "内容", with: "new_question_content"
-        find("#create_question_btn").click
-        expect(page).to have_content "タイトルを入力してください"
+        fill_in '内容', with: 'new_question_content'
+        find('#create_question_btn').click
+        expect(page).to have_content 'タイトルを入力してください'
       end
     end
   end
@@ -51,8 +53,8 @@ RSpec.describe '質問管理機能', type: :system do
     end
     context 'コメントを投稿する場合' do
       before do
-        fill_in "内容", with: "new_comment"
-        find("#comment_create_btn").click
+        fill_in '内容', with: 'new_comment'
+        find('#comment_create_btn').click
         sleep(3)
       end
       it '正しい情報入力で、コメントを投稿できる' do
@@ -64,14 +66,14 @@ RSpec.describe '質問管理機能', type: :system do
     end
     context '正しい情報を入力していない場合' do
       it 'コメントできない' do
-        find("#comment_create_btn").click
+        find('#comment_create_btn').click
         sleep(1)
         expect(page).to have_content 'コメント内容を入力してください'
       end
     end
     context '質問にいいねをつける場合' do
       before do
-        find(".like_btn").click
+        find('.like_btn').click
         sleep(3)
       end
       it 'いいねボタンをおすと、いいねがつけられる' do

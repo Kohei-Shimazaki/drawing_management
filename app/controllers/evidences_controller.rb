@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class EvidencesController < ApplicationController
-  before_action :set_evidence, only: %i(destroy)
+  before_action :set_evidence, only: %i[destroy]
 
   def create
     @task = Task.find(params[:task_id])
@@ -16,21 +18,22 @@ class EvidencesController < ApplicationController
   def destroy
     @evidence.destroy
     respond_to do |format|
-      flash[:notice] = "#{I18n.t("activerecord.models.evidence")}#{I18n.t("flash.destroy")}"
+      flash[:notice] = "#{I18n.t('activerecord.models.evidence')}#{I18n.t('flash.destroy')}"
       format.js { render :index }
     end
   end
 
   private
-    def evidence_params
-      params.require(:evidence).permit(
-        :content,
-        :comment,
-        :task_id,
-      )
-    end
 
-    def set_evidence
-      @evidence = Evidence.find(params[:id])
-    end
+  def evidence_params
+    params.require(:evidence).permit(
+      :content,
+      :comment,
+      :task_id
+    )
+  end
+
+  def set_evidence
+    @evidence = Evidence.find(params[:id])
+  end
 end

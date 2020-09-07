@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Drawing < ApplicationRecord
   belongs_to :team
   belongs_to :project
@@ -10,5 +12,4 @@ class Drawing < ApplicationRecord
 
   validates :title, presence: true, length: {maximum: 100}
   validates :drawing_number, presence: true, length: {maximum: 20}, numericality: {only_integer: true, greater_than_or_equal_to: 0}
-
 end

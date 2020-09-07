@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Drawing, type: :model do
@@ -16,31 +18,31 @@ RSpec.describe Drawing, type: :model do
         expect(drawing).not_to be_valid
       end
       it 'titleが101文字以上ならバリデーションが通らない' do
-        drawing = Drawing.new(title: "d"*101, drawing_number: 1001, team: @team, project: @project)
+        drawing = Drawing.new(title: 'd' * 101, drawing_number: 1001, team: @team, project: @project)
         expect(drawing).not_to be_valid
       end
     end
     context '図番バリデーション' do
       it 'drawing_numberが空ならバリデーションが通らない' do
-        drawing = Drawing.new(title: "sample", team: @team, project: @project)
+        drawing = Drawing.new(title: 'sample', team: @team, project: @project)
         expect(drawing).not_to be_valid
       end
       it 'drawing_numberが21桁以上ならバリデーションが通らない' do
-        drawing = Drawing.new(title: "sample", drawing_number: 10**20, team: @team, project: @project)
+        drawing = Drawing.new(title: 'sample', drawing_number: 10**20, team: @team, project: @project)
         expect(drawing).not_to be_valid
       end
       it 'drawing_numberが負の値ならバリデーションが通らない' do
-        drawing = Drawing.new(title: "sample", drawing_number: -100, team: @team, project: @project)
+        drawing = Drawing.new(title: 'sample', drawing_number: -100, team: @team, project: @project)
         expect(drawing).not_to be_valid
       end
       it 'drawing_numberが小数ならバリデーションが通らない' do
-        drawing = Drawing.new(title: "sample", drawing_number: 1.11, team: @team, project: @project)
+        drawing = Drawing.new(title: 'sample', drawing_number: 1.11, team: @team, project: @project)
         expect(drawing).not_to be_valid
       end
     end
     context 'バリデーションクリア' do
       it 'title,drawing_numberのバリデーションが通る' do
-        drawing = Drawing.new(title: "sample", drawing_number: 1001, team: @team, project: @project)
+        drawing = Drawing.new(title: 'sample', drawing_number: 1001, team: @team, project: @project)
         expect(drawing).to be_valid
       end
     end

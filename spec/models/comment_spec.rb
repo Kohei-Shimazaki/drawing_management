@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
@@ -22,7 +24,7 @@ RSpec.describe Comment, type: :model do
     end
     context 'バリデーションクリア' do
       it 'contentのバリデーションが通る' do
-        comment = Comment.new(content: "sample", question: @question, user: @user)
+        comment = Comment.new(content: 'sample', question: @question, user: @user)
         expect(comment).to be_valid
       end
     end

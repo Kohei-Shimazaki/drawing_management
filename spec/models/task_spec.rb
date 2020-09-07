@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
@@ -13,23 +15,23 @@ RSpec.describe Task, type: :model do
     end
     context 'タスクタイトルバリデーション' do
       it 'titleが空ならバリデーションが通らない' do
-        task = Task.new(content: "sample", deadline: Time.current, drawing: @drawing)
+        task = Task.new(content: 'sample', deadline: Time.current, drawing: @drawing)
         expect(task).not_to be_valid
       end
       it 'titleが101文字以上ならバリデーションが通らない' do
-        task = Task.new(title: "t"*101, content: "sample", deadline: Time.current, drawing: @drawing)
+        task = Task.new(title: 't' * 101, content: 'sample', deadline: Time.current, drawing: @drawing)
         expect(task).not_to be_valid
       end
     end
     context 'タスク期限バリデーション' do
       it 'deadlineが空ならバリデーションが通らない' do
-        task = Task.new(title: "sample", content: "sample", drawing: @drawing)
+        task = Task.new(title: 'sample', content: 'sample', drawing: @drawing)
         expect(task).not_to be_valid
       end
     end
     context 'バリデーションクリア' do
       it 'title,deadlineのバリデーションが通る' do
-        task = Task.new(title: "sample", content: "sample", deadline: Time.current, drawing: @drawing)
+        task = Task.new(title: 'sample', content: 'sample', deadline: Time.current, drawing: @drawing)
         expect(task).to be_valid
       end
     end

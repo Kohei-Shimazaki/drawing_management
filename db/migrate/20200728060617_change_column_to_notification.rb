@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumnToNotification < ActiveRecord::Migration[5.2]
   def change
     remove_foreign_key :notifications, :users

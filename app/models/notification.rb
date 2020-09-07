@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Notification < ApplicationRecord
   include Rails.application.routes.url_helpers
 
@@ -12,7 +14,7 @@ class Notification < ApplicationRecord
     task_approval_waiting: 2,
     task_completed: 3,
     chat_to_team: 4,
-    task_approval_rescission: 5,
+    task_approval_rescission: 5
   }
 
   after_create_commit { NotificationBroadcastJob.perform_later self }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TeamChannel < ApplicationCable::Channel
   def subscribed
     stream_from "team_channel_#{params['team_id']}"
@@ -8,7 +10,7 @@ class TeamChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message = Message.create!(
+    Message.create!(
       content: data['message'],
       team_id: data['team_id'],
       user_id: current_user.id
@@ -19,7 +21,7 @@ class TeamChannel < ApplicationCable::Channel
     unless data['user_id'] == current_user.id
       message_read = MessageRead.create!(
         user_id: current_user.id,
-        message_id: data['message_id'],
+        message_id: data['message_id']
       )
       ActionCable.server.broadcast(
         "team_channel_#{message_read.message.team_id}",

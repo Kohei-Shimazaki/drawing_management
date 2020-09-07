@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
@@ -15,23 +17,23 @@ RSpec.describe Question, type: :model do
     end
     context '質問タイトルバリデーション' do
       it 'titleが空ならバリデーションが通らない' do
-        question = Question.new(content: "sample", task: @task)
+        question = Question.new(content: 'sample', task: @task)
         expect(question).not_to be_valid
       end
       it 'titleが101文字以上ならバリデーションが通らない' do
-        question = Question.new(title: "a"*101, content: "sample", task: @task)
+        question = Question.new(title: 'a' * 101, content: 'sample', task: @task)
         expect(question).not_to be_valid
       end
     end
     context '質問内容バリデーション' do
       it 'contentが空ならバリデーションが通らない' do
-        question = Question.new(title: "sample", task: @task)
+        question = Question.new(title: 'sample', task: @task)
         expect(question).not_to be_valid
       end
     end
     context 'バリデーションクリア' do
       it 'title,contentのバリデーションが通る' do
-        question = Question.new(title: "sample", content: "sample", task: @task)
+        question = Question.new(title: 'sample', content: 'sample', task: @task)
         expect(question).to be_valid
       end
     end
