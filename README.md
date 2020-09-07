@@ -57,7 +57,7 @@ https://docs.google.com/spreadsheets/d/e/2PACX-1vRr6zEI-rcJk62sxnMVHxt6KLqAmlbLr
 https://docs.google.com/spreadsheets/d/e/2PACX-1vTE9iMSOvJIqfx8oTDBhdpBCYrMMFj8KMzEcqprUiKZr6qGeEyOigq19pVeRiYwtiShkcabqgxPmb1n/pubhtml
 
 ## サービス構成図
-![サービス構成図](https://app.diagrams.net/#G1PG-jqlqn38JHmyNpQ-5doobs-uah9KKZ)
+![サービス構成図](https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#G1PG-jqlqn38JHmyNpQ-5doobs-uah9KKZ)
 
 ## ER図
 ![ER図](https://erdplus.com/edit-diagram/9622ff91-6d73-4f12-95fb-b0ee9a5a1656)
