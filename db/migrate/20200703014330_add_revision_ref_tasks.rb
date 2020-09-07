@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddRevisionRefTasks < ActiveRecord::Migration[5.2]
   def change
     add_reference :tasks, :revision, foreign_key: true

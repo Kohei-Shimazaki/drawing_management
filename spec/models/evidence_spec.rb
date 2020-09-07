@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Evidence, type: :model do
@@ -21,7 +23,7 @@ RSpec.describe Evidence, type: :model do
     end
     context 'バリデーションクリア' do
       it 'commentのバリデーションが通る' do
-        evidence = Evidence.new(comment: "sample", task: @task)
+        evidence = Evidence.new(comment: 'sample', task: @task)
         expect(evidence).to be_valid
       end
     end

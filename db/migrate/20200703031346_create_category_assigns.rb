@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCategoryAssigns < ActiveRecord::Migration[5.2]
   def change
     create_table :category_assigns do |t|

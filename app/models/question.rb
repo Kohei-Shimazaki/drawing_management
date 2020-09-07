@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Question < ApplicationRecord
   has_one_attached :attachment
   belongs_to :task, optional: true
@@ -16,8 +18,8 @@ class Question < ApplicationRecord
 
   private
 
-    def create_notifications
-      notification = Notification.create(subject: self, team: task.drawing.team, action_type: :question_to_task)
-      NotificationRead.create(user_id: task.staff.id, notification_id: notification.id)
-    end
+  def create_notifications
+    notification = Notification.create(subject: self, team: task.drawing.team, action_type: :question_to_task)
+    NotificationRead.create(user_id: task.staff.id, notification_id: notification.id)
+  end
 end

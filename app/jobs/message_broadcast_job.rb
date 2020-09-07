@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
@@ -10,10 +12,11 @@ class MessageBroadcastJob < ApplicationJob
   end
 
   private
-    def render_message(message)
-      renderer = ApplicationController.renderer.new(
-        http_host: '54.95.190.19',
-      )
-      renderer.render(partial: 'messages/message', locals: { message: message })
-    end
+
+  def render_message(message)
+    renderer = ApplicationController.renderer.new(
+      http_host: '54.95.190.19'
+    )
+    renderer.render(partial: 'messages/message', locals: { message: message })
+  end
 end

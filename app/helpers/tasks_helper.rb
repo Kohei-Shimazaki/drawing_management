@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 module TasksHelper
   def badge_status(task)
     case task.status.to_sym
     when :waiting
-      "badge-secondary"
+      'badge-secondary'
     when :working
-      "badge-primary"
+      'badge-primary'
     when :pending
-      "badge-warning"
+      'badge-warning'
     when :discontinued
-      "badge-secondary"
+      'badge-secondary'
     when :approval_waiting
-      "badge-info"
+      'badge-info'
     when :completed
-      "badge-success"
+      'badge-success'
     when :approval_rescission
-      "badge-danger"
+      'badge-danger'
     end
   end
 end

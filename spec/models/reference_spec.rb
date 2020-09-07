@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Reference, type: :model do
@@ -21,7 +23,7 @@ RSpec.describe Reference, type: :model do
     end
     context 'バリデーションクリア' do
       it 'commentのバリデーションが通る' do
-        reference = Reference.new(comment: "sample", task: @task)
+        reference = Reference.new(comment: 'sample', task: @task)
         expect(reference).to be_valid
       end
     end

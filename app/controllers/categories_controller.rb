@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i(show edit update destroy)
+  before_action :set_category, only: %i[show edit update destroy]
 
   def create
     @category = current_user.company.categories.build(category_params)
@@ -12,8 +14,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     @category = current_user.company.categories.find(params[:id])
@@ -36,21 +37,22 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      flash[:notice] = "#{I18n.t("activerecord.models.category")}#{I18n.t("flash.destroy")}"
+      flash[:notice] = "#{I18n.t('activerecord.models.category')}#{I18n.t('flash.destroy')}"
       format.js { render :index }
     end
   end
 
   private
-    def category_params
-      params.require(:category).permit(
-        :name,
-        :explanation,
-        :company_id,
-      )
-    end
 
-    def set_category
-      @category = Category.find(params[:id])
-    end
+  def category_params
+    params.require(:category).permit(
+      :name,
+      :explanation,
+      :company_id
+    )
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 end

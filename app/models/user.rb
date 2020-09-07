@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -23,7 +25,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 90},
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: true
-  before_validation {email.downcase!}
+  before_validation { email.downcase! }
   validates :employee_number, presence: true, length: {maximum: 20}, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
   devise :invitable, :database_authenticatable, :registerable,
@@ -31,7 +33,7 @@ class User < ApplicationRecord
          :validatable, invite_for: 2.weeks
 
   def self.guest
-    find_or_create_by!(email: "guest@example.com", employee_number: 100001, name: "guest", company_id: 1,) do |user|
+    find_or_create_by!(email: 'guest@example.com', employee_number: 100_001, name: 'guest', company_id: 1) do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
