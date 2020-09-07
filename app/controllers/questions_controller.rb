@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i(edit update show destroy)
+  before_action :set_question, only: %i[edit update show destroy]
   PER = 10
 
   def index
@@ -19,7 +21,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      flash[:notice] = "#{I18n.t("activerecord.models.question")}#{I18n.t("flash.create")}"
+      flash[:notice] = "#{I18n.t('activerecord.models.question')}#{I18n.t('flash.create')}"
       redirect_to questions_path
     else
       render :new
@@ -31,12 +33,11 @@ class QuestionsController < ApplicationController
     @comment = @question.comments.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @question.update(question_params)
-      flash[:notice] = "#{I18n.t("activerecord.models.question")}#{I18n.t("flash.update")}"
+      flash[:notice] = "#{I18n.t('activerecord.models.question')}#{I18n.t('flash.update')}"
       redirect_to questions_path
     else
       render :edit
@@ -45,21 +46,22 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:notice] = "#{I18n.t("activerecord.models.question")}#{I18n.t("flash.destroy")}"
+    flash[:notice] = "#{I18n.t('activerecord.models.question')}#{I18n.t('flash.destroy')}"
     redirect_to questions_path
   end
 
   private
-    def question_params
-      params.require(:question).permit(
-        :title,
-        :content,
-        :task_id,
-        :attachment,
-      )
-    end
 
-    def set_question
-      @question = Question.find(params[:id])
-    end
+  def question_params
+    params.require(:question).permit(
+      :title,
+      :content,
+      :task_id,
+      :attachment
+    )
+  end
+
+  def set_question
+    @question = Question.find(params[:id])
+  end
 end
