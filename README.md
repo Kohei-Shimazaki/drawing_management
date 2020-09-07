@@ -2,12 +2,14 @@
 
 # Drawing_management (図面管理)
 
-
 ## 概要
 設計会社向けの図面・業務管理アプリです。
 煩雑になりがちな図面・業務の整理に役立ちます。
 アプリを通して、業務を進めることで報連相を自動化することができます。
 また、チャット機能もあり、ラインなどの情報漏洩が心配なサービスを使わずにオンラインで連絡を取り合うことができます。
+
+## URL
+http://drawing-mgt.work/
 
 ## 使用技術
 * Ruby 2.6.5
@@ -57,13 +59,13 @@ https://docs.google.com/spreadsheets/d/e/2PACX-1vRr6zEI-rcJk62sxnMVHxt6KLqAmlbLr
 https://docs.google.com/spreadsheets/d/e/2PACX-1vTE9iMSOvJIqfx8oTDBhdpBCYrMMFj8KMzEcqprUiKZr6qGeEyOigq19pVeRiYwtiShkcabqgxPmb1n/pubhtml
 
 ## サービス構成図
-
+https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#G1PG-jqlqn38JHmyNpQ-5doobs-uah9KKZ
 
 ## ER図
-file:///C:/Users/kohei/workspace/drawing_management/docs/er.png?time=1599461211549
+https://erdplus.com/edit-diagram/9622ff91-6d73-4f12-95fb-b0ee9a5a1656
 
 ## 画面遷移図
-docsフォルダ内のscreen_transition_diagram.png
+https://erdplus.com/edit-diagram/6102f64c-fda7-4b3e-a331-4b2c74fbdc42
 
 ## 画面ワイヤーフレーム
 https://docs.google.com/spreadsheets/d/e/2PACX-1vSVeED-vB260a4aXEFcnhkQBUennwcA-jOv6PsYx10FlV1xCK1KhEbVSq8SiqadgH-BvPjASesQ8cd4/pubhtml
