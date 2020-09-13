@@ -27,7 +27,7 @@ RSpec.describe '登録機能', type: :system do
         sleep(5)
       end
       it '社員招待メールを送ることができる' do
-        expect(User.last.name).to eq 'test_user'
+        expect(User.all.count).to eq 3
       end
     end
     context '客先登録をする場合' do
