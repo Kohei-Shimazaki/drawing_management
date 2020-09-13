@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'チーム作成機能', type: :system do
-  describe 'チーム登録画面' do
+  describe 'チーム登録画面', js: true do
     before do
       @user = create(:user)
       @company = create(:company)
@@ -17,7 +17,7 @@ RSpec.describe 'チーム作成機能', type: :system do
       find('#new_team_btn').click
       sleep(3)
     end
-    context 'チーム登録に必要な情報を入力した場合' do
+    context 'チーム登録に必要な情報を入力した場合', js: true do
       it '新しいチームが作成できる' do
         fill_in '名前', with: 'new_team'
         fill_in 'チームプロフィール', with: 'new_team_profile'
@@ -26,7 +26,7 @@ RSpec.describe 'チーム作成機能', type: :system do
         expect(Team.all.count).to eq 1
       end
     end
-    context 'チーム登録に必要な情報がない場合' do
+    context 'チーム登録に必要な情報がない場合', js: true do
       it '新しいチームを作成できない' do
         fill_in 'チームプロフィール', with: 'new_team_profile'
         find('#create_team_btn').click
@@ -80,14 +80,14 @@ RSpec.describe 'チーム作成機能', type: :system do
       it '削除ボタンを押せば削除できる' do
         find("#member_delete_#{@teamassign2.id}").click
         sleep(3)
-        expect(@team.members.count).to eq 2
+        expect(@team.members.count).to eq 1
       end
     end
     context 'チャットを送る場合' do
       before do
         click_on 'チャットルーム'
       end
-      it 'メッセージを送れる' do
+      it 'メッセージを送れる', js: true do
         find('.form-control').set('sample_chat')
         find('.form-control').native.send_keys(:return)
         sleep(3)
