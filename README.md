@@ -9,7 +9,7 @@
 また、チャット機能もあり、ラインなどの情報漏洩が心配なサービスを使わずにオンラインで連絡を取り合うことができます。
 
 ## URL
-http://drawing-mgt.work/
+http://drawing-management.work/
 
 ## 使用技術
 * Ruby 2.6.5

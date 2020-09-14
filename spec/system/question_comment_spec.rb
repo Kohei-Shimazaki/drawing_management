@@ -65,7 +65,7 @@ RSpec.describe '質問管理機能', type: :system do
       end
     end
     context '正しい情報を入力していない場合' do
-      it 'コメントできない' do
+      it 'コメントできない', js: true do
         find('#comment_create_btn').click
         sleep(1)
         expect(page).to have_content 'コメント内容を入力してください'

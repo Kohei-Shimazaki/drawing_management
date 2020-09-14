@@ -59,7 +59,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'database_cleaner'
-  gem 'webdrivers'
+  gem 'selenium-webdriver'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

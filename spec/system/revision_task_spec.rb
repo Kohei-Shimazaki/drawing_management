@@ -110,7 +110,7 @@ RSpec.describe 'レビジョン・タスク管理機能', type: :system do
         expect(Notification.last.action_type).to eq 'task_approval_waiting'
       end
     end
-    context 'タスクを承認する場合' do
+    context 'タスクを承認する場合', js: true do
       before do
         select @task.title, from: 'task[task_id]'
         click_on 'レビジョン登録'
@@ -124,7 +124,7 @@ RSpec.describe 'レビジョン・タスク管理機能', type: :system do
         expect(Notification.last.action_type).to eq 'task_completed'
       end
     end
-    context 'タスク承認を解除する場合' do
+    context 'タスク承認を解除する場合', js: true do
       before do
         select @task.title, from: 'task[task_id]'
         click_on 'レビジョン登録'

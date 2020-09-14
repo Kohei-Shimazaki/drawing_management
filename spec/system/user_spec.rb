@@ -51,9 +51,11 @@ RSpec.describe 'ユーザー編集・検索機能', type: :system do
       end
     end
     context 'アカウント削除を押す' do
-      it 'アカウントを削除できる' do
+      it 'アカウントを削除できる', js: true do
         find('#user_delete_btn').click
-        page.accept_confirm
+        accept_alert do
+          page.driver.browser.switch_to.alert.accept
+        end
         expect(page).to have_content 'アカウントを削除しました'
       end
     end
