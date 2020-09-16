@@ -59,13 +59,10 @@ https://docs.google.com/spreadsheets/d/e/2PACX-1vRr6zEI-rcJk62sxnMVHxt6KLqAmlbLr
 https://docs.google.com/spreadsheets/d/e/2PACX-1vTE9iMSOvJIqfx8oTDBhdpBCYrMMFj8KMzEcqprUiKZr6qGeEyOigq19pVeRiYwtiShkcabqgxPmb1n/pubhtml
 
 ## サービス構成図
-https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1#G1PG-jqlqn38JHmyNpQ-5doobs-uah9KKZ
+https://drive.google.com/file/d/1PG-jqlqn38JHmyNpQ-5doobs-uah9KKZ/view?usp=sharing
 
 ## ER図
-https://erdplus.com/edit-diagram/9622ff91-6d73-4f12-95fb-b0ee9a5a1656
-
-## 画面遷移図
-https://erdplus.com/edit-diagram/6102f64c-fda7-4b3e-a331-4b2c74fbdc42
+https://drive.google.com/file/d/1iyeqNXN6OseBQSZ-Okvbei3L2F1Ugx5i/view?usp=sharing
 
 ## 画面ワイヤーフレーム
 https://docs.google.com/spreadsheets/d/e/2PACX-1vSVeED-vB260a4aXEFcnhkQBUennwcA-jOv6PsYx10FlV1xCK1KhEbVSq8SiqadgH-BvPjASesQ8cd4/pubhtml
