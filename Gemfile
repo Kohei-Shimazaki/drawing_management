@@ -21,7 +21,7 @@ gem 'kaminari-bootstrap'
 gem 'mini_magick'
 gem 'mini_racer', platforms: :ruby
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.2.4'
 gem 'ransack'
 gem 'redis-rails'
